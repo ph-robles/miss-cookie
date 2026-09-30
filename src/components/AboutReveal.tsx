@@ -24,7 +24,7 @@ export default function AboutReveal() {
                     }`}
             >
                 <img
-                    src="/imagens/about.jpg"
+                    src="/images/about.jpg"
                     alt="Miss Cookie"
                     className="h-full w-full object-cover"
                 />
