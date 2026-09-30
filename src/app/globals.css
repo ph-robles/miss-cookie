@@ -1,34 +1,34 @@
 @import "tailwindcss";
- 
+
 :root {
   --background: #0a0908;
   --background-soft: #151311;
- 
   --foreground: #f3eee6;
   --muted: #a99f94;
- 
   --champagne: #c7b18a;
   --caramel: #8b6747;
- 
+  --cookie: #a9825c;
+  --cookie-dark: #6d4a31;
   --border: rgba(243, 238, 230, 0.12);
 }
- 
+
 * {
   box-sizing: border-box;
 }
- 
+
 html {
   scroll-behavior: smooth;
 }
- 
+
 body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body), sans-serif;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
- 
+
 h1,
 h2,
 h3,
@@ -38,22 +38,284 @@ h6 {
   margin: 0;
   font-family: var(--font-display), serif;
 }
- 
+
 p {
   margin: 0;
 }
- 
+
 a {
   color: inherit;
   text-decoration: none;
 }
- 
+
 button {
   font: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
 }
- 
+
 ::selection {
   background: var(--champagne);
   color: var(--background);
 }
- 
+
+/* =========================================================
+   MISS COOKIE — NAVIGATION
+   ========================================================= */
+
+.nav-link {
+  position: relative;
+  transition:
+    color 300ms ease,
+    opacity 300ms ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  width: 100%;
+  height: 1px;
+  background: var(--champagne);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 350ms ease;
+  opacity: 0.7;
+}
+
+.nav-link:hover {
+  color: var(--champagne);
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* =========================================================
+   PRIVATE INQUIRY BUTTON
+   ========================================================= */
+
+.private-inquiry-button {
+  position: relative;
+  overflow: hidden;
+  transition:
+    color 350ms ease,
+    border-color 350ms ease,
+    background-color 350ms ease;
+}
+
+.private-inquiry-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--champagne);
+  transform: translateY(102%);
+  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: -1;
+}
+
+.private-inquiry-button:hover {
+  color: var(--background);
+  border-color: var(--champagne);
+}
+
+.private-inquiry-button:hover::before {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   MOBILE NAVIGATION
+   ========================================================= */
+
+.mobile-nav-link {
+  position: relative;
+  letter-spacing: 0.01em;
+}
+
+.mobile-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 0;
+  height: 1px;
+  background: var(--champagne);
+  transform: translateX(-50%);
+  transition: width 350ms ease;
+}
+
+.mobile-nav-link:hover {
+  color: var(--champagne);
+}
+
+.mobile-nav-link:hover::after {
+  width: 42px;
+}
+
+/* =========================================================
+   COOKIE BRAND MARK
+   Minimal CSS illustration — no emoji
+   ========================================================= */
+
+.cookie-mark {
+  position: relative;
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 27%,
+      rgba(243, 238, 230, 0.16) 0 1px,
+      transparent 2px),
+    linear-gradient(145deg,
+      #b99670 0%,
+      #9c744e 48%,
+      #795437 100%);
+  box-shadow:
+    inset 1px 1px 0 rgba(243, 238, 230, 0.12),
+    inset -3px -4px 8px rgba(45, 25, 12, 0.22);
+  transform: rotate(-8deg);
+  opacity: 0.82;
+  transition:
+    transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 300ms ease;
+}
+
+.cookie-mark::after {
+  content: "";
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  right: -1px;
+  top: -1px;
+  background: var(--background);
+  border-radius: 50%;
+}
+
+.cookie-mark:hover {
+  transform: rotate(3deg) scale(1.06);
+  opacity: 1;
+}
+
+.cookie-mark--small {
+  width: 17px;
+  height: 17px;
+  opacity: 0.65;
+}
+
+.cookie-mark--small::after {
+  width: 6px;
+  height: 6px;
+}
+
+/* Chocolate chips */
+
+.cookie-chip {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--cookie-dark);
+  box-shadow: inset 1px 1px 1px rgba(243, 238, 230, 0.08);
+}
+
+.cookie-chip--1 {
+  left: 10px;
+  top: 11px;
+}
+
+.cookie-chip--2 {
+  right: 9px;
+  top: 16px;
+}
+
+.cookie-chip--3 {
+  left: 17px;
+  bottom: 8px;
+}
+
+.cookie-chip--4 {
+  left: 7px;
+  bottom: 14px;
+}
+
+.cookie-mark--small .cookie-chip {
+  width: 2px;
+  height: 2px;
+}
+
+.cookie-mark--small .cookie-chip--1 {
+  left: 5px;
+  top: 5px;
+}
+
+.cookie-mark--small .cookie-chip--2 {
+  right: 4px;
+  top: 7px;
+}
+
+.cookie-mark--small .cookie-chip--3 {
+  left: 8px;
+  bottom: 4px;
+}
+
+.cookie-mark--small .cookie-chip--4 {
+  left: 3px;
+  bottom: 7px;
+}
+
+/* =========================================================
+   SUBTLE BRAND DETAILS
+   ========================================================= */
+
+@keyframes cookieFloat {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-8deg);
+  }
+
+  50% {
+    transform: translateY(-5px) rotate(-4deg);
+  }
+}
+
+.cookie-mark {
+  animation: cookieFloat 5s ease-in-out infinite;
+}
+
+/* =========================================================
+   MOBILE SAFETY
+   ========================================================= */
+
+@media (max-width: 380px) {
+  .mobile-nav-link {
+    font-size: 2rem;
+  }
+
+  .cookie-mark {
+    transform: scale(0.9) rotate(-8deg);
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
