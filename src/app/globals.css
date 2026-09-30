@@ -100,6 +100,8 @@ button {
 .private-inquiry-button {
   position: relative;
   overflow: hidden;
+  color: var(--champagne);
+  border-color: rgba(199, 177, 138, 0.5);
   transition:
     color 350ms ease,
     border-color 350ms ease,
@@ -113,7 +115,7 @@ button {
   background: var(--champagne);
   transform: translateY(102%);
   transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
-  z-index: -1;
+  z-index: 0;
 }
 
 .private-inquiry-button:hover {
@@ -124,6 +126,29 @@ button {
 .private-inquiry-button:hover::before {
   transform: translateY(0);
 }
+
+/* Mantém o texto acima do efeito */
+.private-inquiry-button {
+  isolation: isolate;
+}
+
+.private-inquiry-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.private-inquiry-button {
+  position: relative;
+}
+
+.private-inquiry-button>* {
+  position: relative;
+  z-index: 2;
+}
+
 
 /* =========================================================
    MOBILE NAVIGATION

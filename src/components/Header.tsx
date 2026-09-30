@@ -71,7 +71,7 @@ export default function Header() {
                         href="/contact"
                         className="private-inquiry-button ml-3 border border-[#F3EEE6]/30 px-5 py-3 text-[10px] font-medium uppercase tracking-[0.22em] text-[#F3EEE6]"
                     >
-                        Private Inquiry
+                        <span>Private Inquiry</span>
                     </Link>
                 </nav>
 
@@ -94,8 +94,8 @@ export default function Header() {
             {/* MOBILE MENU */}
             <div
                 className={`fixed inset-0 z-40 bg-[#0A0908] transition-all duration-500 lg:hidden ${menuOpen
-                        ? "pointer-events-auto opacity-100"
-                        : "pointer-events-none opacity-0"
+                    ? "pointer-events-auto opacity-100"
+                    : "pointer-events-none opacity-0"
                     }`}
             >
                 <div
@@ -125,8 +125,8 @@ export default function Header() {
                                     transitionDelay: menuOpen ? `${index * 35}ms` : "0ms",
                                 }}
                                 className={`mobile-nav-link font-[family-name:var(--font-display)] text-[2.35rem] leading-none text-[#F3EEE6] transition-all duration-500 ${menuOpen
-                                        ? "translate-y-0 opacity-100"
-                                        : "translate-y-3 opacity-0"
+                                    ? "translate-y-0 opacity-100"
+                                    : "translate-y-3 opacity-0"
                                     }`}
                             >
                                 {item.label}
@@ -138,7 +138,7 @@ export default function Header() {
                             onClick={() => setMenuOpen(false)}
                             className="private-inquiry-button mt-6 border border-[#C7B18A]/50 px-8 py-4 text-[10px] uppercase tracking-[0.25em] text-[#C7B18A]"
                         >
-                            Private Inquiry
+                            <span>Private Inquiry</span>
                         </Link>
                     </nav>
 
