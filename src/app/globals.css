@@ -359,3 +359,239 @@ button {
     height: 32px;
   }
 }
+
+/* =========================================
+   ABOUT — COOKIE PHOTO REVEAL
+   ========================================= */
+
+.about-reveal {
+  position: relative;
+  min-height: 420px;
+  overflow: hidden;
+  border: 1px solid rgba(243, 238, 230, 0.08);
+  background: #151311;
+}
+
+/* FOTO */
+
+.about-reveal-image {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.08);
+  transition:
+    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1200ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.about-reveal-image--visible {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* COOKIE TRIGGER */
+
+.about-reveal-trigger {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  cursor: pointer;
+  transition:
+    opacity 600ms ease,
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-reveal-trigger:hover .about-reveal-cookie {
+  transform: scale(1.12) rotate(2deg);
+}
+
+.about-reveal-trigger--hidden {
+  opacity: 0;
+  transform: scale(0.94);
+  pointer-events: none;
+}
+
+/* COOKIE */
+
+.about-reveal-cookie {
+  width: 72px;
+  height: 72px;
+  opacity: 1;
+  animation:
+    aboutCookieFloat 4s ease-in-out infinite,
+    aboutCookiePulse 3s ease-in-out infinite;
+  transition:
+    transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 400ms ease;
+}
+
+.about-reveal-cookie::after {
+  width: 19px;
+  height: 19px;
+}
+
+.about-reveal-trigger:hover .about-reveal-cookie {
+  filter: brightness(1.12);
+}
+
+@keyframes aboutCookieFloat {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-8deg);
+  }
+
+  50% {
+    transform: translateY(-9px) rotate(-3deg);
+  }
+}
+
+@keyframes aboutCookiePulse {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 rgba(199, 177, 138, 0));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 22px rgba(199, 177, 138, 0.12));
+  }
+}
+
+/* GLOW */
+
+.about-reveal-glow {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: rgba(199, 177, 138, 0.06);
+  filter: blur(35px);
+  pointer-events: none;
+}
+
+/* LABEL */
+
+.about-reveal-label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(169, 159, 148, 0.85);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  transition:
+    color 300ms ease,
+    transform 400ms ease;
+}
+
+.about-reveal-trigger:hover .about-reveal-label {
+  color: #c7b18a;
+  transform: translateY(2px);
+}
+
+.about-reveal-line {
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: rgba(199, 177, 138, 0.45);
+  transition: width 400ms ease;
+}
+
+.about-reveal-trigger:hover .about-reveal-line {
+  width: 42px;
+}
+
+/* CORNER */
+
+.about-reveal-corner {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: rgba(169, 159, 148, 0.55);
+  font-size: 8px;
+  letter-spacing: 0.3em;
+  transition: opacity 400ms ease;
+}
+
+.about-reveal-corner--hidden {
+  opacity: 0;
+}
+
+/* CLOSE */
+
+.about-reveal-close {
+  padding: 8px 0;
+  color: rgba(243, 238, 230, 0.65);
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    color 300ms ease,
+    transform 300ms ease;
+}
+
+.about-reveal-close:hover {
+  color: #c7b18a;
+  transform: translateX(-3px);
+}
+
+/* MOBILE */
+
+@media (max-width: 640px) {
+  .about-reveal {
+    min-height: 380px;
+  }
+
+  .about-reveal-cookie {
+    width: 60px;
+    height: 60px;
+  }
+
+  .about-reveal-cookie::after {
+    width: 16px;
+    height: 16px;
+  }
+
+  .about-reveal-label {
+    font-size: 8px;
+    letter-spacing: 0.28em;
+  }
+
+  .about-reveal-corner {
+    top: 18px;
+    right: 18px;
+  }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  .about-reveal-cookie {
+    animation: none;
+  }
+
+  .about-reveal-image {
+    transition: opacity 300ms ease;
+    transform: none;
+  }
+
+  .about-reveal-trigger {
+    transition: opacity 300ms ease;
+  }
+}

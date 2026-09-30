@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import AboutReveal from "../../components/AboutReveal";
 
 function CookieMark() {
     return (
@@ -182,23 +183,7 @@ export default function AboutPage() {
                         </Link>
                     </div>
 
-                    <div className="relative min-h-[360px] overflow-hidden border border-[#F3EEE6]/[0.08] bg-[#151311]">
-                        <div className="absolute inset-0 bg-gradient-to-br from-[#C7B18A]/[0.08] via-transparent to-black/40" />
-
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="flex flex-col items-center">
-                                <CookieMark />
-
-                                <span className="mt-7 text-[9px] uppercase tracking-[0.45em] text-[#A99F94]">
-                                    Miss Cookie
-                                </span>
-
-                                <span className="mt-3 text-xs text-[#C7B18A]">
-                                    Private · Refined · Personal
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+                    <AboutReveal />
                 </div>
             </section>
 
