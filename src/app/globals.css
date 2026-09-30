@@ -344,3 +344,18 @@ button {
     scroll-behavior: auto !important;
   }
 }
+
+/* =========================================================
+   ABOUT PAGE
+   ========================================================= */
+
+.about-page {
+  overflow-x: hidden;
+}
+
+@media (max-width: 640px) {
+  .cookie-mark:not(.cookie-mark--small) {
+    width: 32px;
+    height: 32px;
+  }
+}
