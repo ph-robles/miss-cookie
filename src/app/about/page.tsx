@@ -5,7 +5,10 @@ import AboutReveal from "../../components/AboutReveal";
 
 function CookieMark() {
     return (
-        <span aria-hidden="true" className="cookie-mark cookie-mark--small">
+        <span
+            aria-hidden="true"
+            className="cookie-mark cookie-mark--small"
+        >
             <span className="cookie-chip cookie-chip--1" />
             <span className="cookie-chip cookie-chip--2" />
             <span className="cookie-chip cookie-chip--3" />
@@ -21,10 +24,8 @@ export default function AboutPage() {
 
             {/* HERO */}
             <section className="relative flex min-h-[78vh] items-end overflow-hidden">
-                {/* Background */}
                 <div className="absolute inset-0 bg-gradient-to-b from-[#151311] via-[#0A0908] to-[#0A0908]" />
 
-                {/* Decorative glow */}
                 <div className="absolute left-[12%] top-[28%] h-64 w-64 rounded-full bg-[#C7B18A]/[0.035] blur-3xl" />
 
                 <div className="relative mx-auto w-full max-w-[1400px] px-6 pb-20 pt-40 md:px-10 md:pb-24 lg:px-14">
@@ -53,11 +54,11 @@ export default function AboutPage() {
                     </div>
                 </div>
 
-                {/* Bottom detail */}
                 <div className="absolute bottom-8 right-6 hidden items-center gap-3 md:flex lg:right-14">
                     <span className="text-[8px] uppercase tracking-[0.35em] text-[#A99F94]/60">
                         Orlando · Florida
                     </span>
+
                     <span className="h-px w-10 bg-[#C7B18A]/30" />
                 </div>
             </section>
