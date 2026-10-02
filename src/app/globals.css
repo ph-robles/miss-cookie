@@ -595,3 +595,69 @@ button {
     transition: opacity 300ms ease;
   }
 }
+
+/* =========================================
+   ABOUT PAGE
+   ========================================= */
+
+.about-page {
+  overflow-x: hidden;
+}
+
+/* HERO */
+
+.about-hero-image {
+  animation: aboutHeroZoom 18s ease-out forwards;
+}
+
+@keyframes aboutHeroZoom {
+  from {
+    transform: scale(1.06);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+/* PERSONAL IMAGE */
+
+.about-personal-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(243, 238, 230, 0.08);
+  pointer-events: none;
+}
+
+/* PROFILE CARDS */
+
+.about-page .border-r.border-\[\#F3EEE6\]\/\[0\.08\] {
+  transition:
+    background-color 400ms ease,
+    border-color 400ms ease;
+}
+
+.about-page .border-r.border-\[\#F3EEE6\]\/\[0\.08\]:hover {
+  background: rgba(199, 177, 138, 0.035);
+}
+
+/* MOBILE */
+
+@media (max-width: 640px) {
+  .about-hero {
+    min-height: 82vh;
+  }
+
+  .about-hero-image {
+    animation-duration: 14s;
+  }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  .about-hero-image {
+    animation: none;
+  }
+}
