@@ -64,12 +64,27 @@ export default function Experience() {
       ========================================================= */}
 
             <section className="relative flex min-h-screen items-end overflow-hidden">
-                {/* Atmospheric background */}
+                {/* HERO IMAGE */}
                 <div className="absolute inset-0">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_32%,rgba(199,177,138,0.08),transparent_32%)]" />
+                    <Image
+                        src="/images/experience-hero.jpg"
+                        alt="Miss Cookie"
+                        fill
+                        priority
+                        sizes="100vw"
+                        className="object-cover object-center"
+                    />
 
-                    <div className="absolute inset-0 bg-gradient-to-b from-[#0A0908]/20 via-[#0A0908]/10 to-[#0A0908]" />
+                    {/* Cinematic image treatment */}
+                    <div className="absolute inset-0 bg-[#0A0908]/30" />
+
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#0A0908]/90 via-[#0A0908]/45 to-transparent" />
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908] via-transparent to-[#0A0908]/20" />
+
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(199,177,138,0.08),transparent_35%)]" />
                 </div>
+
 
                 {/* Decorative vertical line */}
                 <div className="absolute right-8 top-32 hidden h-[48vh] w-px bg-[#F3EEE6]/[0.08] lg:right-14 lg:block" />
@@ -215,8 +230,8 @@ export default function Experience() {
                                             >
                                                 <span
                                                     className={`pt-1 text-[9px] tracking-[0.3em] transition-colors duration-300 ${active
-                                                            ? "text-[#C7B18A]"
-                                                            : "text-[#A99F94]/50"
+                                                        ? "text-[#C7B18A]"
+                                                        : "text-[#A99F94]/50"
                                                         }`}
                                                 >
                                                     {experience.number}
@@ -224,8 +239,8 @@ export default function Experience() {
 
                                                 <span
                                                     className={`font-[family-name:var(--font-display)] text-3xl leading-none transition-all duration-500 ${active
-                                                            ? "text-[#F3EEE6]"
-                                                            : "text-[#A99F94]/55 group-hover:text-[#F3EEE6]"
+                                                        ? "text-[#F3EEE6]"
+                                                        : "text-[#A99F94]/55 group-hover:text-[#F3EEE6]"
                                                         }`}
                                                 >
                                                     {experience.title}
@@ -252,8 +267,8 @@ export default function Experience() {
                                         <div
                                             key={experience.number}
                                             className={`absolute inset-0 transition-all duration-700 ${active
-                                                    ? "pointer-events-auto translate-y-0 opacity-100"
-                                                    : "pointer-events-none translate-y-4 opacity-0"
+                                                ? "pointer-events-auto translate-y-0 opacity-100"
+                                                : "pointer-events-none translate-y-4 opacity-0"
                                                 }`}
                                         >
                                             <div className="relative h-[720px] overflow-hidden bg-[#151311]">
