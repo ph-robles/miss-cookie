@@ -6,6 +6,7 @@ export default function ExperiencePage() {
         <main className="min-h-screen bg-[#0A0908]">
             <Header />
             <Experience />
+            <footer />
         </main>
     );
 }
