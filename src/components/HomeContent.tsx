@@ -92,7 +92,7 @@ export default function HomeContent() {
                         className="relative aspect-[4/5] overflow-hidden"
                     >
                         <Image
-                            src="/images/about.jpg"
+                            src="/images/about-hero.jpg"
                             alt="Miss Cookie"
                             fill
                             sizes="(max-width: 1024px) 100vw, 45vw"
