@@ -253,7 +253,7 @@ export default function Travel() {
             {/* DESTINATION IMAGE BREAK */}
             <section className="relative min-h-[50svh] overflow-hidden md:min-h-[68svh]">
                 <Image
-                    src="/images/travel.jpg"
+                    src="/images/florida.jpg"
                     alt="An atmospheric destination for a considered travel arrangement"
                     fill
                     sizes="100vw"

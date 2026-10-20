@@ -6,83 +6,95 @@ import Link from "next/link";
 const arrangements = [
     {
         number: "01",
-        duration: "1 hr",
-        title: "First Impression",
+        category: "Hourly",
+        title: "The Hourly Experience",
         description:
-            "A beautifully paced introduction with enough time to settle into the atmosphere, enjoy the conversation and let the evening unfold naturally.",
-        price: "$1,200",
+            "An elegant, unhurried experience with time for conversation, a considered setting and genuine connection.",
+        price: "$800",
+        unit: "per hour",
+        note: "2-hour minimum · $1,600",
     },
     {
         number: "02",
-        duration: "90 min",
-        title: "The Unhurried Hour",
+        category: "Evening",
+        title: "The Dinner Date",
         description:
-            "A little more room to slow down. Settle into the surroundings, enjoy good conversation and allow the experience to develop without watching the clock.",
-        price: "$1,800",
+            "Four hours to enjoy a beautiful dinner, thoughtful conversation and an evening that unfolds naturally.",
+        price: "$3,200",
+        unit: "4 hours",
+        note: "An evening by arrangement",
     },
     {
         number: "03",
-        duration: "2 hrs",
-        title: "The Evening",
+        category: "Executive",
+        title: "Overnight / 24-Hour",
         description:
-            "Two hours creates space for a more relaxed experience — thoughtful conversation, an elegant setting and time to simply be present.",
-        price: "$2,200",
-    },
-    {
-        number: "04",
-        duration: "3 hrs",
-        title: "Extended Evening",
-        description:
-            "An unhurried arrangement designed for those who prefer more time to enjoy the atmosphere, conversation and company.",
-        price: "$3,000",
-    },
-    {
-        number: "05",
-        duration: "4 hrs",
-        title: "A Longer Evening",
-        description:
-            "Dinner, music, conversation and an evening allowed to unfold at its own pace. Four hours without unnecessary rush.",
-        price: "$4,000",
-    },
-    {
-        number: "06",
-        duration: "6 hrs",
-        title: "The Long Evening",
-        description:
-            "A substantial stretch of time with nowhere else to be. Designed for an evening that feels relaxed, spontaneous and entirely removed from the ordinary.",
-        price: "$5,500",
-    },
-    {
-        number: "07",
-        duration: "12 hrs",
-        title: "Stay Awhile",
-        description:
-            "An extended arrangement allowing an evening and morning to become part of one continuous experience, thoughtfully planned around your time.",
-        price: "$9,500",
-    },
-    {
-        number: "08",
-        duration: "24 hrs",
-        title: "A Full Day",
-        description:
-            "A complete day shaped around atmosphere, spontaneity and exceptional company. A more immersive arrangement for those seeking something beyond a traditional evening.",
-        price: "$17,000",
+            "An extended private arrangement, thoughtfully planned around your schedule, destination and individual preferences.",
+        price: "$8,000",
+        unit: "per arrangement",
+        note: "Overnight or 24-hour · By arrangement",
     },
 ];
 
+const bookingRules = [
+    {
+        number: "01",
+        title: "Client Screening",
+        description:
+            "For safety and discretion, all first-time clients must complete a brief verification process before any deposit is paid.",
+        detail:
+            "Verification may include a professional LinkedIn profile, work email or professional reference.",
+    },
+    {
+        number: "02",
+        title: "Deposit Requirements",
+        description:
+            "Local bookings require a 50% non-refundable deposit at the time of booking to secure the requested date and time.",
+        detail:
+            "For travel and fly-out arrangements, a 50% booking deposit plus flight and hotel costs must be finalized at least 72 hours in advance.",
+    },
+    {
+        number: "03",
+        title: "Rescheduling",
+        description:
+            "One rescheduling is permitted for local dates when at least 48 hours' notice is provided.",
+        detail:
+            "Rescheduling within this notice period preserves the original deposit, subject to availability.",
+    },
+    {
+        number: "04",
+        title: "Cancellations",
+        description:
+            "All deposits are non-refundable.",
+        detail:
+            "Local cancellations made less than 24 hours before the scheduled date, or travel cancellations made less than 48 hours before departure, will be billed for the full booking amount.",
+    },
+];
+
+function SectionLabel({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
+    return (
+        <div className="mb-6 flex items-center gap-4">
+            <span className="h-px w-10 bg-[#C7B18A]/60" />
+            <span className="text-[9px] uppercase tracking-[0.4em] text-[#C7B18A]">
+                {children}
+            </span>
+        </div>
+    );
+}
+
 export default function Rates() {
     return (
-        <div className="rates-page overflow-hidden bg-[#0A0908]">
-            {/* =========================================================
-          HERO
-      ========================================================= */}
-
-            <section className="relative min-h-screen overflow-hidden">
-                {/* Hero image */}
+        <div className="rates-page overflow-hidden bg-[#0A0908] text-[#F3EEE6]">
+            {/* HERO */}
+            <section className="relative flex min-h-[88svh] items-end overflow-hidden md:min-h-screen">
                 <div className="absolute inset-0">
                     <Image
                         src="/images/rates-hero.jpg"
-                        alt="Miss Cookie"
+                        alt="Miss Cookie — private arrangements"
                         fill
                         priority
                         sizes="100vw"
@@ -90,157 +102,226 @@ export default function Rates() {
                     />
 
                     <div className="absolute inset-0 bg-[#0A0908]/35" />
-
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#0A0908]/90 via-[#0A0908]/45 to-[#0A0908]/20" />
-
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908] via-transparent to-[#0A0908]/30" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#0A0908]/90 via-[#0A0908]/55 to-[#0A0908]/15" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908] via-[#0A0908]/20 to-[#0A0908]/35" />
                 </div>
 
-                {/* Decorative vertical line */}
-                <div className="absolute right-8 top-32 hidden h-[45vh] w-px bg-[#F3EEE6]/10 lg:right-14 lg:block" />
+                <div className="absolute right-8 top-32 hidden h-[42vh] w-px bg-[#F3EEE6]/15 lg:right-14 lg:block" />
 
-                {/* Hero content */}
-                <div className="relative z-10 flex min-h-screen items-end">
-                    <div className="mx-auto w-full max-w-[1600px] px-6 pb-20 pt-40 md:px-10 md:pb-28 lg:px-14">
-                        <div className="max-w-5xl">
-                            <div className="mb-9 flex items-center gap-4">
-                                <span className="h-px w-12 bg-[#C7B18A]/70" />
+                <div className="relative z-10 mx-auto w-full max-w-[1500px] px-6 pb-20 pt-36 md:px-10 md:pb-28 lg:px-14 lg:pb-32">
+                    <div className="max-w-5xl">
+                        <SectionLabel>Private Arrangements</SectionLabel>
 
-                                <span className="text-[9px] uppercase tracking-[0.45em] text-[#F3EEE6]/65">
-                                    Private Arrangements
-                                </span>
-                            </div>
-
-                            <h1 className="text-[clamp(4rem,10vw,9.5rem)] font-normal leading-[0.82] tracking-[-0.055em] text-[#F3EEE6]">
-                                Time,
-                                <br />
-                                <span className="italic text-[#C7B18A]">
-                                    beautifully spent.
-                                </span>
-                            </h1>
-
-                            <p className="mt-10 max-w-xl text-sm leading-7 text-[#F3EEE6]/70 md:text-base md:leading-8">
-                                Every arrangement is created with the same intention:
-                                thoughtful planning, genuine presence and an atmosphere
-                                where time can move a little more slowly.
-                            </p>
-                        </div>
-
-                        <div className="mt-16 flex items-center gap-4">
-                            <span className="text-[8px] uppercase tracking-[0.35em] text-[#F3EEE6]/45">
-                                Orlando · Florida
+                        <h1 className="text-[clamp(3.6rem,9vw,9rem)] font-normal leading-[0.87] tracking-[-0.055em]">
+                            Time,
+                            <br />
+                            <span className="italic text-[#D8C8AD]">
+                                beautifully spent.
                             </span>
+                        </h1>
 
-                            <span className="h-px w-10 bg-[#C7B18A]/40" />
+                        <p className="mt-8 max-w-xl text-sm leading-7 text-[#D0C8BE] md:mt-10 md:text-base md:leading-8">
+                            Considered arrangements, transparent rates and
+                            a thoughtful approach to every detail. Choose
+                            the time that suits you and begin with a private
+                            conversation.
+                        </p>
 
-                            <span className="text-[8px] uppercase tracking-[0.35em] text-[#F3EEE6]/45">
-                                By arrangement
-                            </span>
-                        </div>
+                        <Link
+                            href="#arrangements"
+                            className="private-inquiry-button mt-10 inline-flex items-center gap-5 border border-[#C7B18A]/50 px-7 py-4 text-[9px] uppercase tracking-[0.28em] md:mt-12"
+                        >
+                            <span>Explore Arrangements</span>
+                            <span aria-hidden="true">↘</span>
+                        </Link>
                     </div>
+
+                    <div className="mt-16 flex flex-wrap items-center gap-x-5 gap-y-3">
+                        <span className="text-[8px] uppercase tracking-[0.35em] text-[#F3EEE6]/55">
+                            Orlando · Florida
+                        </span>
+                        <span className="h-px w-8 bg-[#C7B18A]/40" />
+                        <span className="text-[8px] uppercase tracking-[0.35em] text-[#F3EEE6]/55">
+                            By prior arrangement
+                        </span>
+                    </div>
+                </div>
+
+                <div className="absolute bottom-12 right-14 hidden flex-col items-center gap-3 lg:flex">
+                    <span className="text-[8px] uppercase tracking-[0.35em] text-[#F3EEE6]/45 [writing-mode:vertical-rl]">
+                        Private Rates
+                    </span>
+                    <span className="h-12 w-px bg-[#C7B18A]/40" />
                 </div>
             </section>
 
-            {/* =========================================================
-          INTRO
-      ========================================================= */}
-
+            {/* INTRODUCTION */}
             <section className="border-t border-[#F3EEE6]/[0.08]">
-                <div className="mx-auto grid max-w-[1400px] gap-16 px-6 py-24 md:px-10 md:py-32 lg:grid-cols-[0.7fr_1.3fr] lg:px-14 lg:py-40">
+                <div className="mx-auto grid max-w-[1400px] gap-12 px-6 py-24 md:px-10 md:py-32 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20 lg:px-14 lg:py-36">
                     <div>
-                        <span className="text-[9px] uppercase tracking-[0.45em] text-[#C7B18A]">
-                            The philosophy
-                        </span>
+                        <SectionLabel>The Philosophy</SectionLabel>
 
-                        <h2 className="mt-6 max-w-md text-4xl font-normal leading-[1.02] tracking-[-0.025em] md:text-5xl">
-                            Luxury is often found in the way time feels.
+                        <h2 className="max-w-lg text-4xl font-normal leading-[1.05] tracking-[-0.035em] md:text-5xl lg:text-6xl">
+                            Luxury begins with knowing your time is valued.
                         </h2>
                     </div>
 
-                    <div className="max-w-3xl">
+                    <div className="max-w-2xl lg:pt-10">
                         <p className="text-base leading-8 text-[#C9C0B7] md:text-lg md:leading-9">
-                            There is something different about an evening when there is no
-                            need to rush through it. The surroundings become more
-                            meaningful, conversation becomes easier and the smallest
-                            details begin to matter.
+                            Every arrangement begins with clear communication
+                            and thoughtful planning. The intention is to make
+                            the experience feel comfortable, considered and
+                            free from unnecessary complications.
                         </p>
 
                         <p className="mt-7 text-sm leading-8 text-[#A99F94] md:text-base md:leading-8">
-                            Each arrangement is intended to feel personal, comfortable
-                            and considered. The duration simply determines how much room
-                            there is for the experience to unfold.
+                            Rates are outlined in advance, while availability,
+                            scheduling and any additional travel arrangements
+                            are discussed privately before a booking is confirmed.
                         </p>
 
                         <div className="mt-10 flex items-center gap-4">
                             <span className="h-px w-12 bg-[#C7B18A]/50" />
-
-                            <span className="text-[9px] uppercase tracking-[0.35em] text-[#A99F94]">
-                                Discretion · Elegance · Presence
+                            <span className="text-[8px] uppercase tracking-[0.3em] text-[#A99F94] md:text-[9px] md:tracking-[0.35em]">
+                                Discretion · Clarity · Consideration
                             </span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* =========================================================
-          RATES
-      ========================================================= */}
-
-            <section className="bg-[#0D0C0A]">
+            {/* ARRANGEMENTS */}
+            <section
+                id="arrangements"
+                className="scroll-mt-24 bg-[#0D0C0A]"
+            >
                 <div className="mx-auto max-w-[1400px] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40">
-                    <div className="mb-16 flex flex-col justify-between gap-8 md:mb-20 md:flex-row md:items-end">
+                    <div className="mb-14 flex flex-col gap-7 md:mb-20 md:flex-row md:items-end md:justify-between">
                         <div>
-                            <span className="text-[9px] uppercase tracking-[0.45em] text-[#C7B18A]">
-                                Private Rates
-                            </span>
+                            <SectionLabel>Rates & Arrangements</SectionLabel>
 
-                            <h2 className="mt-6 text-4xl font-normal leading-none tracking-[-0.03em] md:text-6xl">
+                            <h2 className="text-4xl font-normal leading-none tracking-[-0.04em] md:text-6xl">
                                 Choose your time.
                             </h2>
                         </div>
 
-                        <p className="max-w-xs text-xs leading-6 text-[#A99F94]">
-                            All arrangements are private and subject to availability.
-                            Additional details can be discussed directly.
+                        <p className="max-w-sm text-sm leading-7 text-[#A99F94]">
+                            Straightforward rates for each arrangement.
+                            All bookings are subject to availability and
+                            prior confirmation.
                         </p>
                     </div>
 
-                    <div className="border-t border-[#F3EEE6]/10">
+                    <div className="grid gap-px border border-[#F3EEE6]/10 bg-[#F3EEE6]/10 md:grid-cols-2 lg:grid-cols-3">
                         {arrangements.map((arrangement) => (
                             <article
                                 key={arrangement.number}
-                                className="group grid gap-7 border-b border-[#F3EEE6]/10 py-10 transition-colors duration-500 hover:bg-[#151311]/50 md:grid-cols-[70px_0.8fr_1.2fr_150px] md:items-center md:gap-8 md:py-12"
+                                className="group relative flex min-h-[390px] flex-col bg-[#0D0C0A] p-7 transition-colors duration-500 hover:bg-[#151311] md:min-h-[430px] md:p-9 lg:p-10"
                             >
-                                {/* Number */}
-                                <span className="text-[9px] tracking-[0.3em] text-[#C7B18A]">
-                                    {arrangement.number}
-                                </span>
-
-                                {/* Duration + title */}
-                                <div>
-                                    <span className="text-[9px] uppercase tracking-[0.3em] text-[#A99F94]/60">
-                                        {arrangement.duration}
+                                <div className="flex items-center justify-between">
+                                    <span className="text-[9px] tracking-[0.3em] text-[#C7B18A]">
+                                        {arrangement.number}
                                     </span>
 
-                                    <h3 className="mt-3 text-3xl font-normal leading-none tracking-[-0.02em] text-[#F3EEE6] transition-colors duration-300 group-hover:text-[#C7B18A] md:text-4xl">
-                                        {arrangement.title}
-                                    </h3>
+                                    <span className="text-[8px] uppercase tracking-[0.25em] text-[#A99F94]/60">
+                                        {arrangement.category}
+                                    </span>
                                 </div>
 
-                                {/* Description */}
-                                <p className="max-w-xl text-sm leading-7 text-[#A99F94]">
-                                    {arrangement.description}
-                                </p>
+                                <div className="mt-12">
+                                    <h3 className="max-w-xs text-3xl font-normal leading-tight tracking-[-0.025em] text-[#F3EEE6] transition-colors duration-300 group-hover:text-[#D8C8AD] md:text-4xl">
+                                        {arrangement.title}
+                                    </h3>
 
-                                {/* Price */}
-                                <div className="md:text-right">
-                                    <span className="text-xl font-normal tracking-[-0.02em] text-[#F3EEE6]">
-                                        {arrangement.price}
-                                    </span>
+                                    <p className="mt-5 text-sm leading-7 text-[#A99F94]">
+                                        {arrangement.description}
+                                    </p>
+                                </div>
 
-                                    <span className="mt-2 block text-[8px] uppercase tracking-[0.25em] text-[#A99F94]/50">
-                                        Private arrangement
-                                    </span>
+                                <div className="mt-auto pt-12">
+                                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                                        <span className="text-4xl font-normal tracking-[-0.045em] text-[#D8C8AD] md:text-5xl">
+                                            {arrangement.price}
+                                        </span>
+
+                                        <span className="text-[9px] uppercase tracking-[0.2em] text-[#A99F94]/75">
+                                            {arrangement.unit}
+                                        </span>
+                                    </div>
+
+                                    <div className="mt-5 border-t border-[#F3EEE6]/10 pt-4">
+                                        <p className="text-[9px] leading-5 tracking-[0.08em] text-[#A99F94]/75">
+                                            {arrangement.note}
+                                        </p>
+                                    </div>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+
+                    <p className="mt-7 text-xs leading-6 text-[#A99F94]/70">
+                        The hourly rate is $800, with a two-hour minimum.
+                        The minimum booking total is $1,600. Rates are in
+                        US dollars.
+                    </p>
+                </div>
+            </section>
+
+            {/* BOOKING PROCESS */}
+            <section className="border-t border-[#F3EEE6]/[0.08]">
+                <div className="mx-auto grid max-w-[1400px] gap-14 px-6 py-24 md:px-10 md:py-32 lg:grid-cols-[0.75fr_1.25fr] lg:gap-24 lg:px-14 lg:py-40">
+                    <div className="lg:sticky lg:top-28 lg:self-start">
+                        <SectionLabel>Before We Confirm</SectionLabel>
+
+                        <h2 className="max-w-lg text-4xl font-normal leading-[1.02] tracking-[-0.035em] md:text-6xl">
+                            A thoughtful process.
+                            <br />
+                            <span className="italic text-[#C7B18A]">
+                                Clear expectations.
+                            </span>
+                        </h2>
+
+                        <p className="mt-7 max-w-md text-sm leading-8 text-[#A99F94] md:text-base">
+                            Every booking follows a clear process designed
+                            to support safety, privacy and reliable planning
+                            for both parties.
+                        </p>
+
+                        <div className="mt-10 border-l border-[#C7B18A]/35 pl-6">
+                            <span className="text-[9px] uppercase tracking-[0.3em] text-[#C7B18A]">
+                                Please note
+                            </span>
+
+                            <p className="mt-4 text-sm leading-7 text-[#A99F94]">
+                                A date is secured only after the required
+                                verification, deposit and booking arrangements
+                                have been completed.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="border-t border-[#F3EEE6]/10">
+                        {bookingRules.map((rule) => (
+                            <article
+                                key={rule.number}
+                                className="grid gap-5 border-b border-[#F3EEE6]/10 py-8 md:grid-cols-[54px_1fr] md:gap-7 md:py-10"
+                            >
+                                <span className="pt-1 text-[9px] tracking-[0.3em] text-[#C7B18A]">
+                                    {rule.number}
+                                </span>
+
+                                <div>
+                                    <h3 className="text-2xl font-normal tracking-[-0.02em] md:text-3xl">
+                                        {rule.title}
+                                    </h3>
+
+                                    <p className="mt-4 text-sm leading-7 text-[#C9C0B7] md:text-base md:leading-8">
+                                        {rule.description}
+                                    </p>
+
+                                    <p className="mt-4 text-sm leading-7 text-[#A99F94]">
+                                        {rule.detail}
+                                    </p>
                                 </div>
                             </article>
                         ))}
@@ -248,145 +329,182 @@ export default function Rates() {
                 </div>
             </section>
 
-            {/* =========================================================
-          BESPOKE
-      ========================================================= */}
-
-            <section className="border-t border-[#F3EEE6]/[0.08]">
-                <div className="mx-auto grid max-w-[1400px] gap-14 px-6 py-24 md:px-10 md:py-32 lg:grid-cols-[1fr_0.8fr] lg:px-14 lg:py-40">
-                    <div>
-                        <span className="text-[9px] uppercase tracking-[0.45em] text-[#C7B18A]">
-                            Beyond the standard
-                        </span>
-
-                        <h2 className="mt-6 max-w-3xl text-4xl font-normal leading-[1] tracking-[-0.03em] md:text-6xl">
-                            Some occasions call for something{" "}
-                            <span className="italic text-[#C7B18A]">
-                                entirely their own.
-                            </span>
-                        </h2>
-
-                        <p className="mt-8 max-w-2xl text-sm leading-8 text-[#A99F94] md:text-base">
-                            For extended arrangements, destination escapes, private
-                            travel or time curated around a particular occasion, bespoke
-                            possibilities may be considered privately.
-                        </p>
-
-                        <p className="mt-6 max-w-2xl text-sm leading-8 text-[#A99F94] md:text-base">
-                            These arrangements are intentionally limited and are planned
-                            according to destination, dates, duration and individual
-                            requirements.
-                        </p>
-
-                        <Link
-                            href="/contact"
-                            className="private-inquiry-button mt-10 inline-block border border-[#C7B18A]/50 px-8 py-4 text-[10px] uppercase tracking-[0.28em]"
-                        >
-                            <span>Discuss a Bespoke Arrangement</span>
-                        </Link>
-                    </div>
-
-                    <div className="flex items-end lg:justify-end">
-                        <div className="max-w-sm border-l border-[#C7B18A]/30 pl-7">
-                            <span className="text-[9px] uppercase tracking-[0.35em] text-[#C7B18A]">
-                                Select availability
-                            </span>
-
-                            <p className="mt-5 text-sm leading-7 text-[#A99F94]">
-                                Discretion, emotional intelligence, generosity and genuine
-                                compatibility are valued above everything else.
-                            </p>
-
-                            <p className="mt-5 text-sm leading-7 text-[#A99F94]">
-                                Bespoke arrangements are discussed personally upon request.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* =========================================================
-          TRAVEL
-      ========================================================= */}
-
+            {/* DEPOSIT SUMMARY */}
             <section className="bg-[#11100E]">
-                <div className="mx-auto max-w-[1400px] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40">
-                    <div className="relative overflow-hidden border border-[#F3EEE6]/10">
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(199,177,138,0.07),transparent_32%)]" />
+                <div className="mx-auto max-w-[1400px] px-6 py-20 md:px-10 md:py-28 lg:px-14">
+                    <div className="relative overflow-hidden border border-[#C7B18A]/20">
+                        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(199,177,138,0.09),transparent_55%)]" />
 
-                        <div className="relative grid gap-12 p-8 md:p-12 lg:grid-cols-[1fr_0.6fr] lg:p-16">
+                        <div className="relative grid gap-10 p-7 md:p-12 lg:grid-cols-[1fr_1fr] lg:gap-16 lg:p-16">
                             <div>
-                                <span className="text-[9px] uppercase tracking-[0.45em] text-[#C7B18A]">
-                                    Travel
-                                </span>
+                                <SectionLabel>Deposit & Booking Rules</SectionLabel>
 
-                                <h2 className="mt-6 max-w-2xl text-4xl font-normal leading-[1] tracking-[-0.03em] md:text-6xl">
-                                    When the destination becomes part of the experience.
+                                <h2 className="max-w-xl text-3xl font-normal leading-tight tracking-[-0.03em] md:text-5xl">
+                                    Good planning starts before the date.
                                 </h2>
 
-                                <p className="mt-8 max-w-xl text-sm leading-8 text-[#A99F94] md:text-base">
-                                    Select travel arrangements beyond Orlando may be
-                                    considered with advance planning. Destination, dates,
-                                    duration and logistics are discussed privately.
+                                <p className="mt-6 max-w-lg text-sm leading-7 text-[#A99F94] md:text-base md:leading-8">
+                                    Please review the deposit and cancellation
+                                    conditions before requesting a reservation.
+                                    This helps ensure that scheduling and travel
+                                    arrangements are agreed upon in advance.
                                 </p>
-
-                                <Link
-                                    href="/contact"
-                                    className="private-inquiry-button mt-10 inline-block border border-[#C7B18A]/50 px-8 py-4 text-[10px] uppercase tracking-[0.28em]"
-                                >
-                                    <span>Inquire About Travel</span>
-                                </Link>
                             </div>
 
-                            <div className="flex items-end lg:justify-end">
-                                <div className="border-l border-[#C7B18A]/30 pl-6">
-                                    <span className="block text-[8px] uppercase tracking-[0.35em] text-[#A99F94]/60">
-                                        Orlando
-                                    </span>
+                            <div className="grid content-start gap-0">
+                                <div className="flex items-start justify-between gap-5 border-b border-[#F3EEE6]/10 py-5">
+                                    <div>
+                                        <p className="text-sm text-[#F3EEE6]">
+                                            Local booking deposit
+                                        </p>
+                                        <p className="mt-2 text-xs leading-6 text-[#A99F94]">
+                                            Required to secure the date
+                                        </p>
+                                    </div>
 
-                                    <span className="mt-3 block text-[8px] uppercase tracking-[0.35em] text-[#A99F94]/60">
-                                        United States
+                                    <span className="text-2xl text-[#D8C8AD]">
+                                        50%
                                     </span>
+                                </div>
 
-                                    <span className="mt-6 block font-[family-name:var(--font-display)] text-2xl italic text-[#F3EEE6]/70">
-                                        By prior arrangement
+                                <div className="flex items-start justify-between gap-5 border-b border-[#F3EEE6]/10 py-5">
+                                    <div>
+                                        <p className="text-sm text-[#F3EEE6]">
+                                            Travel arrangements
+                                        </p>
+                                        <p className="mt-2 max-w-xs text-xs leading-6 text-[#A99F94]">
+                                            Deposit plus flight and hotel costs
+                                        </p>
+                                    </div>
+
+                                    <span className="text-sm text-[#D8C8AD]">
+                                        72 hours
+                                    </span>
+                                </div>
+
+                                <div className="flex items-start justify-between gap-5 border-b border-[#F3EEE6]/10 py-5">
+                                    <div>
+                                        <p className="text-sm text-[#F3EEE6]">
+                                            Local rescheduling
+                                        </p>
+                                        <p className="mt-2 text-xs leading-6 text-[#A99F94]">
+                                            One reschedule, subject to availability
+                                        </p>
+                                    </div>
+
+                                    <span className="text-sm text-[#D8C8AD]">
+                                        48 hours
+                                    </span>
+                                </div>
+
+                                <div className="flex items-start justify-between gap-5 py-5">
+                                    <div>
+                                        <p className="text-sm text-[#F3EEE6]">
+                                            Local cancellation
+                                        </p>
+                                        <p className="mt-2 max-w-xs text-xs leading-6 text-[#A99F94]">
+                                            Full booking amount applies within the
+                                            stated cancellation window
+                                        </p>
+                                    </div>
+
+                                    <span className="text-sm text-[#D8C8AD]">
+                                        24 hours
                                     </span>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <p className="mt-6 text-xs leading-6 text-[#A99F94]/65">
+                        Travel cancellation terms differ from local bookings.
+                        Cancellations within 48 hours of travel departure
+                        are subject to the full booking amount. All deposits
+                        are non-refundable.
+                    </p>
                 </div>
             </section>
 
-            {/* =========================================================
-          FINAL CTA
-      ========================================================= */}
-
+            {/* BESPOKE TRAVEL */}
             <section className="border-t border-[#F3EEE6]/[0.08]">
-                <div className="mx-auto max-w-[1100px] px-6 py-28 text-center md:px-10 md:py-40">
-                    <span className="text-[9px] uppercase tracking-[0.45em] text-[#C7B18A]">
-                        Private Inquiry
-                    </span>
+                <div className="mx-auto grid max-w-[1400px] items-center gap-12 px-6 py-24 md:px-10 md:py-32 lg:grid-cols-[1fr_0.7fr] lg:gap-24 lg:px-14 lg:py-36">
+                    <div>
+                        <SectionLabel>Beyond Orlando</SectionLabel>
 
-                    <h2 className="mx-auto mt-7 max-w-4xl text-5xl font-normal leading-[0.94] tracking-[-0.04em] md:text-7xl">
-                        The right amount of time
+                        <h2 className="max-w-3xl text-4xl font-normal leading-[1.03] tracking-[-0.035em] md:text-6xl">
+                            Some arrangements call for
+                            <span className="italic text-[#C7B18A]">
+                                {" "}a different destination.
+                            </span>
+                        </h2>
+
+                        <p className="mt-7 max-w-2xl text-sm leading-8 text-[#A99F94] md:text-base">
+                            Travel and fly-out requests may be considered
+                            with advance planning. Destination, dates,
+                            duration, flights, accommodation and logistics
+                            must be discussed and confirmed privately.
+                        </p>
+
+                        <Link
+                            href="/contact"
+                            className="private-inquiry-button mt-9 inline-flex items-center gap-5 border border-[#C7B18A]/50 px-7 py-4 text-[9px] uppercase tracking-[0.25em] md:mt-10"
+                        >
+                            <span>Discuss Travel</span>
+                            <span aria-hidden="true">↗</span>
+                        </Link>
+                    </div>
+
+                    <div className="relative flex min-h-[240px] items-end overflow-hidden border border-[#F3EEE6]/10 bg-[#0D0C0A] p-7 md:min-h-[300px] md:p-10">
+                        <div className="absolute right-[-20px] top-[-45px] h-56 w-56 rounded-full border border-[#C7B18A]/10 md:h-72 md:w-72" />
+
+                        <div className="absolute right-8 top-8 h-36 w-36 rounded-full border border-[#C7B18A]/10 md:right-12 md:top-12 md:h-48 md:w-48" />
+
+                        <div className="relative">
+                            <span className="text-[8px] uppercase tracking-[0.4em] text-[#A99F94]/70">
+                                Orlando · Florida
+                            </span>
+
+                            <p className="mt-5 text-3xl italic text-[#D8C8AD] md:text-4xl">
+                                By prior arrangement
+                            </p>
+
+                            <span className="mt-5 block h-px w-12 bg-[#C7B18A]/50" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* FINAL CTA */}
+            <section className="relative overflow-hidden border-t border-[#F3EEE6]/[0.08]">
+                <div className="pointer-events-none absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#C7B18A]/[0.035] blur-[100px]" />
+
+                <div className="relative mx-auto max-w-[1100px] px-6 py-28 text-center md:px-10 md:py-40">
+                    <SectionLabel>Private Inquiry</SectionLabel>
+
+                    <h2 className="mx-auto mt-5 max-w-4xl text-5xl font-normal leading-[0.95] tracking-[-0.045em] md:text-7xl lg:text-8xl">
+                        The right amount of time.
                         <br />
                         <span className="italic text-[#C7B18A]">
-                            changes everything.
+                            Thoughtfully arranged.
                         </span>
                     </h2>
 
                     <p className="mx-auto mt-8 max-w-xl text-sm leading-7 text-[#A99F94] md:text-base md:leading-8">
-                        For availability, bespoke arrangements or additional
-                        information, begin with a private conversation.
+                        For availability, booking questions or travel
+                        arrangements, begin with a private inquiry.
                     </p>
 
                     <Link
                         href="/contact"
-                        className="private-inquiry-button mt-10 inline-block border border-[#C7B18A]/50 px-9 py-4 text-[10px] uppercase tracking-[0.3em]"
+                        className="private-inquiry-button mt-10 inline-flex items-center gap-5 border border-[#C7B18A]/50 px-9 py-4 text-[9px] uppercase tracking-[0.3em]"
                     >
                         <span>Private Inquiry</span>
+                        <span aria-hidden="true">↗</span>
                     </Link>
+
+                    <p className="mt-10 text-[8px] uppercase tracking-[0.3em] text-[#A99F94]/40">
+                        Miss Cookie · Orlando, Florida
+                    </p>
                 </div>
             </section>
         </div>
