@@ -57,7 +57,7 @@ export default function About() {
       <div className="about-hero relative flex min-h-[82vh] items-end overflow-hidden md:min-h-[88vh]">
         <div className="about-hero-image absolute inset-0">
           <Image
-            src="/imagens/about.jpg"
+            src="/images/about.jpg"
             alt="Miss Cookie — personal editorial portrait"
             fill
             priority
