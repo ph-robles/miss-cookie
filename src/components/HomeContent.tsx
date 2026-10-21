@@ -65,7 +65,7 @@ export default function HomeContent() {
 
                         <Link
                             href="/about"
-                            className="group mt-9 inline-flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#F3EEE6]"
+                            className="group mt-9 inline-flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#301934]"
                         >
                             Discover more
 
@@ -423,7 +423,7 @@ export default function HomeContent() {
 
                         <Link
                             href="/rates"
-                            className="inline-flex items-center justify-center bg-[#F3EEE6] px-7 py-4 text-[10px] font-semibold uppercase tracking-[0.2em] !text-[#0A0908] transition-all duration-300 hover:bg-[#C7B18A]"
+                            className="group mt-9 inline-flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#301934]"
                         >
                             View Arrangements
                         </Link>
@@ -461,7 +461,7 @@ export default function HomeContent() {
 
                     <Link
                         href="/contact"
-                        className="group mt-9 inline-flex items-center gap-5 bg-[#F3EEE6] px-9 py-5 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#0A0908] transition-all duration-300 hover:bg-[#C7B18A]"
+                        className="group mt-9 inline-flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#301934]"
                     >
                         Private inquiry
 

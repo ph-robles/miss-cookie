@@ -119,7 +119,7 @@ export default function About() {
 
         <div className="absolute bottom-8 right-6 z-10 hidden items-center gap-4 md:flex lg:right-14">
           <span className="text-[8px] uppercase tracking-[0.4em] text-[#A99F94]">
-            Orlando · Florida
+            All Around the US
           </span>
           <span className="h-px w-10 bg-[#C7B18A]/40" />
         </div>

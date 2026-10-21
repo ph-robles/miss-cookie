@@ -15,9 +15,9 @@ const manrope = Manrope({
 });
  
 export const metadata: Metadata = {
-  title: "Miss Cookie | Orlando, Florida",
+  title: "Miss Cookie | USA & Beyond",
   description:
-    "Miss Cookie — private experiences in Orlando, Florida.",
+    "Miss Cookie — private experiences.",
 };
  
 export default function RootLayout({

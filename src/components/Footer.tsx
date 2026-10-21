@@ -33,7 +33,7 @@ export default function Footer() {
                         </Link>
 
                         <p className="mt-7 max-w-sm text-sm leading-7 text-[#BDA7B0]">
-                            Private experiences in Orlando, Florida, thoughtfully arranged
+                            Private experiences in USA, thoughtfully arranged
                             with elegance, discretion and genuine connection.
                         </p>
 
@@ -41,7 +41,7 @@ export default function Footer() {
                             <div className="h-px w-10 bg-[#C77D96]/70" />
 
                             <span className="text-[9px] uppercase tracking-[0.3em] text-[#C77D96]">
-                                Orlando · Florida
+                                USA & Beyond
                             </span>
                         </div>
                     </div>
