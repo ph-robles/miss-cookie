@@ -32,7 +32,7 @@ const experiences = [
     {
         number: "04",
         title: "Travel",
-        eyebrow: "Beyond Orlando",
+        eyebrow: "Across the USA",
         description:
             "Available for select travel arrangements beyond Orlando by prior agreement.",
         image: "/images/experience-04.jpg",

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 
-const champagneDrops = Array.from({ length: 24 }, (_, index) => index);
+const champagneDrops = Array.from({ length: 80 }, (_, index) => index);
 
 export default function Hero() {
     const shouldReduceMotion = useReducedMotion();

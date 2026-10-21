@@ -707,9 +707,9 @@ img {
 
 
 
+
 /* =========================================
-   MISS COOKIE — SUBTLE CHAMPAGNE RAIN
-   Black & Rose visual identity
+   MISS COOKIE — ENHANCED CHAMPAGNE RAIN
 ========================================= */
 
 .champagne-rain {
@@ -725,223 +725,372 @@ img {
 .champagne-glow {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse at 50% 15%,
-      rgb(199 125 150 / 8%),
-      transparent 55%);
-  animation: champagne-glow 12s ease-in-out infinite alternate;
+  background: radial-gradient(ellipse at 50% 15%,
+      rgb(199 125 150 / 16%),
+      transparent 65%);
+  animation: champagne-glow 6s ease-in-out infinite alternate;
 }
 
 .champagne-drop {
   position: absolute;
   top: -15vh;
   left: 0;
-  width: 1px;
-  height: 20px;
+  width: 2px;
+  height: 28px;
   border-radius: 999px;
   opacity: 0;
   background: linear-gradient(to bottom,
-      transparent,
-      rgb(240 213 222 / 65%) 45%,
-      rgb(199 125 150 / 35%),
-      transparent);
-  filter: drop-shadow(0 0 3px rgb(199 125 150 / 12%));
-  animation: champagne-fall 16s linear infinite;
+      transparent 0%,
+      rgb(240 213 222 / 75%) 30%,
+      rgb(255 238 244 / 100%) 50%,
+      rgb(199 125 150 / 80%) 70%,
+      transparent 100%);
+  box-shadow: 0 0 6px rgb(240 213 222 / 35%);
+  animation: champagne-fall 9s linear infinite;
+  will-change: transform, opacity;
 }
 
-/* Distribuição determinística: sem cálculos aleatórios no navegador */
+/* Distribuição das gotas pela largura da Hero */
+.champagne-drop:nth-child(3n) {
+  width: 2px;
+  height: 32px;
+}
+
+.champagne-drop:nth-child(3n + 1) {
+  width: 1px;
+  height: 22px;
+}
+
+.champagne-drop:nth-child(3n + 2) {
+  width: 3px;
+  height: 36px;
+  box-shadow: 0 0 8px rgb(240 213 222 / 45%);
+}
+
+/* 60 posições horizontais distribuídas por toda a tela */
+.champagne-drop:nth-child(1) {
+  left: 2%;
+  animation-delay: -2s;
+}
 
 .champagne-drop:nth-child(2) {
   left: 4%;
-  height: 16px;
-  animation-delay: -8s;
-  animation-duration: 17s;
+  animation-delay: -7s;
 }
 
 .champagne-drop:nth-child(3) {
-  left: 9%;
-  height: 25px;
-  animation-delay: -3s;
-  animation-duration: 21s;
+  left: 6%;
+  animation-delay: -4s;
 }
 
 .champagne-drop:nth-child(4) {
-  left: 13%;
-  height: 13px;
-  animation-delay: -14s;
-  animation-duration: 15s;
+  left: 8%;
+  animation-delay: -1s;
 }
 
 .champagne-drop:nth-child(5) {
-  left: 18%;
-  height: 21px;
+  left: 10%;
   animation-delay: -6s;
-  animation-duration: 19s;
 }
 
 .champagne-drop:nth-child(6) {
-  left: 23%;
-  height: 17px;
-  animation-delay: -11s;
-  animation-duration: 22s;
+  left: 12%;
+  animation-delay: -3s;
 }
 
 .champagne-drop:nth-child(7) {
-  left: 28%;
-  height: 27px;
-  animation-delay: -2s;
-  animation-duration: 18s;
+  left: 14%;
+  animation-delay: -8s;
 }
 
 .champagne-drop:nth-child(8) {
-  left: 32%;
-  height: 14px;
-  animation-delay: -16s;
-  animation-duration: 20s;
+  left: 16%;
+  animation-delay: -5s;
 }
 
 .champagne-drop:nth-child(9) {
-  left: 37%;
-  height: 22px;
-  animation-delay: -9s;
-  animation-duration: 16s;
+  left: 18%;
+  animation-delay: -2s;
 }
 
 .champagne-drop:nth-child(10) {
-  left: 42%;
-  height: 18px;
-  animation-delay: -4s;
-  animation-duration: 23s;
+  left: 20%;
+  animation-delay: -7s;
 }
 
 .champagne-drop:nth-child(11) {
-  left: 46%;
-  height: 12px;
-  animation-delay: -13s;
-  animation-duration: 18s;
+  left: 22%;
+  animation-delay: -4s;
 }
 
 .champagne-drop:nth-child(12) {
-  left: 51%;
-  height: 25px;
-  animation-delay: -7s;
-  animation-duration: 21s;
+  left: 24%;
+  animation-delay: -1s;
 }
 
 .champagne-drop:nth-child(13) {
-  left: 55%;
-  height: 16px;
-  animation-delay: -18s;
-  animation-duration: 17s;
+  left: 26%;
+  animation-delay: -6s;
 }
 
 .champagne-drop:nth-child(14) {
-  left: 60%;
-  height: 23px;
-  animation-delay: -5s;
-  animation-duration: 22s;
+  left: 28%;
+  animation-delay: -3s;
 }
 
 .champagne-drop:nth-child(15) {
-  left: 64%;
-  height: 14px;
-  animation-delay: -10s;
-  animation-duration: 19s;
+  left: 30%;
+  animation-delay: -8s;
 }
 
 .champagne-drop:nth-child(16) {
-  left: 69%;
-  height: 20px;
-  animation-delay: -1s;
-  animation-duration: 16s;
+  left: 32%;
+  animation-delay: -5s;
 }
 
 .champagne-drop:nth-child(17) {
-  left: 73%;
-  height: 27px;
-  animation-delay: -15s;
-  animation-duration: 23s;
+  left: 34%;
+  animation-delay: -2s;
 }
 
 .champagne-drop:nth-child(18) {
-  left: 77%;
-  height: 15px;
-  animation-delay: -6s;
-  animation-duration: 18s;
+  left: 36%;
+  animation-delay: -7s;
 }
 
 .champagne-drop:nth-child(19) {
-  left: 82%;
-  height: 22px;
-  animation-delay: -12s;
-  animation-duration: 20s;
+  left: 38%;
+  animation-delay: -4s;
 }
 
 .champagne-drop:nth-child(20) {
-  left: 86%;
-  height: 17px;
-  animation-delay: -3s;
-  animation-duration: 22s;
+  left: 40%;
+  animation-delay: -1s;
 }
 
 .champagne-drop:nth-child(21) {
-  left: 90%;
-  height: 26px;
-  animation-delay: -17s;
-  animation-duration: 17s;
+  left: 42%;
+  animation-delay: -6s;
 }
 
 .champagne-drop:nth-child(22) {
-  left: 94%;
-  height: 13px;
-  animation-delay: -9s;
-  animation-duration: 21s;
+  left: 44%;
+  animation-delay: -3s;
 }
 
 .champagne-drop:nth-child(23) {
-  left: 97%;
-  height: 19px;
-  animation-delay: -4s;
-  animation-duration: 19s;
+  left: 46%;
+  animation-delay: -8s;
 }
 
 .champagne-drop:nth-child(24) {
-  left: 35%;
-  height: 24px;
-  animation-delay: -19s;
-  animation-duration: 23s;
+  left: 48%;
+  animation-delay: -5s;
 }
 
 .champagne-drop:nth-child(25) {
+  left: 50%;
+  animation-delay: -2s;
+}
+
+.champagne-drop:nth-child(26) {
+  left: 52%;
+  animation-delay: -7s;
+}
+
+.champagne-drop:nth-child(27) {
+  left: 54%;
+  animation-delay: -4s;
+}
+
+.champagne-drop:nth-child(28) {
+  left: 56%;
+  animation-delay: -1s;
+}
+
+.champagne-drop:nth-child(29) {
+  left: 58%;
+  animation-delay: -6s;
+}
+
+.champagne-drop:nth-child(30) {
+  left: 60%;
+  animation-delay: -3s;
+}
+
+.champagne-drop:nth-child(31) {
+  left: 62%;
+  animation-delay: -8s;
+}
+
+.champagne-drop:nth-child(32) {
+  left: 64%;
+  animation-delay: -5s;
+}
+
+.champagne-drop:nth-child(33) {
   left: 66%;
-  height: 15px;
-  animation-delay: -11s;
-  animation-duration: 20s;
+  animation-delay: -2s;
+}
+
+.champagne-drop:nth-child(34) {
+  left: 68%;
+  animation-delay: -7s;
+}
+
+.champagne-drop:nth-child(35) {
+  left: 70%;
+  animation-delay: -4s;
+}
+
+.champagne-drop:nth-child(36) {
+  left: 72%;
+  animation-delay: -1s;
+}
+
+.champagne-drop:nth-child(37) {
+  left: 74%;
+  animation-delay: -6s;
+}
+
+.champagne-drop:nth-child(38) {
+  left: 76%;
+  animation-delay: -3s;
+}
+
+.champagne-drop:nth-child(39) {
+  left: 78%;
+  animation-delay: -8s;
+}
+
+.champagne-drop:nth-child(40) {
+  left: 80%;
+  animation-delay: -5s;
+}
+
+.champagne-drop:nth-child(41) {
+  left: 82%;
+  animation-delay: -2s;
+}
+
+.champagne-drop:nth-child(42) {
+  left: 84%;
+  animation-delay: -7s;
+}
+
+.champagne-drop:nth-child(43) {
+  left: 86%;
+  animation-delay: -4s;
+}
+
+.champagne-drop:nth-child(44) {
+  left: 88%;
+  animation-delay: -1s;
+}
+
+.champagne-drop:nth-child(45) {
+  left: 90%;
+  animation-delay: -6s;
+}
+
+.champagne-drop:nth-child(46) {
+  left: 92%;
+  animation-delay: -3s;
+}
+
+.champagne-drop:nth-child(47) {
+  left: 94%;
+  animation-delay: -8s;
+}
+
+.champagne-drop:nth-child(48) {
+  left: 96%;
+  animation-delay: -5s;
+}
+
+.champagne-drop:nth-child(49) {
+  left: 98%;
+  animation-delay: -2s;
+}
+
+.champagne-drop:nth-child(50) {
+  left: 15%;
+  animation-delay: -4.5s;
+}
+
+.champagne-drop:nth-child(51) {
+  left: 35%;
+  animation-delay: -6.5s;
+}
+
+.champagne-drop:nth-child(52) {
+  left: 55%;
+  animation-delay: -3.5s;
+}
+
+.champagne-drop:nth-child(53) {
+  left: 75%;
+  animation-delay: -7.5s;
+}
+
+.champagne-drop:nth-child(54) {
+  left: 95%;
+  animation-delay: -1.5s;
+}
+
+.champagne-drop:nth-child(55) {
+  left: 25%;
+  animation-delay: -5.5s;
+}
+
+.champagne-drop:nth-child(56) {
+  left: 45%;
+  animation-delay: -2.5s;
+}
+
+.champagne-drop:nth-child(57) {
+  left: 65%;
+  animation-delay: -8.5s;
+}
+
+.champagne-drop:nth-child(58) {
+  left: 85%;
+  animation-delay: -4.8s;
+}
+
+.champagne-drop:nth-child(59) {
+  left: 5%;
+  animation-delay: -6.8s;
+}
+
+.champagne-drop:nth-child(60) {
+  left: 45%;
+  animation-delay: -7.8s;
 }
 
 @keyframes champagne-fall {
   0% {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, -10vh, 0);
     opacity: 0;
   }
 
-  8% {
-    opacity: 0.35;
+  10% {
+    opacity: 0.9;
   }
 
-  75% {
-    opacity: 0.22;
+  80% {
+    opacity: 0.75;
   }
 
   100% {
-    transform: translate3d(12px, 130vh, 0);
+    transform: translate3d(18px, 120vh, 0);
     opacity: 0;
   }
 }
 
 @keyframes champagne-glow {
   from {
-    opacity: 0.45;
+    opacity: 0.5;
   }
 
   to {
@@ -949,23 +1098,19 @@ img {
   }
 }
 
-/* Em telas pequenas, reduzimos a quantidade de gotas visíveis */
-
+/* Celular: manter a chuva visível */
 @media (max-width: 639px) {
-  .champagne-drop:nth-child(even) {
-    display: none;
+  .champagne-drop {
+    width: 2px;
+    box-shadow: 0 0 5px rgb(240 213 222 / 40%);
   }
 
-  .champagne-glow {
-    background:
-      radial-gradient(ellipse at 50% 15%,
-        rgb(199 125 150 / 5%),
-        transparent 55%);
+  .champagne-drop:nth-child(3n + 2) {
+    width: 3px;
   }
 }
 
-/* Respeita usuários que preferem movimento reduzido */
-
+/* Acessibilidade */
 @media (prefers-reduced-motion: reduce) {
 
   .champagne-drop,
