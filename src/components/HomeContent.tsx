@@ -47,7 +47,7 @@ export default function HomeContent() {
                 <div className="mx-auto grid max-w-[1400px] gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
                     <div>
                         <p className="text-[10px] uppercase tracking-[0.4em] text-[#C7B18A]">
-                            Orlando · Florida
+                            United States of America
                         </p>
                     </div>
 
@@ -126,7 +126,7 @@ export default function HomeContent() {
 
                         <div className="mt-9 max-w-xl space-y-5 text-sm leading-7 text-[#A99F94]">
                             <p>
-                                Based in Orlando, Florida, Miss Cookie creates private
+                                Miss Cookie creates private
                                 experiences centered around presence, conversation and
                                 thoughtful attention.
                             </p>
@@ -266,7 +266,7 @@ export default function HomeContent() {
             <section className="bg-[#0A0908]">
                 <div className="relative min-h-[75vh] overflow-hidden">
                     <Image
-                        src="/images/travel.jpg"
+                        src="/images/airplane.jpg"
                         alt="Travel experience"
                         fill
                         sizes="100vw"
@@ -280,7 +280,7 @@ export default function HomeContent() {
                         <div className="mx-auto w-full max-w-[1400px]">
                             <div className="max-w-3xl">
                                 <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-[#C7B18A]">
-                                    Beyond Orlando
+                                    Coast to Coast
                                 </p>
 
                                 <h2 className="text-6xl leading-[0.88] text-[#F3EEE6] md:text-8xl">
@@ -445,7 +445,7 @@ export default function HomeContent() {
                     />
 
                     <p className="text-[10px] uppercase tracking-[0.4em] text-[#A99F94]">
-                        Orlando · Florida
+                         · United States & Beyond
                     </p>
 
                     <h2 className="mt-7 text-6xl leading-[0.88] text-[#F3EEE6] md:text-8xl">
