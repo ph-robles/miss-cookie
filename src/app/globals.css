@@ -1,31 +1,59 @@
 @import "tailwindcss";
 
+/* =========================================================
+   MISS COOKIE — BLACK & ROSE
+   Luxury editorial · Cinematic lighting · Responsive
+========================================================= */
+
 :root {
-  --background: #0a0908;
-  --background-soft: #151311;
-  --foreground: #f3eee6;
-  --muted: #a99f94;
-  --champagne: #c7b18a;
-  --caramel: #8b6747;
-  --cookie: #a9825c;
-  --cookie-dark: #6d4a31;
-  --border: rgba(243, 238, 230, 0.12);
+  color-scheme: dark;
+
+  --background: #090809;
+  --background-soft: #24151D;
+  --foreground: #F0D5DE;
+  --muted: #BDA7B0;
+
+  --champagne: #C77D96;
+  --caramel: #8D526A;
+  --cookie: #C77D96;
+  --cookie-dark: #713D54;
+
+  --rose-light: #F0D5DE;
+  --rose-deep: #A94F70;
+  --rose-glow: rgba(199, 125, 150, 0.18);
+  --rose-border: rgba(199, 125, 150, 0.42);
+  --border-rose: rgba(199, 125, 150, 0.28);
+  --rose-soft: rgba(199, 125, 150, 0.08);
+
+  --border: rgba(240, 213, 222, 0.12);
+  --font-color-muted: #BDA7B0;
 }
 
-* {
+/* =========================================================
+   BASE
+========================================================= */
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  background: var(--background);
+  color-scheme: dark;
+  scrollbar-color: var(--caramel) var(--background);
 }
 
 body {
   margin: 0;
+  min-height: 100vh;
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body), sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
@@ -55,14 +83,24 @@ button {
   cursor: pointer;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
 ::selection {
   background: var(--champagne);
   color: var(--background);
 }
 
 /* =========================================================
-   MISS COOKIE — NAVIGATION
-   ========================================================= */
+   NAVIGATION
+========================================================= */
 
 .nav-link {
   position: relative;
@@ -82,81 +120,25 @@ button {
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 350ms ease;
-  opacity: 0.7;
+  opacity: 0.85;
 }
 
-.nav-link:hover {
-  color: var(--champagne);
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--rose-light);
 }
 
-.nav-link:hover::after {
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
   transform: scaleX(1);
 }
-
-/* =========================================================
-   PRIVATE INQUIRY BUTTON
-   ========================================================= */
-
-.private-inquiry-button {
-  position: relative;
-  overflow: hidden;
-  color: var(--champagne);
-  border-color: rgba(199, 177, 138, 0.5);
-  transition:
-    color 350ms ease,
-    border-color 350ms ease,
-    background-color 350ms ease;
-}
-
-.private-inquiry-button::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--champagne);
-  transform: translateY(102%);
-  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
-  z-index: 0;
-}
-
-.private-inquiry-button:hover {
-  color: var(--background);
-  border-color: var(--champagne);
-}
-
-.private-inquiry-button:hover::before {
-  transform: translateY(0);
-}
-
-/* Mantém o texto acima do efeito */
-.private-inquiry-button {
-  isolation: isolate;
-}
-
-.private-inquiry-button::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.private-inquiry-button {
-  position: relative;
-}
-
-.private-inquiry-button>* {
-  position: relative;
-  z-index: 2;
-}
-
-
-/* =========================================================
-   MOBILE NAVIGATION
-   ========================================================= */
 
 .mobile-nav-link {
   position: relative;
   letter-spacing: 0.01em;
+  transition:
+    color 350ms ease,
+    opacity 350ms ease;
 }
 
 .mobile-nav-link::after {
@@ -171,64 +153,120 @@ button {
   transition: width 350ms ease;
 }
 
-.mobile-nav-link:hover {
-  color: var(--champagne);
+.mobile-nav-link:hover,
+.mobile-nav-link:focus-visible {
+  color: var(--rose-light);
 }
 
-.mobile-nav-link:hover::after {
+.mobile-nav-link:hover::after,
+.mobile-nav-link:focus-visible::after {
   width: 42px;
 }
 
 /* =========================================================
+   PRIVATE INQUIRY BUTTON
+========================================================= */
+
+.private-inquiry-button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: var(--rose-light);
+  border-color: var(--rose-border);
+  transition:
+    color 350ms ease,
+    border-color 350ms ease,
+    box-shadow 350ms ease;
+}
+
+.private-inquiry-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--champagne);
+  transform: translateY(102%);
+  transition:
+    transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.private-inquiry-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.private-inquiry-button>* {
+  position: relative;
+  z-index: 2;
+}
+
+.private-inquiry-button:hover,
+.private-inquiry-button:focus-visible {
+  color: var(--background);
+  border-color: var(--champagne);
+  box-shadow: 0 0 28px var(--rose-glow);
+}
+
+.private-inquiry-button:hover::before,
+.private-inquiry-button:focus-visible::before {
+  transform: translateY(0);
+}
+
+/* =========================================================
    COOKIE BRAND MARK
-   Minimal CSS illustration — no emoji
-   ========================================================= */
+========================================================= */
 
 .cookie-mark {
   position: relative;
   display: inline-block;
+  flex-shrink: 0;
   width: 38px;
   height: 38px;
-  flex-shrink: 0;
   border-radius: 50%;
   background:
     radial-gradient(circle at 34% 27%,
-      rgba(243, 238, 230, 0.16) 0 1px,
+      rgba(240, 213, 222, 0.28) 0 1px,
       transparent 2px),
     linear-gradient(145deg,
-      #b99670 0%,
-      #9c744e 48%,
-      #795437 100%);
+      #E3A5B9 0%,
+      #C77D96 48%,
+      #713D54 100%);
   box-shadow:
-    inset 1px 1px 0 rgba(243, 238, 230, 0.12),
-    inset -3px -4px 8px rgba(45, 25, 12, 0.22);
+    inset 1px 1px 0 rgba(240, 213, 222, 0.22),
+    inset -3px -4px 8px rgba(9, 8, 9, 0.28),
+    0 0 18px rgba(199, 125, 150, 0.08);
   transform: rotate(-8deg);
-  opacity: 0.82;
+  opacity: 0.9;
   transition:
     transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 300ms ease;
+    opacity 300ms ease,
+    box-shadow 300ms ease;
 }
 
 .cookie-mark::after {
   content: "";
   position: absolute;
+  top: -1px;
+  right: -1px;
   width: 11px;
   height: 11px;
-  right: -1px;
-  top: -1px;
-  background: var(--background);
   border-radius: 50%;
+  background: var(--background);
 }
 
 .cookie-mark:hover {
   transform: rotate(3deg) scale(1.06);
   opacity: 1;
+  box-shadow: 0 0 20px rgba(199, 125, 150, 0.18);
 }
 
 .cookie-mark--small {
   width: 17px;
   height: 17px;
-  opacity: 0.65;
+  opacity: 0.75;
 }
 
 .cookie-mark--small::after {
@@ -236,35 +274,33 @@ button {
   height: 6px;
 }
 
-/* Chocolate chips */
-
 .cookie-chip {
   position: absolute;
   width: 4px;
   height: 4px;
   border-radius: 50%;
   background: var(--cookie-dark);
-  box-shadow: inset 1px 1px 1px rgba(243, 238, 230, 0.08);
+  box-shadow: inset 1px 1px 1px rgba(240, 213, 222, 0.12);
 }
 
 .cookie-chip--1 {
-  left: 10px;
   top: 11px;
+  left: 10px;
 }
 
 .cookie-chip--2 {
-  right: 9px;
   top: 16px;
+  right: 9px;
 }
 
 .cookie-chip--3 {
-  left: 17px;
   bottom: 8px;
+  left: 17px;
 }
 
 .cookie-chip--4 {
-  left: 7px;
   bottom: 14px;
+  left: 7px;
 }
 
 .cookie-mark--small .cookie-chip {
@@ -273,28 +309,24 @@ button {
 }
 
 .cookie-mark--small .cookie-chip--1 {
-  left: 5px;
   top: 5px;
+  left: 5px;
 }
 
 .cookie-mark--small .cookie-chip--2 {
-  right: 4px;
   top: 7px;
+  right: 4px;
 }
 
 .cookie-mark--small .cookie-chip--3 {
-  left: 8px;
   bottom: 4px;
+  left: 8px;
 }
 
 .cookie-mark--small .cookie-chip--4 {
-  left: 3px;
   bottom: 7px;
+  left: 3px;
 }
-
-/* =========================================================
-   SUBTLE BRAND DETAILS
-   ========================================================= */
 
 @keyframes cookieFloat {
 
@@ -313,66 +345,109 @@ button {
 }
 
 /* =========================================================
-   MOBILE SAFETY
-   ========================================================= */
+   ROSE LIGHTING & REUSABLE SURFACES
+========================================================= */
 
-@media (max-width: 380px) {
-  .mobile-nav-link {
-    font-size: 2rem;
-  }
+.rose-glow {
+  background: radial-gradient(circle,
+      rgba(199, 125, 150, 0.22) 0%,
+      rgba(169, 79, 112, 0.09) 38%,
+      transparent 72%);
+  filter: blur(55px);
+  pointer-events: none;
+}
 
-  .cookie-mark {
-    transform: scale(0.9) rotate(-8deg);
-  }
+.rose-image-frame {
+  position: relative;
+  isolation: isolate;
+}
+
+.rose-image-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(240, 213, 222, 0.12);
+  box-shadow: inset 0 0 55px rgba(199, 125, 150, 0.06);
+  pointer-events: none;
+}
+
+.rose-border {
+  border-color: var(--border-rose);
+}
+
+.rose-surface {
+  background: var(--background-soft);
+}
+
+.rose-card {
+  transition:
+    background-color 400ms ease,
+    border-color 400ms ease,
+    box-shadow 400ms ease;
+}
+
+.rose-card:hover {
+  background-color: rgba(36, 21, 29, 0.72);
+  border-color: var(--border-rose);
+  box-shadow: inset 0 0 35px rgba(199, 125, 150, 0.025);
 }
 
 /* =========================================================
-   ACCESSIBILITY
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* =========================================================
-   ABOUT PAGE
-   ========================================================= */
+   ABOUT — GENERAL
+========================================================= */
 
 .about-page {
   overflow-x: hidden;
 }
 
-@media (max-width: 640px) {
-  .cookie-mark:not(.cookie-mark--small) {
-    width: 32px;
-    height: 32px;
+.about-hero-image {
+  animation: aboutHeroZoom 18s ease-out forwards;
+}
+
+@keyframes aboutHeroZoom {
+  from {
+    transform: scale(1.06);
+  }
+
+  to {
+    transform: scale(1);
   }
 }
 
-/* =========================================
+.about-personal-image {
+  position: relative;
+}
+
+.about-personal-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(240, 213, 222, 0.12);
+  box-shadow: inset 0 0 45px rgba(199, 125, 150, 0.035);
+  pointer-events: none;
+}
+
+.about-page .border-r.border-\[\#F3EEE6\]\/\[0\.08\] {
+  transition:
+    background-color 400ms ease,
+    border-color 400ms ease;
+}
+
+.about-page .border-r.border-\[\#F3EEE6\]\/\[0\.08\]:hover {
+  background: rgba(199, 125, 150, 0.035);
+}
+
+/* =========================================================
    ABOUT — COOKIE PHOTO REVEAL
-   ========================================= */
+========================================================= */
 
 .about-reveal {
   position: relative;
   min-height: 420px;
   overflow: hidden;
-  border: 1px solid rgba(243, 238, 230, 0.08);
-  background: #151311;
+  border: 1px solid rgba(240, 213, 222, 0.12);
+  background: var(--background-soft);
 }
-
-/* FOTO */
 
 .about-reveal-image {
   position: absolute;
@@ -390,8 +465,6 @@ button {
   transform: scale(1);
   pointer-events: auto;
 }
-
-/* COOKIE TRIGGER */
 
 .about-reveal-trigger {
   position: absolute;
@@ -418,8 +491,6 @@ button {
   pointer-events: none;
 }
 
-/* COOKIE */
-
 .about-reveal-cookie {
   width: 72px;
   height: 72px;
@@ -435,10 +506,6 @@ button {
 .about-reveal-cookie::after {
   width: 19px;
   height: 19px;
-}
-
-.about-reveal-trigger:hover .about-reveal-cookie {
-  filter: brightness(1.12);
 }
 
 @keyframes aboutCookieFloat {
@@ -457,34 +524,30 @@ button {
 
   0%,
   100% {
-    filter: drop-shadow(0 0 0 rgba(199, 177, 138, 0));
+    filter: drop-shadow(0 0 0 rgba(199, 125, 150, 0));
   }
 
   50% {
-    filter: drop-shadow(0 0 22px rgba(199, 177, 138, 0.12));
+    filter: drop-shadow(0 0 22px rgba(199, 125, 150, 0.18));
   }
 }
-
-/* GLOW */
 
 .about-reveal-glow {
   position: absolute;
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background: rgba(199, 177, 138, 0.06);
+  background: rgba(199, 125, 150, 0.12);
   filter: blur(35px);
   pointer-events: none;
 }
-
-/* LABEL */
 
 .about-reveal-label {
   position: relative;
   display: flex;
   align-items: center;
   gap: 12px;
-  color: rgba(169, 159, 148, 0.85);
+  color: rgba(240, 213, 222, 0.72);
   font-size: 9px;
   font-weight: 500;
   letter-spacing: 0.35em;
@@ -495,7 +558,7 @@ button {
 }
 
 .about-reveal-trigger:hover .about-reveal-label {
-  color: #c7b18a;
+  color: var(--rose-light);
   transform: translateY(2px);
 }
 
@@ -503,15 +566,13 @@ button {
   display: block;
   width: 28px;
   height: 1px;
-  background: rgba(199, 177, 138, 0.45);
+  background: rgba(199, 125, 150, 0.65);
   transition: width 400ms ease;
 }
 
 .about-reveal-trigger:hover .about-reveal-line {
   width: 42px;
 }
-
-/* CORNER */
 
 .about-reveal-corner {
   position: absolute;
@@ -521,7 +582,7 @@ button {
   display: flex;
   align-items: center;
   gap: 9px;
-  color: rgba(169, 159, 148, 0.55);
+  color: rgba(240, 213, 222, 0.55);
   font-size: 8px;
   letter-spacing: 0.3em;
   transition: opacity 400ms ease;
@@ -529,13 +590,12 @@ button {
 
 .about-reveal-corner--hidden {
   opacity: 0;
+  pointer-events: none;
 }
-
-/* CLOSE */
 
 .about-reveal-close {
   padding: 8px 0;
-  color: rgba(243, 238, 230, 0.65);
+  color: rgba(240, 213, 222, 0.75);
   font-size: 8px;
   font-weight: 500;
   letter-spacing: 0.3em;
@@ -547,13 +607,28 @@ button {
 }
 
 .about-reveal-close:hover {
-  color: #c7b18a;
+  color: var(--rose-light);
   transform: translateX(-3px);
 }
 
-/* MOBILE */
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
 @media (max-width: 640px) {
+  .cookie-mark:not(.cookie-mark--small) {
+    width: 32px;
+    height: 32px;
+  }
+
+  .about-hero {
+    min-height: 82vh;
+  }
+
+  .about-hero-image {
+    animation-duration: 14s;
+  }
+
   .about-reveal {
     min-height: 380px;
   }
@@ -579,85 +654,53 @@ button {
   }
 }
 
-/* REDUCED MOTION */
+@media (max-width: 380px) {
+  .mobile-nav-link {
+    font-size: 2rem;
+  }
+
+  .cookie-mark:not(.cookie-mark--small) {
+    transform: scale(0.9) rotate(-8deg);
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+:focus-visible {
+  outline: 1px solid var(--rose-light);
+  outline-offset: 4px;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .about-reveal-cookie {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .about-hero-image {
     animation: none;
   }
 
   .about-reveal-image {
-    transition: opacity 300ms ease;
     transform: none;
+    transition: opacity 300ms ease;
   }
 
   .about-reveal-trigger {
     transition: opacity 300ms ease;
   }
-}
 
-/* =========================================
-   ABOUT PAGE
-   ========================================= */
-
-.about-page {
-  overflow-x: hidden;
-}
-
-/* HERO */
-
-.about-hero-image {
-  animation: aboutHeroZoom 18s ease-out forwards;
-}
-
-@keyframes aboutHeroZoom {
-  from {
-    transform: scale(1.06);
-  }
-
-  to {
-    transform: scale(1);
-  }
-}
-
-/* PERSONAL IMAGE */
-
-.about-personal-image::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border: 1px solid rgba(243, 238, 230, 0.08);
-  pointer-events: none;
-}
-
-/* PROFILE CARDS */
-
-.about-page .border-r.border-\[\#F3EEE6\]\/\[0\.08\] {
-  transition:
-    background-color 400ms ease,
-    border-color 400ms ease;
-}
-
-.about-page .border-r.border-\[\#F3EEE6\]\/\[0\.08\]:hover {
-  background: rgba(199, 177, 138, 0.035);
-}
-
-/* MOBILE */
-
-@media (max-width: 640px) {
-  .about-hero {
-    min-height: 82vh;
-  }
-
-  .about-hero-image {
-    animation-duration: 14s;
-  }
-}
-
-/* REDUCED MOTION */
-
-@media (prefers-reduced-motion: reduce) {
-  .about-hero-image {
+  .about-reveal-cookie {
     animation: none;
   }
 }
