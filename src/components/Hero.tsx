@@ -24,13 +24,11 @@ export default function Hero() {
             <div className="absolute inset-0">
                 <Image
                     src="/images/hero.jpg"
-                    alt="Miss Cookie in the United States"
+                    alt="Miss Cookie in USA"
                     fill
                     priority
-                    sizes="100vw"
-                    className="object-cover object-[center_55%]"
+                    className="object-cover object-center md:object-[center_45%] lg:object-[center_35%]"
                 />
-
                 {/* Camadas de contraste para manter o texto legível */}
                 <div className="absolute inset-0 bg-[#090809]/35" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#090809] via-[#090809]/45 to-black/10" />
