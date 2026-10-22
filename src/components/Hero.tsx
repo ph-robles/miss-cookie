@@ -4,8 +4,13 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import type { CSSProperties } from "react";
 
-const champagneDrops = Array.from({ length: 55 }, (_, index) => index);
+const champagneDrops = Array.from({ length: 55 }, (_, index) => ({
+    id: index,
+    left: `${(index * 37) % 100}%`,
+    delay: `${-((index * 7) % 90) / 10}s`,
+}));
 
 export default function Hero() {
     const shouldReduceMotion = useReducedMotion();
@@ -19,33 +24,40 @@ export default function Hero() {
             <div className="absolute inset-0">
                 <Image
                     src="/images/hero.jpg"
-                    alt="Miss Cookie in Orlando, Florida"
+                    alt="Miss Cookie in the United States"
                     fill
                     priority
                     sizes="100vw"
                     className="object-cover object-[center_55%]"
                 />
 
-                {/* Contraste para preservar a leitura do conteúdo */}
+                {/* Camadas de contraste para manter o texto legível */}
                 <div className="absolute inset-0 bg-[#090809]/35" />
-
                 <div className="absolute inset-0 bg-gradient-to-t from-[#090809] via-[#090809]/45 to-black/10" />
-
                 <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-transparent to-black/10" />
+
+                {/* Iluminação rosa sutil */}
+                <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute -left-24 top-1/3 h-72 w-72 rounded-full bg-[#C77D96]/[0.08] blur-[100px]"
+                />
             </div>
 
-            {/* Efeito sutil de chuva de champanhe */}
+            {/* Chuva de champanhe */}
             {!shouldReduceMotion && (
-                <div
-                    className="champagne-rain"
-                    aria-hidden="true"
-                >
+                <div className="champagne-rain" aria-hidden="true">
                     <div className="champagne-glow" />
 
                     {champagneDrops.map((drop) => (
                         <span
-                            key={drop}
+                            key={drop.id}
                             className="champagne-drop"
+                            style={
+                                {
+                                    "--drop-left": drop.left,
+                                    "--drop-delay": drop.delay,
+                                } as CSSProperties
+                            }
                         />
                     ))}
                 </div>
@@ -55,11 +67,7 @@ export default function Hero() {
             <div className="relative z-10 w-full px-6 pb-14 md:px-10 md:pb-20 lg:px-14 lg:pb-24">
                 <div className="mx-auto max-w-[1600px]">
                     <motion.div
-                        initial={
-                            shouldReduceMotion
-                                ? false
-                                : { opacity: 0, y: 30 }
-                        }
+                        initial={shouldReduceMotion ? false : { opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{
                             duration: shouldReduceMotion ? 0 : 1,
@@ -79,9 +87,8 @@ export default function Hero() {
 
                         <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center">
                             <p className="max-w-sm text-sm leading-6 text-[#F0D5DE]/75">
-                                Private experiences, thoughtfully curated
-                                with elegance, discretion and genuine
-                                connection.
+                                Private experiences, thoughtfully curated with elegance,
+                                discretion and genuine connection.
                             </p>
 
                             <div className="flex flex-wrap gap-3">
@@ -104,11 +111,7 @@ export default function Hero() {
 
                     <motion.a
                         href="#introduction"
-                        initial={
-                            shouldReduceMotion
-                                ? false
-                                : { opacity: 0 }
-                        }
+                        initial={shouldReduceMotion ? false : { opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{
                             delay: shouldReduceMotion ? 0 : 1.4,
@@ -119,8 +122,7 @@ export default function Hero() {
                         <span className="text-[9px] uppercase tracking-[0.35em]">
                             Scroll to explore
                         </span>
-
-                        <ArrowDown size={15} strokeWidth={1} />
+                        <ArrowDown size={15} strokeWidth={1} aria-hidden="true" />
                     </motion.a>
                 </div>
             </div>
