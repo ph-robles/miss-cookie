@@ -34,7 +34,7 @@ const experiences = [
         title: "Travel",
         eyebrow: "Across the USA",
         description:
-            "Available for select travel arrangements beyond Orlando by prior agreement.",
+            "Services available throughout the United States. Travel accommodations can be arranged in advance.",
         image: "/images/experience-04.jpg",
     },
 ];
@@ -119,11 +119,11 @@ export default function Experience() {
                         <div className="hidden pb-2 lg:block">
                             <div className="flex flex-col items-end gap-3 text-right">
                                 <span className="text-[8px] uppercase tracking-[0.38em] text-[#A99F94]/60">
-                                    Orlando
+                                    United
                                 </span>
 
                                 <span className="text-[8px] uppercase tracking-[0.38em] text-[#A99F94]/60">
-                                    Florida
+                                    States
                                 </span>
 
                                 <span className="mt-3 h-10 w-px bg-[#C7B18A]/30" />
@@ -454,7 +454,7 @@ export default function Experience() {
                         <div className="relative grid gap-14 p-8 md:p-12 lg:grid-cols-[1fr_0.7fr] lg:p-16">
                             <div>
                                 <span className="text-[9px] uppercase tracking-[0.42em] text-[#C7B18A]">
-                                    Beyond Orlando
+                                    Nationwide Availability
                                 </span>
 
                                 <h2 className="mt-6 max-w-2xl text-4xl leading-[1] tracking-[-0.03em] md:text-6xl">
@@ -466,9 +466,8 @@ export default function Experience() {
                                 </h2>
 
                                 <p className="mt-8 max-w-xl text-sm leading-7 text-[#A99F94] md:text-base md:leading-8">
-                                    Select travel arrangements may be considered beyond
-                                    Orlando with advance planning. Availability, destination
-                                    and details are discussed privately.
+                                    Available nationwide for select engagements by prior arrangement.
+                                    Scheduling, destination, and travel details are handled privately.
                                 </p>
 
                                 <Link
@@ -486,7 +485,7 @@ export default function Experience() {
                                     </span>
 
                                     <span className="mt-4 block font-[family-name:var(--font-display)] text-2xl italic text-[#F3EEE6]/80">
-                                        Orlando · Beyond
+                                        United States · Coast to Coast
                                     </span>
                                 </div>
                             </div>

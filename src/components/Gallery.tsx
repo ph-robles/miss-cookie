@@ -2,7 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
+import {
+    AnimatePresence,
+    motion,
+    useScroll,
+    useTransform,
+} from "framer-motion";
 import {
     ArrowDown,
     ArrowLeft,
@@ -55,8 +60,8 @@ function imageLayout(index: number) {
 export default function Gallery() {
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
     const [loadedImages, setLoadedImages] = useState<number[]>([]);
-    const { scrollYProgress } = useScroll();
 
+    const { scrollYProgress } = useScroll();
     const heroY = useTransform(scrollYProgress, [0, 0.35], ["0%", "15%"]);
 
     const closeGallery = useCallback(() => {
@@ -65,9 +70,7 @@ export default function Gallery() {
 
     const previousImage = useCallback(() => {
         setSelectedIndex((current) =>
-            current === null
-                ? null
-                : (current - 1 + images.length) % images.length
+            current === null ? null : (current - 1 + images.length) % images.length
         );
     }, []);
 
@@ -98,16 +101,14 @@ export default function Gallery() {
     }, [selectedIndex, closeGallery, previousImage, nextImage]);
 
     return (
-        <div className="overflow-hidden bg-[#0A0908] text-[#F3EEE6]">
+        <div className="overflow-hidden bg-[#090809] text-[#F0D5DE]">
             {/* SCROLL PROGRESS */}
             <motion.div
-                className="fixed left-0 top-0 z-[100] h-px origin-left bg-[#C7B18A]"
+                className="fixed left-0 top-0 z-[100] h-px origin-left bg-[#C77D96]"
                 style={{ scaleX: scrollYProgress }}
             />
 
-            {/* =====================================================
-          HERO
-      ===================================================== */}
+            {/* HERO */}
             <section className="relative flex min-h-[88svh] items-end overflow-hidden md:min-h-screen">
                 <motion.div
                     className="absolute inset-[-6%]"
@@ -124,8 +125,8 @@ export default function Gallery() {
                 </motion.div>
 
                 <div className="absolute inset-0 bg-black/25" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0A0908]/90 via-[#0A0908]/40 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908] via-transparent to-[#0A0908]/25" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#090809]/90 via-[#090809]/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#090809] via-transparent to-[#090809]/25" />
 
                 <div className="relative z-10 mx-auto w-full max-w-[1600px] px-6 pb-16 pt-36 md:px-10 md:pb-24 lg:px-14">
                     <motion.div
@@ -135,8 +136,8 @@ export default function Gallery() {
                         className="max-w-4xl"
                     >
                         <div className="mb-7 flex items-center gap-4">
-                            <span className="h-px w-10 bg-[#C7B18A]" />
-                            <p className="text-[9px] uppercase tracking-[0.42em] text-[#C7B18A]">
+                            <span className="h-px w-10 bg-[#C77D96]" />
+                            <p className="text-[9px] uppercase tracking-[0.42em] text-[#C77D96]">
                                 The Visual Collection
                             </p>
                         </div>
@@ -144,10 +145,12 @@ export default function Gallery() {
                         <h1 className="text-[4.5rem] leading-[0.85] tracking-[-0.055em] sm:text-8xl md:text-[9rem] lg:text-[11rem]">
                             Beyond
                             <br />
-                            <span className="italic text-[#D8C7A9]">the ordinary.</span>
+                            <span className="italic text-[#F0D5DE]">
+                                the ordinary.
+                            </span>
                         </h1>
 
-                        <p className="mt-8 max-w-md text-sm leading-7 text-[#F3EEE6]/75 md:text-[15px]">
+                        <p className="mt-8 max-w-md text-sm leading-7 text-[#F0D5DE]/75 md:text-[15px]">
                             A personal collection shaped by atmosphere, elegance and
                             the beauty of the details that make each moment distinctive.
                         </p>
@@ -155,17 +158,18 @@ export default function Gallery() {
                         <button
                             type="button"
                             onClick={() =>
-                                document.getElementById("visual-collection")?.scrollIntoView({
-                                    behavior: "smooth",
-                                })
+                                document
+                                    .getElementById("visual-collection")
+                                    ?.scrollIntoView({ behavior: "smooth" })
                             }
-                            className="group mt-10 inline-flex items-center gap-4 border border-[#F3EEE6]/25 px-6 py-4 text-[9px] uppercase tracking-[0.25em] transition-colors duration-300 hover:border-[#C7B18A]/70 hover:text-[#C7B18A]"
+                            className="group mt-10 inline-flex items-center gap-4 border border-[#F0D5DE]/25 px-6 py-4 text-[9px] uppercase tracking-[0.25em] transition-colors duration-300 hover:border-[#C77D96]/70 hover:text-[#C77D96] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C77D96]"
                         >
                             Explore the collection
                             <ArrowDown
                                 size={15}
                                 strokeWidth={1.2}
                                 className="transition-transform duration-300 group-hover:translate-y-1"
+                                aria-hidden="true"
                             />
                         </button>
                     </motion.div>
@@ -174,17 +178,15 @@ export default function Gallery() {
                         <span className="text-[8px] uppercase tracking-[0.3em] text-white/50">
                             Private Collection
                         </span>
-                        <span className="h-px w-8 bg-[#C7B18A]/50" />
-                        <span className="text-[9px] tracking-[0.2em] text-[#C7B18A]">
+                        <span className="h-px w-8 bg-[#C77D96]/50" />
+                        <span className="text-[9px] tracking-[0.2em] text-[#C77D96]">
                             01 — 22
                         </span>
                     </div>
                 </div>
             </section>
 
-            {/* =====================================================
-          INTRO
-      ===================================================== */}
+            {/* INTRO */}
             <section
                 id="visual-collection"
                 className="scroll-mt-20 px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-36"
@@ -194,37 +196,35 @@ export default function Gallery() {
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }}
                     variants={reveal}
-                    className="mx-auto grid max-w-[1500px] gap-8 border-b border-[#F3EEE6]/10 pb-10 md:grid-cols-[1fr_auto] md:items-end md:pb-12"
+                    className="mx-auto grid max-w-[1500px] gap-8 border-b border-[#F0D5DE]/10 pb-10 md:grid-cols-[1fr_auto] md:items-end md:pb-12"
                 >
                     <div>
-                        <p className="mb-5 text-[9px] uppercase tracking-[0.4em] text-[#C7B18A]">
+                        <p className="mb-5 text-[9px] uppercase tracking-[0.4em] text-[#C77D96]">
                             An intimate perspective
                         </p>
 
                         <h2 className="text-4xl leading-[0.95] tracking-[-0.035em] md:text-6xl lg:text-7xl">
                             A study in
-                            <span className="italic text-[#C7B18A]"> presence.</span>
+                            <span className="italic text-[#C77D96]"> presence.</span>
                         </h2>
                     </div>
 
                     <div className="flex items-center gap-4 md:pb-1">
-                        <span className="font-[family-name:var(--font-display)] text-4xl text-[#C7B18A]">
+                        <span className="font-[family-name:var(--font-display)] text-4xl text-[#C77D96]">
                             22
                         </span>
                         <div>
-                            <p className="text-[9px] uppercase tracking-[0.25em] text-[#F3EEE6]">
+                            <p className="text-[9px] uppercase tracking-[0.25em] text-[#F0D5DE]">
                                 Photographs
                             </p>
-                            <p className="mt-1 text-xs text-[#A99F94]">
+                            <p className="mt-1 text-xs text-[#F0D5DE]/55">
                                 The complete collection
                             </p>
                         </div>
                     </div>
                 </motion.div>
 
-                {/* ===================================================
-            EDITORIAL GALLERY
-        =================================================== */}
+                {/* EDITORIAL GALLERY */}
                 <div className="mx-auto mt-12 grid max-w-[1500px] grid-cols-12 items-start gap-x-3 gap-y-8 sm:gap-x-5 sm:gap-y-12 md:gap-x-6 md:gap-y-20">
                     {images.map((image, index) => (
                         <motion.button
@@ -240,7 +240,7 @@ export default function Gallery() {
                                 ease: [0.22, 1, 0.36, 1] as const,
                             }}
                             aria-label={`Open photograph ${index + 1} of ${images.length}`}
-                            className={`group relative block w-full overflow-hidden bg-[#151311] text-left ${imageLayout(index)}`}
+                            className={`group relative block w-full overflow-hidden bg-[#24151D] text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C77D96] ${imageLayout(index)}`}
                         >
                             <Image
                                 src={image.src}
@@ -260,7 +260,7 @@ export default function Gallery() {
 
                             {/* Image placeholder */}
                             {!loadedImages.includes(index) && (
-                                <div className="absolute inset-0 animate-pulse bg-[#191613]" />
+                                <div className="absolute inset-0 animate-pulse bg-[#24151D]" />
                             )}
 
                             <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/5 opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
@@ -275,12 +275,12 @@ export default function Gallery() {
                                     </span>
                                 </div>
 
-                                <span className="flex h-9 w-9 translate-y-2 items-center justify-center border border-white/40 text-white opacity-0 backdrop-blur-sm transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 max-sm:hidden">
-                                    <Expand size={14} strokeWidth={1.2} />
+                                <span className="flex h-9 w-9 translate-y-2 items-center justify-center border border-[#F0D5DE]/40 text-[#F0D5DE] opacity-0 backdrop-blur-sm transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 max-sm:hidden">
+                                    <Expand size={14} strokeWidth={1.2} aria-hidden="true" />
                                 </span>
 
-                                <span className="flex h-8 w-8 items-center justify-center border border-white/40 text-white sm:hidden">
-                                    <ArrowUpRight size={14} strokeWidth={1.2} />
+                                <span className="flex h-8 w-8 items-center justify-center border border-[#F0D5DE]/40 text-[#F0D5DE] sm:hidden">
+                                    <ArrowUpRight size={14} strokeWidth={1.2} aria-hidden="true" />
                                 </span>
                             </div>
 
@@ -291,21 +291,19 @@ export default function Gallery() {
                     ))}
                 </div>
 
-                <div className="mx-auto mt-16 flex max-w-[1500px] items-center justify-between border-t border-[#F3EEE6]/10 pt-6 md:mt-24">
-                    <p className="text-[8px] uppercase tracking-[0.25em] text-[#A99F94]/60">
+                <div className="mx-auto mt-16 flex max-w-[1500px] items-center justify-between border-t border-[#F0D5DE]/10 pt-6 md:mt-24">
+                    <p className="text-[8px] uppercase tracking-[0.25em] text-[#F0D5DE]/40">
                         End of collection
                     </p>
-                    <p className="text-[8px] uppercase tracking-[0.25em] text-[#A99F94]/60">
+                    <p className="text-[8px] uppercase tracking-[0.25em] text-[#F0D5DE]/40">
                         22 photographs
                     </p>
                 </div>
             </section>
 
-            {/* =====================================================
-          CLOSING STATEMENT
-      ===================================================== */}
-            <section className="relative overflow-hidden border-y border-[#F3EEE6]/10 bg-[#11100E] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40">
-                <div className="absolute -right-32 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-[#C7B18A]/[0.035] blur-3xl" />
+            {/* CLOSING STATEMENT */}
+            <section className="relative overflow-hidden border-y border-[#F0D5DE]/10 bg-[#24151D] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40">
+                <div className="absolute -right-32 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-[#C77D96]/[0.08] blur-3xl" />
 
                 <motion.div
                     initial="hidden"
@@ -314,7 +312,7 @@ export default function Gallery() {
                     variants={reveal}
                     className="relative mx-auto max-w-[1200px]"
                 >
-                    <p className="mb-6 text-[9px] uppercase tracking-[0.4em] text-[#C7B18A]">
+                    <p className="mb-6 text-[9px] uppercase tracking-[0.4em] text-[#C77D96]">
                         Beyond the frame
                     </p>
 
@@ -323,33 +321,32 @@ export default function Gallery() {
                         <br />
                         best experienced
                         <br />
-                        <span className="italic text-[#C7B18A]">in person.</span>
+                        <span className="italic text-[#C77D96]">in person.</span>
                     </h2>
 
                     <div className="mt-10 flex flex-col gap-7 sm:flex-row sm:items-center sm:justify-between">
-                        <p className="max-w-md text-sm leading-7 text-[#A99F94]">
+                        <p className="max-w-md text-sm leading-7 text-[#F0D5DE]/65">
                             For private inquiries and further details, you are welcome
                             to get in touch directly.
                         </p>
 
                         <Link
                             href="/contact"
-                            className="group inline-flex w-fit items-center gap-5 border border-[#C7B18A]/50 px-7 py-4 text-[9px] uppercase tracking-[0.25em] text-[#C7B18A] transition-colors duration-300 hover:bg-[#C7B18A] hover:text-[#0A0908]"
+                            className="group inline-flex w-fit items-center gap-5 border border-[#C77D96]/50 px-7 py-4 text-[9px] uppercase tracking-[0.25em] text-[#C77D96] transition-colors duration-300 hover:bg-[#C77D96] hover:text-[#090809] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C77D96]"
                         >
                             Private Inquiry
                             <ArrowRight
                                 size={15}
                                 strokeWidth={1.2}
                                 className="transition-transform duration-300 group-hover:translate-x-1"
+                                aria-hidden="true"
                             />
                         </Link>
                     </div>
                 </motion.div>
             </section>
 
-            {/* =====================================================
-          IMMERSIVE LIGHTBOX
-      ===================================================== */}
+            {/* IMMERSIVE LIGHTBOX */}
             <AnimatePresence>
                 {selectedIndex !== null && (
                     <motion.div
@@ -361,7 +358,7 @@ export default function Gallery() {
                         role="dialog"
                         aria-modal="true"
                         aria-label="Photograph viewer"
-                        className="fixed inset-0 z-[110] flex items-center justify-center bg-[#080706]/[0.98] p-4 backdrop-blur-xl sm:p-8"
+                        className="fixed inset-0 z-[110] flex items-center justify-center bg-[#090809]/[0.98] p-4 backdrop-blur-xl sm:p-8"
                         onClick={closeGallery}
                     >
                         {/* Top controls */}
@@ -370,7 +367,7 @@ export default function Gallery() {
                             onClick={(event) => event.stopPropagation()}
                         >
                             <div>
-                                <p className="text-[8px] uppercase tracking-[0.35em] text-[#C7B18A]">
+                                <p className="text-[8px] uppercase tracking-[0.35em] text-[#C77D96]">
                                     Miss Cookie
                                 </p>
                                 <p className="mt-2 text-[9px] uppercase tracking-[0.2em] text-white/50">
@@ -391,9 +388,9 @@ export default function Gallery() {
                                     type="button"
                                     onClick={closeGallery}
                                     aria-label="Close gallery"
-                                    className="flex h-11 w-11 items-center justify-center border border-white/15 text-white transition-colors hover:border-[#C7B18A]/60 hover:text-[#C7B18A]"
+                                    className="flex h-11 w-11 items-center justify-center border border-white/15 text-white transition-colors hover:border-[#C77D96]/60 hover:text-[#C77D96] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C77D96]"
                                 >
-                                    <X size={20} strokeWidth={1.2} />
+                                    <X size={20} strokeWidth={1.2} aria-hidden="true" />
                                 </button>
                             </div>
                         </div>
@@ -406,9 +403,9 @@ export default function Gallery() {
                                 previousImage();
                             }}
                             aria-label="Previous photograph"
-                            className="absolute left-1 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center text-white/65 transition-colors hover:text-[#C7B18A] sm:left-5 sm:h-14 sm:w-14"
+                            className="absolute left-1 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center text-white/65 transition-colors hover:text-[#C77D96] sm:left-5 sm:h-14 sm:w-14"
                         >
-                            <ChevronLeft size={30} strokeWidth={1} />
+                            <ChevronLeft size={30} strokeWidth={1} aria-hidden="true" />
                         </button>
 
                         {/* Active image */}
@@ -441,9 +438,9 @@ export default function Gallery() {
                                 nextImage();
                             }}
                             aria-label="Next photograph"
-                            className="absolute right-1 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center text-white/65 transition-colors hover:text-[#C7B18A] sm:right-5 sm:h-14 sm:w-14"
+                            className="absolute right-1 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center text-white/65 transition-colors hover:text-[#C77D96] sm:right-5 sm:h-14 sm:w-14"
                         >
-                            <ChevronRight size={30} strokeWidth={1} />
+                            <ChevronRight size={30} strokeWidth={1} aria-hidden="true" />
                         </button>
 
                         {/* Bottom controls */}
@@ -451,9 +448,9 @@ export default function Gallery() {
                             <button
                                 type="button"
                                 onClick={previousImage}
-                                className="flex items-center gap-3 text-[8px] uppercase tracking-[0.25em] text-white/50 transition-colors hover:text-[#C7B18A]"
+                                className="flex items-center gap-3 text-[8px] uppercase tracking-[0.25em] text-white/50 transition-colors hover:text-[#C77D96]"
                             >
-                                <ArrowLeft size={14} strokeWidth={1.2} />
+                                <ArrowLeft size={14} strokeWidth={1.2} aria-hidden="true" />
                                 Previous
                             </button>
 
@@ -464,8 +461,9 @@ export default function Gallery() {
                                         type="button"
                                         onClick={() => setSelectedIndex(index)}
                                         aria-label={`Go to photograph ${index + 1}`}
+                                        aria-current={index === selectedIndex ? "true" : undefined}
                                         className={`h-[2px] shrink-0 transition-all duration-300 ${index === selectedIndex
-                                                ? "w-5 bg-[#C7B18A]"
+                                                ? "w-5 bg-[#C77D96]"
                                                 : "w-1.5 bg-white/25 hover:bg-white/60"
                                             }`}
                                     />
@@ -475,10 +473,10 @@ export default function Gallery() {
                             <button
                                 type="button"
                                 onClick={nextImage}
-                                className="flex items-center gap-3 text-[8px] uppercase tracking-[0.25em] text-white/50 transition-colors hover:text-[#C7B18A]"
+                                className="flex items-center gap-3 text-[8px] uppercase tracking-[0.25em] text-white/50 transition-colors hover:text-[#C77D96]"
                             >
                                 Next
-                                <ArrowRight size={14} strokeWidth={1.2} />
+                                <ArrowRight size={14} strokeWidth={1.2} aria-hidden="true" />
                             </button>
                         </div>
                     </motion.div>
