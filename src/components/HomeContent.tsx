@@ -42,22 +42,22 @@ export default function HomeContent() {
       ========================================================= */}
             <section
                 id="introduction"
-                className="bg-[#0A0908] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40"
+                className="bg-[#090809] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40"
             >
                 <div className="mx-auto grid max-w-[1400px] gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
                     <div>
-                        <p className="text-[10px] uppercase tracking-[0.4em] text-[#C7B18A]">
+                        <p className="text-[10px] uppercase tracking-[0.4em] text-[#C77D96]">
                             United States of America
                         </p>
                     </div>
 
                     <div>
-                        <h2 className="max-w-4xl text-4xl leading-[1] tracking-[-0.02em] text-[#F3EEE6] md:text-6xl lg:text-7xl">
+                        <h2 className="max-w-4xl text-4xl leading-[1] tracking-[-0.02em] text-[#F0D5DE] md:text-6xl lg:text-7xl">
                             A private experience should feel{" "}
                             <span className="italic">effortless.</span>
                         </h2>
 
-                        <p className="mt-8 max-w-2xl text-sm leading-7 text-[#A99F94] md:text-base">
+                        <p className="mt-8 max-w-2xl text-sm leading-7 text-[#F0D5DE]/65 md:text-base">
                             Thoughtful conversation, beautiful surroundings and genuine
                             connection. Every detail is approached with elegance,
                             discretion and attention to the person behind the occasion.
@@ -65,10 +65,9 @@ export default function HomeContent() {
 
                         <Link
                             href="/about"
-                            className="group mt-9 inline-flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#301934]"
+                            className="group mt-9 inline-flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#C77D96] transition-colors hover:text-[#F0D5DE]"
                         >
                             Discover more
-
                             <ArrowUpRight
                                 size={15}
                                 strokeWidth={1.2}
@@ -82,7 +81,7 @@ export default function HomeContent() {
             {/* =========================================================
           EDITORIAL ABOUT
       ========================================================= */}
-            <section className="bg-[#151311] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40">
+            <section className="bg-[#24151D] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40">
                 <div className="mx-auto grid max-w-[1400px] items-center gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -102,7 +101,7 @@ export default function HomeContent() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
 
                         <div className="absolute bottom-6 left-6">
-                            <span className="border border-white/20 bg-black/20 px-4 py-2 text-[9px] uppercase tracking-[0.3em] text-white/80 backdrop-blur-sm">
+                            <span className="border border-[#F0D5DE]/25 bg-[#090809]/40 px-4 py-2 text-[9px] uppercase tracking-[0.3em] text-[#F0D5DE] backdrop-blur-sm">
                                 Miss Cookie
                             </span>
                         </div>
@@ -114,36 +113,34 @@ export default function HomeContent() {
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{ duration: 0.8, delay: 0.1 }}
                     >
-                        <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-[#C7B18A]">
+                        <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-[#C77D96]">
                             The Person Behind the Experience
                         </p>
 
-                        <h2 className="max-w-2xl text-5xl leading-[0.93] tracking-[-0.02em] text-[#F3EEE6] md:text-7xl">
+                        <h2 className="max-w-2xl text-5xl leading-[0.93] tracking-[-0.02em] text-[#F0D5DE] md:text-7xl">
                             More than a
                             <br />
                             <span className="italic">moment.</span>
                         </h2>
 
-                        <div className="mt-9 max-w-xl space-y-5 text-sm leading-7 text-[#A99F94]">
+                        <div className="mt-9 max-w-xl space-y-5 text-sm leading-7 text-[#F0D5DE]/65">
                             <p>
-                                Miss Cookie creates private
-                                experiences centered around presence, conversation and
-                                thoughtful attention.
+                                Miss Cookie creates private experiences centered around
+                                presence, conversation and thoughtful attention.
                             </p>
 
                             <p>
-                                Whether it is an evening in the city, a special occasion or a
-                                carefully arranged trip, the intention is always the same:
-                                creating something personal and memorable.
+                                Whether it is an evening in the city, a special occasion
+                                or a carefully arranged trip, the intention is always
+                                the same: creating something personal and memorable.
                             </p>
                         </div>
 
                         <Link
                             href="/about"
-                            className="group mt-9 inline-flex items-center gap-4 border-b border-[#C7B18A]/40 pb-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#C7B18A]"
+                            className="group mt-9 inline-flex items-center gap-4 border-b border-[#C77D96]/50 pb-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#C77D96] transition-colors hover:text-[#F0D5DE]"
                         >
                             About Miss Cookie
-
                             <ArrowUpRight
                                 size={14}
                                 strokeWidth={1.2}
@@ -157,15 +154,15 @@ export default function HomeContent() {
             {/* =========================================================
           EXPERIENCE
       ========================================================= */}
-            <section className="bg-[#0A0908] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40">
+            <section className="bg-[#090809] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40">
                 <div className="mx-auto max-w-[1400px]">
                     <div className="mb-16 flex flex-col justify-between gap-8 md:mb-20 md:flex-row md:items-end">
                         <div>
-                            <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-[#C7B18A]">
+                            <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-[#C77D96]">
                                 The Experience
                             </p>
 
-                            <h2 className="max-w-3xl text-5xl leading-[0.92] text-[#F3EEE6] md:text-7xl">
+                            <h2 className="max-w-3xl text-5xl leading-[0.92] text-[#F0D5DE] md:text-7xl">
                                 Designed around
                                 <br />
                                 <span className="italic">the moment.</span>
@@ -174,10 +171,9 @@ export default function HomeContent() {
 
                         <Link
                             href="/experience"
-                            className="group inline-flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#C7B18A]"
+                            className="group inline-flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#C77D96] transition-colors hover:text-[#F0D5DE]"
                         >
                             Explore experiences
-
                             <ArrowUpRight
                                 size={15}
                                 strokeWidth={1.2}
@@ -212,17 +208,17 @@ export default function HomeContent() {
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
                                         <div className="absolute left-5 top-5">
-                                            <span className="text-[9px] tracking-[0.3em] text-[#C7B18A]">
+                                            <span className="text-[9px] tracking-[0.3em] text-[#E3A7BC]">
                                                 {experience.number}
                                             </span>
                                         </div>
 
                                         <div className="absolute bottom-6 left-6 right-6">
-                                            <h3 className="font-[family-name:var(--font-display)] text-3xl text-[#F3EEE6] md:text-4xl">
+                                            <h3 className="font-[family-name:var(--font-display)] text-3xl text-[#F0D5DE] md:text-4xl">
                                                 {experience.title}
                                             </h3>
 
-                                            <div className="mt-4 h-px w-0 bg-[#C7B18A] transition-all duration-500 group-hover:w-12" />
+                                            <div className="mt-4 h-px w-0 bg-[#C77D96] transition-all duration-500 group-hover:w-12" />
                                         </div>
                                     </div>
                                 </Link>
@@ -235,24 +231,24 @@ export default function HomeContent() {
             {/* =========================================================
           EDITORIAL STATEMENT
       ========================================================= */}
-            <section className="relative overflow-hidden bg-[#151311] px-6 py-28 md:px-10 md:py-40 lg:px-14">
-                <div className="absolute -right-20 top-0 h-80 w-80 rounded-full bg-[#C7B18A]/5 blur-3xl" />
+            <section className="relative overflow-hidden bg-[#24151D] px-6 py-28 md:px-10 md:py-40 lg:px-14">
+                <div className="absolute -right-20 top-0 h-80 w-80 rounded-full bg-[#C77D96]/10 blur-3xl" />
 
                 <div className="relative mx-auto max-w-[1100px] text-center">
                     <Sparkles
                         size={22}
                         strokeWidth={1}
-                        className="mx-auto mb-8 text-[#C7B18A]"
+                        className="mx-auto mb-8 text-[#C77D96]"
                     />
 
-                    <p className="text-[10px] uppercase tracking-[0.4em] text-[#A99F94]">
+                    <p className="text-[10px] uppercase tracking-[0.4em] text-[#F0D5DE]/60">
                         A different kind of evening
                     </p>
 
-                    <blockquote className="mt-8 font-[family-name:var(--font-display)] text-4xl leading-[1.05] tracking-[-0.02em] text-[#F3EEE6] md:text-6xl lg:text-7xl">
+                    <blockquote className="mt-8 font-[family-name:var(--font-display)] text-4xl leading-[1.05] tracking-[-0.02em] text-[#F0D5DE] md:text-6xl lg:text-7xl">
                         &ldquo;The most memorable experiences are rarely about where you
                         are. They are about{" "}
-                        <span className="italic text-[#C7B18A]">
+                        <span className="italic text-[#C77D96]">
                             how the moment feels.
                         </span>
                         &rdquo;
@@ -263,7 +259,7 @@ export default function HomeContent() {
             {/* =========================================================
           TRAVEL
       ========================================================= */}
-            <section className="bg-[#0A0908]">
+            <section className="bg-[#090809]">
                 <div className="relative min-h-[75vh] overflow-hidden">
                     <Image
                         src="/images/airplane.jpg"
@@ -274,32 +270,33 @@ export default function HomeContent() {
                     />
 
                     <div className="absolute inset-0 bg-black/45" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908] via-black/20 to-transparent" />
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#090809] via-black/20 to-transparent" />
 
                     <div className="relative z-10 flex min-h-[75vh] items-end px-6 pb-16 md:px-10 md:pb-20 lg:px-14 lg:pb-24">
                         <div className="mx-auto w-full max-w-[1400px]">
                             <div className="max-w-3xl">
-                                <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-[#C7B18A]">
+                                <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-[#E3A7BC]">
                                     Coast to Coast
                                 </p>
 
-                                <h2 className="text-6xl leading-[0.88] text-[#F3EEE6] md:text-8xl">
+                                <h2 className="text-6xl leading-[0.88] text-[#F0D5DE] md:text-8xl">
                                     Sometimes the
                                     <br />
                                     <span className="italic">setting changes.</span>
                                 </h2>
 
-                                <p className="mt-8 max-w-lg text-sm leading-7 text-[#F3EEE6]/65">
-                                    Select travel arrangements can be discussed privately in
-                                    advance, depending on destination, dates and arrangements.
+                                <p className="mt-8 max-w-lg text-sm leading-7 text-[#F0D5DE]/75">
+                                    Select travel arrangements can be discussed privately
+                                    in advance, depending on destination, dates and
+                                    arrangements.
                                 </p>
 
                                 <Link
                                     href="/travel"
-                                    className="group mt-8 inline-flex items-center gap-4 border border-[#F3EEE6]/30 px-7 py-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#F3EEE6] transition-all duration-300 hover:border-[#C7B18A] hover:text-[#C7B18A]"
+                                    className="group mt-8 inline-flex items-center gap-4 border border-[#F0D5DE]/30 px-7 py-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#F0D5DE] transition-all duration-300 hover:border-[#C77D96] hover:text-[#E3A7BC]"
                                 >
                                     Explore travel
-
                                     <ArrowUpRight
                                         size={14}
                                         strokeWidth={1.2}
@@ -315,15 +312,15 @@ export default function HomeContent() {
             {/* =========================================================
           GALLERY PREVIEW
       ========================================================= */}
-            <section className="bg-[#151311] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40">
+            <section className="bg-[#24151D] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40">
                 <div className="mx-auto max-w-[1400px]">
                     <div className="mb-14 flex flex-col justify-between gap-8 md:mb-20 md:flex-row md:items-end">
                         <div>
-                            <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-[#C7B18A]">
+                            <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-[#C77D96]">
                                 A Glimpse
                             </p>
 
-                            <h2 className="text-5xl leading-[0.92] text-[#F3EEE6] md:text-7xl">
+                            <h2 className="text-5xl leading-[0.92] text-[#F0D5DE] md:text-7xl">
                                 A few moments,
                                 <br />
                                 <span className="italic">captured.</span>
@@ -332,10 +329,9 @@ export default function HomeContent() {
 
                         <Link
                             href="/gallery"
-                            className="group inline-flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#C7B18A]"
+                            className="group inline-flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#C77D96] transition-colors hover:text-[#F0D5DE]"
                         >
                             View full gallery
-
                             <ArrowUpRight
                                 size={15}
                                 strokeWidth={1.2}
@@ -356,8 +352,8 @@ export default function HomeContent() {
                                     delay: index * 0.08,
                                 }}
                                 className={`relative overflow-hidden ${index === 1 || index === 3
-                                    ? "aspect-[4/5] md:mt-12"
-                                    : "aspect-[4/5]"
+                                        ? "aspect-[4/5] md:mt-12"
+                                        : "aspect-[4/5]"
                                     }`}
                             >
                                 <Link href="/gallery">
@@ -369,7 +365,7 @@ export default function HomeContent() {
                                         className="object-cover transition-transform duration-1000 hover:scale-105"
                                     />
 
-                                    <div className="absolute inset-0 bg-black/0 transition-colors duration-500 hover:bg-black/15" />
+                                    <div className="absolute inset-0 bg-black/0 transition-colors duration-500 hover:bg-[#C77D96]/10" />
                                 </Link>
                             </motion.div>
                         ))}
@@ -380,14 +376,14 @@ export default function HomeContent() {
             {/* =========================================================
           PRIVATE ARRANGEMENTS
       ========================================================= */}
-            <section className="bg-[#0A0908] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40">
+            <section className="bg-[#090809] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40">
                 <div className="mx-auto grid max-w-[1200px] gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
                     <div>
-                        <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-[#C7B18A]">
+                        <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-[#C77D96]">
                             Private Arrangements
                         </p>
 
-                        <h2 className="text-5xl leading-[0.92] text-[#F3EEE6] md:text-7xl">
+                        <h2 className="text-5xl leading-[0.92] text-[#F0D5DE] md:text-7xl">
                             Your time,
                             <br />
                             <span className="italic">your experience.</span>
@@ -395,13 +391,13 @@ export default function HomeContent() {
                     </div>
 
                     <div>
-                        <p className="max-w-xl text-sm leading-7 text-[#A99F94]">
+                        <p className="max-w-xl text-sm leading-7 text-[#F0D5DE]/65">
                             Every arrangement is discussed privately and thoughtfully.
                             Availability, duration, location and travel details can be
                             considered according to the occasion.
                         </p>
 
-                        <div className="mt-10 grid gap-0 border-t border-[#F3EEE6]/10">
+                        <div className="mt-10 grid gap-0 border-t border-[#C77D96]/20">
                             {[
                                 "Private evenings",
                                 "Dinner & social",
@@ -410,11 +406,13 @@ export default function HomeContent() {
                             ].map((item, index) => (
                                 <div
                                     key={item}
-                                    className="flex items-center justify-between border-b border-[#F3EEE6]/10 py-5"
+                                    className="flex items-center justify-between border-b border-[#C77D96]/20 py-5"
                                 >
-                                    <span className="text-sm text-[#F3EEE6]">{item}</span>
+                                    <span className="text-sm text-[#F0D5DE]">
+                                        {item}
+                                    </span>
 
-                                    <span className="text-[9px] tracking-[0.3em] text-[#C7B18A]">
+                                    <span className="text-[9px] tracking-[0.3em] text-[#C77D96]">
                                         0{index + 1}
                                     </span>
                                 </div>
@@ -423,9 +421,14 @@ export default function HomeContent() {
 
                         <Link
                             href="/rates"
-                            className="group mt-9 inline-flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#301934]"
+                            className="group mt-9 inline-flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#C77D96] transition-colors hover:text-[#F0D5DE]"
                         >
                             View Arrangements
+                            <ArrowUpRight
+                                size={15}
+                                strokeWidth={1.2}
+                                className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                            />
                         </Link>
                     </div>
                 </div>
@@ -434,37 +437,39 @@ export default function HomeContent() {
             {/* =========================================================
           CONTACT CTA
       ========================================================= */}
-            <section className="relative overflow-hidden bg-[#151311] px-6 py-28 md:px-10 md:py-40 lg:px-14">
-                <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#C7B18A]/5 blur-3xl" />
+            <section className="relative overflow-hidden bg-[#24151D] px-6 py-28 md:px-10 md:py-40 lg:px-14">
+                <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#C77D96]/10 blur-3xl" />
 
                 <div className="relative mx-auto max-w-[1000px] text-center">
                     <MapPin
                         size={20}
                         strokeWidth={1}
-                        className="mx-auto mb-7 text-[#C7B18A]"
+                        className="mx-auto mb-7 text-[#C77D96]"
                     />
 
-                    <p className="text-[10px] uppercase tracking-[0.4em] text-[#A99F94]">
-                         · United States & Beyond
+                    <p className="text-[10px] uppercase tracking-[0.4em] text-[#F0D5DE]/60">
+                        · United States &amp; Beyond
                     </p>
 
-                    <h2 className="mt-7 text-6xl leading-[0.88] text-[#F3EEE6] md:text-8xl">
+                    <h2 className="mt-7 text-6xl leading-[0.88] text-[#F0D5DE] md:text-8xl">
                         Ready to create
                         <br />
-                        <span className="italic">your moment?</span>
+                        <span className="italic text-[#C77D96]">
+                            your moment?
+                        </span>
                     </h2>
 
-                    <p className="mx-auto mt-8 max-w-xl text-sm leading-7 text-[#A99F94]">
-                        For availability and private arrangements, get in touch with your
-                        preferred date, location and any details you would like to share.
+                    <p className="mx-auto mt-8 max-w-xl text-sm leading-7 text-[#F0D5DE]/65">
+                        For availability and private arrangements, get in touch
+                        with your preferred date, location and any details you
+                        would like to share.
                     </p>
 
                     <Link
                         href="/contact"
-                        className="group mt-9 inline-flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#301934]"
+                        className="group mt-9 inline-flex items-center gap-4 rounded-sm border border-[#C77D96]/50 bg-[#C77D96]/10 px-7 py-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#F0D5DE] transition-all duration-300 hover:border-[#C77D96] hover:bg-[#C77D96] hover:text-[#090809]"
                     >
                         Private inquiry
-
                         <ArrowUpRight
                             size={15}
                             strokeWidth={1.2}
@@ -477,15 +482,15 @@ export default function HomeContent() {
             {/* =========================================================
           FINAL MARK
       ========================================================= */}
-            <section className="bg-[#0A0908] px-6 py-16 md:px-10 md:py-20 lg:px-14">
+            <section className="bg-[#090809] px-6 py-16 md:px-10 md:py-20 lg:px-14">
                 <div className="mx-auto flex max-w-[1400px] items-center justify-between">
-                    <div className="h-px flex-1 bg-[#F3EEE6]/10" />
+                    <div className="h-px flex-1 bg-[#C77D96]/20" />
 
-                    <span className="px-6 font-[family-name:var(--font-display)] text-2xl italic text-[#C7B18A]">
+                    <span className="px-6 font-[family-name:var(--font-display)] text-2xl italic text-[#C77D96]">
                         MC
                     </span>
 
-                    <div className="h-px flex-1 bg-[#F3EEE6]/10" />
+                    <div className="h-px flex-1 bg-[#C77D96]/20" />
                 </div>
             </section>
         </>
