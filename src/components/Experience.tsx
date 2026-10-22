@@ -49,7 +49,6 @@ export default function Experience() {
         };
 
         handleScroll();
-
         window.addEventListener("scroll", handleScroll, { passive: true });
 
         return () => {
@@ -58,11 +57,10 @@ export default function Experience() {
     }, []);
 
     return (
-        <div className="experience-page overflow-hidden bg-[#0A0908]">
+        <div className="experience-page overflow-hidden bg-[#090809] text-[#F0D5DE]">
             {/* =========================================================
           HERO
       ========================================================= */}
-
             <section className="relative flex min-h-screen items-end overflow-hidden">
                 {/* HERO IMAGE */}
                 <div className="absolute inset-0">
@@ -76,40 +74,35 @@ export default function Experience() {
                     />
 
                     {/* Cinematic image treatment */}
-                    <div className="absolute inset-0 bg-[#0A0908]/30" />
-
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#0A0908]/90 via-[#0A0908]/45 to-transparent" />
-
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908] via-transparent to-[#0A0908]/20" />
-
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(199,177,138,0.08),transparent_35%)]" />
+                    <div className="absolute inset-0 bg-[#090809]/30" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#090809]/90 via-[#090809]/45 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#090809] via-transparent to-[#090809]/20" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(199,125,150,0.12),transparent_35%)]" />
                 </div>
 
-
                 {/* Decorative vertical line */}
-                <div className="absolute right-8 top-32 hidden h-[48vh] w-px bg-[#F3EEE6]/[0.08] lg:right-14 lg:block" />
+                <div className="absolute right-8 top-32 hidden h-[48vh] w-px bg-[#F0D5DE]/[0.08] lg:right-14 lg:block" />
 
                 {/* Hero content */}
                 <div className="relative z-10 mx-auto w-full max-w-[1600px] px-6 pb-20 pt-40 md:px-10 md:pb-24 lg:px-14 lg:pb-28">
                     <div className="grid items-end gap-12 lg:grid-cols-[1fr_auto]">
                         <div>
                             <div className="mb-9 flex items-center gap-4">
-                                <span className="h-px w-12 bg-[#C7B18A]/70" />
-
-                                <span className="text-[9px] uppercase tracking-[0.42em] text-[#A99F94]">
+                                <span className="h-px w-12 bg-[#C77D96]/80" />
+                                <span className="text-[9px] uppercase tracking-[0.42em] text-[#F0D5DE]/70">
                                     The Experience
                                 </span>
                             </div>
 
-                            <h1 className="max-w-[1100px] text-[clamp(4rem,10vw,10rem)] font-normal leading-[0.82] tracking-[-0.055em] text-[#F3EEE6]">
+                            <h1 className="max-w-[1100px] text-[clamp(4rem,10vw,10rem)] font-normal leading-[0.82] tracking-[-0.055em] text-[#F0D5DE]">
                                 Moments
                                 <br />
-                                <span className="italic text-[#C7B18A]">
+                                <span className="italic text-[#C77D96]">
                                     around you.
                                 </span>
                             </h1>
 
-                            <p className="mt-10 max-w-lg text-sm leading-7 text-[#A99F94] md:text-base md:leading-8">
+                            <p className="mt-10 max-w-lg text-sm leading-7 text-[#F0D5DE]/70 md:text-base md:leading-8">
                                 An experience shaped by atmosphere, conversation and
                                 attention to detail. Nothing rushed. Nothing unnecessary.
                                 Simply time designed to feel natural.
@@ -118,15 +111,13 @@ export default function Experience() {
 
                         <div className="hidden pb-2 lg:block">
                             <div className="flex flex-col items-end gap-3 text-right">
-                                <span className="text-[8px] uppercase tracking-[0.38em] text-[#A99F94]/60">
+                                <span className="text-[8px] uppercase tracking-[0.38em] text-[#F0D5DE]/45">
                                     United
                                 </span>
-
-                                <span className="text-[8px] uppercase tracking-[0.38em] text-[#A99F94]/60">
+                                <span className="text-[8px] uppercase tracking-[0.38em] text-[#F0D5DE]/45">
                                     States
                                 </span>
-
-                                <span className="mt-3 h-10 w-px bg-[#C7B18A]/30" />
+                                <span className="mt-3 h-10 w-px bg-[#C77D96]/40" />
                             </div>
                         </div>
                     </div>
@@ -137,40 +128,40 @@ export default function Experience() {
                     className={`absolute bottom-8 left-1/2 hidden -translate-x-1/2 items-center gap-4 transition-opacity duration-500 md:flex ${scrolled ? "opacity-0" : "opacity-100"
                         }`}
                 >
-                    <span className="text-[8px] uppercase tracking-[0.35em] text-[#A99F94]/60">
+                    <span className="text-[8px] uppercase tracking-[0.35em] text-[#F0D5DE]/45">
                         Discover
                     </span>
-
-                    <span className="h-10 w-px bg-gradient-to-b from-[#C7B18A]/60 to-transparent" />
+                    <span className="h-10 w-px bg-gradient-to-b from-[#C77D96]/70 to-transparent" />
                 </div>
             </section>
 
             {/* =========================================================
           INTRO
       ========================================================= */}
-
-            <section className="border-t border-[#F3EEE6]/[0.08]">
+            <section className="border-t border-[#C77D96]/15">
                 <div className="mx-auto grid max-w-[1400px] gap-14 px-6 py-24 md:px-10 md:py-32 lg:grid-cols-[0.7fr_1.3fr] lg:px-14 lg:py-40">
                     <div>
-                        <span className="text-[9px] uppercase tracking-[0.42em] text-[#C7B18A]">
+                        <span className="text-[9px] uppercase tracking-[0.42em] text-[#C77D96]">
                             A considered approach
                         </span>
                     </div>
 
                     <div className="max-w-4xl">
-                        <h2 className="text-3xl font-normal leading-[1.08] tracking-[-0.025em] text-[#F3EEE6] md:text-5xl lg:text-6xl">
+                        <h2 className="text-3xl font-normal leading-[1.08] tracking-[-0.025em] text-[#F0D5DE] md:text-5xl lg:text-6xl">
                             The best moments are often the ones that feel{" "}
-                            <span className="italic text-[#C7B18A]">effortless.</span>
+                            <span className="italic text-[#C77D96]">
+                                effortless.
+                            </span>
                         </h2>
 
                         <div className="mt-10 grid gap-8 md:grid-cols-2">
-                            <p className="text-sm leading-7 text-[#A99F94] md:text-base md:leading-8">
+                            <p className="text-sm leading-7 text-[#F0D5DE]/65 md:text-base md:leading-8">
                                 Every experience begins with a conversation. Understanding
                                 the occasion, the setting and the atmosphere allows the
                                 details to be considered before anything is arranged.
                             </p>
 
-                            <p className="text-sm leading-7 text-[#A99F94] md:text-base md:leading-8">
+                            <p className="text-sm leading-7 text-[#F0D5DE]/65 md:text-base md:leading-8">
                                 The intention is simple: create an environment where
                                 everything feels comfortable, polished and natural from
                                 beginning to end.
@@ -183,29 +174,26 @@ export default function Experience() {
             {/* =========================================================
           EXPERIENCE SHOWCASE
       ========================================================= */}
-
-            <section className="border-t border-[#F3EEE6]/[0.08]">
+            <section className="border-t border-[#C77D96]/15">
                 <div className="mx-auto max-w-[1600px] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40">
                     {/* Section heading */}
                     <div className="mb-16 flex items-end justify-between gap-8 md:mb-20">
                         <div>
-                            <span className="text-[9px] uppercase tracking-[0.42em] text-[#C7B18A]">
+                            <span className="text-[9px] uppercase tracking-[0.42em] text-[#C77D96]">
                                 Possibilities
                             </span>
 
-                            <h2 className="mt-5 text-4xl font-normal leading-none tracking-[-0.03em] md:text-6xl">
+                            <h2 className="mt-5 text-4xl font-normal leading-none tracking-[-0.03em] text-[#F0D5DE] md:text-6xl">
                                 Choose the setting.
                             </h2>
                         </div>
 
                         <div className="hidden items-center gap-3 md:flex">
-                            <span className="text-[9px] tracking-[0.25em] text-[#A99F94]/60">
+                            <span className="text-[9px] tracking-[0.25em] text-[#C77D96]">
                                 0{activeExperience + 1}
                             </span>
-
-                            <span className="h-px w-12 bg-[#C7B18A]/30" />
-
-                            <span className="text-[9px] tracking-[0.25em] text-[#A99F94]/40">
+                            <span className="h-px w-12 bg-[#C77D96]/40" />
+                            <span className="text-[9px] tracking-[0.25em] text-[#F0D5DE]/35">
                                 04
                             </span>
                         </div>
@@ -216,7 +204,7 @@ export default function Experience() {
                         <div className="grid grid-cols-[0.55fr_1.45fr] gap-10">
                             {/* Navigation */}
                             <div className="sticky top-32 self-start">
-                                <div className="border-t border-[#F3EEE6]/10">
+                                <div className="border-t border-[#C77D96]/20">
                                     {experiences.map((experience, index) => {
                                         const active = activeExperience === index;
 
@@ -225,13 +213,14 @@ export default function Experience() {
                                                 key={experience.number}
                                                 type="button"
                                                 onClick={() => setActiveExperience(index)}
-                                                className={`group flex w-full items-start gap-6 border-b border-[#F3EEE6]/10 py-7 text-left transition-all duration-500 ${active ? "pl-4" : "pl-0"
+                                                aria-pressed={active}
+                                                className={`group flex w-full items-start gap-6 border-b border-[#C77D96]/20 py-7 text-left transition-all duration-500 ${active ? "pl-4" : "pl-0"
                                                     }`}
                                             >
                                                 <span
                                                     className={`pt-1 text-[9px] tracking-[0.3em] transition-colors duration-300 ${active
-                                                        ? "text-[#C7B18A]"
-                                                        : "text-[#A99F94]/50"
+                                                            ? "text-[#C77D96]"
+                                                            : "text-[#F0D5DE]/40"
                                                         }`}
                                                 >
                                                     {experience.number}
@@ -239,8 +228,8 @@ export default function Experience() {
 
                                                 <span
                                                     className={`font-[family-name:var(--font-display)] text-3xl leading-none transition-all duration-500 ${active
-                                                        ? "text-[#F3EEE6]"
-                                                        : "text-[#A99F94]/55 group-hover:text-[#F3EEE6]"
+                                                            ? "text-[#F0D5DE]"
+                                                            : "text-[#F0D5DE]/45 group-hover:text-[#F0D5DE]/90"
                                                         }`}
                                                 >
                                                     {experience.title}
@@ -251,7 +240,7 @@ export default function Experience() {
                                 </div>
 
                                 <div className="mt-10 max-w-xs">
-                                    <p className="text-[10px] uppercase leading-5 tracking-[0.2em] text-[#A99F94]/50">
+                                    <p className="text-[10px] uppercase leading-5 tracking-[0.2em] text-[#F0D5DE]/45">
                                         Each arrangement is discussed privately and confirmed
                                         according to availability.
                                     </p>
@@ -266,12 +255,13 @@ export default function Experience() {
                                     return (
                                         <div
                                             key={experience.number}
+                                            aria-hidden={!active}
                                             className={`absolute inset-0 transition-all duration-700 ${active
-                                                ? "pointer-events-auto translate-y-0 opacity-100"
-                                                : "pointer-events-none translate-y-4 opacity-0"
+                                                    ? "pointer-events-auto translate-y-0 opacity-100"
+                                                    : "pointer-events-none translate-y-4 opacity-0"
                                                 }`}
                                         >
-                                            <div className="relative h-[720px] overflow-hidden bg-[#151311]">
+                                            <div className="relative h-[720px] overflow-hidden bg-[#24151D]">
                                                 <Image
                                                     src={experience.image}
                                                     alt={experience.title}
@@ -283,25 +273,26 @@ export default function Experience() {
                                                 />
 
                                                 {/* Image treatment */}
-                                                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908]/95 via-[#0A0908]/15 to-[#0A0908]/5" />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-[#090809]/95 via-[#090809]/15 to-[#090809]/5" />
+                                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_15%,rgba(199,125,150,0.10),transparent_40%)]" />
 
                                                 <div className="absolute inset-x-0 bottom-0 p-8 md:p-12 lg:p-14">
                                                     <div className="flex max-w-3xl items-end justify-between gap-10">
                                                         <div>
-                                                            <span className="text-[9px] uppercase tracking-[0.4em] text-[#C7B18A]">
+                                                            <span className="text-[9px] uppercase tracking-[0.4em] text-[#E3A7BC]">
                                                                 {experience.eyebrow}
                                                             </span>
 
-                                                            <h3 className="mt-5 text-4xl font-normal leading-[0.95] tracking-[-0.025em] text-[#F3EEE6] md:text-6xl">
+                                                            <h3 className="mt-5 text-4xl font-normal leading-[0.95] tracking-[-0.025em] text-[#F0D5DE] md:text-6xl">
                                                                 {experience.title}
                                                             </h3>
 
-                                                            <p className="mt-6 max-w-md text-sm leading-7 text-[#F3EEE6]/65">
+                                                            <p className="mt-6 max-w-md text-sm leading-7 text-[#F0D5DE]/70">
                                                                 {experience.description}
                                                             </p>
                                                         </div>
 
-                                                        <span className="hidden text-[8px] uppercase tracking-[0.3em] text-[#F3EEE6]/50 md:block">
+                                                        <span className="hidden text-[8px] uppercase tracking-[0.3em] text-[#F0D5DE]/50 md:block">
                                                             Explore
                                                         </span>
                                                     </div>
@@ -309,7 +300,7 @@ export default function Experience() {
 
                                                 {/* Image index */}
                                                 <div className="absolute right-8 top-8 md:right-12 md:top-12">
-                                                    <span className="text-[9px] tracking-[0.3em] text-[#F3EEE6]/60">
+                                                    <span className="text-[9px] tracking-[0.3em] text-[#F0D5DE]/65">
                                                         {experience.number} / 04
                                                     </span>
                                                 </div>
@@ -328,7 +319,7 @@ export default function Experience() {
                                 key={experience.number}
                                 className="group relative overflow-hidden"
                             >
-                                <div className="relative aspect-[4/5] overflow-hidden bg-[#151311]">
+                                <div className="relative aspect-[4/5] overflow-hidden bg-[#24151D]">
                                     <Image
                                         src={experience.image}
                                         alt={experience.title}
@@ -337,24 +328,25 @@ export default function Experience() {
                                         className="object-cover transition-transform duration-1000 group-hover:scale-[1.04]"
                                     />
 
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908] via-[#0A0908]/20 to-transparent" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#090809] via-[#090809]/20 to-transparent" />
+                                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_15%,rgba(199,125,150,0.10),transparent_40%)]" />
 
                                     <div className="absolute left-6 right-6 top-6 flex items-center justify-between">
-                                        <span className="text-[9px] tracking-[0.3em] text-[#C7B18A]">
+                                        <span className="text-[9px] tracking-[0.3em] text-[#E3A7BC]">
                                             {experience.number}
                                         </span>
 
-                                        <span className="text-[8px] uppercase tracking-[0.3em] text-[#F3EEE6]/50">
+                                        <span className="text-[8px] uppercase tracking-[0.3em] text-[#F0D5DE]/65">
                                             {experience.eyebrow}
                                         </span>
                                     </div>
 
                                     <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-                                        <h3 className="text-4xl leading-none tracking-[-0.025em] text-[#F3EEE6] md:text-5xl">
+                                        <h3 className="text-4xl leading-none tracking-[-0.025em] text-[#F0D5DE] md:text-5xl">
                                             {experience.title}
                                         </h3>
 
-                                        <p className="mt-5 max-w-lg text-sm leading-7 text-[#F3EEE6]/65">
+                                        <p className="mt-5 max-w-lg text-sm leading-7 text-[#F0D5DE]/70">
                                             {experience.description}
                                         </p>
                                     </div>
@@ -368,72 +360,79 @@ export default function Experience() {
             {/* =========================================================
           THE DIFFERENCE
       ========================================================= */}
-
-            <section className="bg-[#0D0C0A]">
+            <section className="bg-[#24151D]">
                 <div className="mx-auto grid max-w-[1400px] gap-16 px-6 py-24 md:px-10 md:py-32 lg:grid-cols-[0.8fr_1.2fr] lg:px-14 lg:py-40">
                     <div>
-                        <span className="text-[9px] uppercase tracking-[0.42em] text-[#C7B18A]">
+                        <span className="text-[9px] uppercase tracking-[0.42em] text-[#C77D96]">
                             The Difference
                         </span>
 
-                        <h2 className="mt-6 max-w-lg text-4xl leading-[1.02] tracking-[-0.025em] md:text-6xl">
+                        <h2 className="mt-6 max-w-lg text-4xl leading-[1.02] tracking-[-0.025em] text-[#F0D5DE] md:text-6xl">
                             It is not about doing more.
                             <br />
-                            <span className="italic text-[#C7B18A]">
+                            <span className="italic text-[#C77D96]">
                                 It is about doing it well.
                             </span>
                         </h2>
                     </div>
 
                     <div className="grid gap-x-10 gap-y-12 md:grid-cols-2">
-                        <div className="border-t border-[#F3EEE6]/10 pt-6">
-                            <span className="text-[9px] tracking-[0.3em] text-[#C7B18A]">
+                        <div className="border-t border-[#C77D96]/25 pt-6">
+                            <span className="text-[9px] tracking-[0.3em] text-[#C77D96]">
                                 01
                             </span>
 
-                            <h3 className="mt-5 text-2xl">Thoughtful planning</h3>
+                            <h3 className="mt-5 text-2xl text-[#F0D5DE]">
+                                Thoughtful planning
+                            </h3>
 
-                            <p className="mt-4 text-sm leading-7 text-[#A99F94]">
+                            <p className="mt-4 text-sm leading-7 text-[#F0D5DE]/65">
                                 Clear communication before the experience allows every
                                 important detail to be understood without unnecessary
                                 complications.
                             </p>
                         </div>
 
-                        <div className="border-t border-[#F3EEE6]/10 pt-6">
-                            <span className="text-[9px] tracking-[0.3em] text-[#C7B18A]">
+                        <div className="border-t border-[#C77D96]/25 pt-6">
+                            <span className="text-[9px] tracking-[0.3em] text-[#C77D96]">
                                 02
                             </span>
 
-                            <h3 className="mt-5 text-2xl">Natural atmosphere</h3>
+                            <h3 className="mt-5 text-2xl text-[#F0D5DE]">
+                                Natural atmosphere
+                            </h3>
 
-                            <p className="mt-4 text-sm leading-7 text-[#A99F94]">
+                            <p className="mt-4 text-sm leading-7 text-[#F0D5DE]/65">
                                 The intention is never to make an experience feel
                                 rehearsed. Comfort and authenticity remain at the center.
                             </p>
                         </div>
 
-                        <div className="border-t border-[#F3EEE6]/10 pt-6">
-                            <span className="text-[9px] tracking-[0.3em] text-[#C7B18A]">
+                        <div className="border-t border-[#C77D96]/25 pt-6">
+                            <span className="text-[9px] tracking-[0.3em] text-[#C77D96]">
                                 03
                             </span>
 
-                            <h3 className="mt-5 text-2xl">Privacy</h3>
+                            <h3 className="mt-5 text-2xl text-[#F0D5DE]">
+                                Privacy
+                            </h3>
 
-                            <p className="mt-4 text-sm leading-7 text-[#A99F94]">
+                            <p className="mt-4 text-sm leading-7 text-[#F0D5DE]/65">
                                 Discretion and respectful communication are considered
                                 throughout the entire process.
                             </p>
                         </div>
 
-                        <div className="border-t border-[#F3EEE6]/10 pt-6">
-                            <span className="text-[9px] tracking-[0.3em] text-[#C7B18A]">
+                        <div className="border-t border-[#C77D96]/25 pt-6">
+                            <span className="text-[9px] tracking-[0.3em] text-[#C77D96]">
                                 04
                             </span>
 
-                            <h3 className="mt-5 text-2xl">Attention to detail</h3>
+                            <h3 className="mt-5 text-2xl text-[#F0D5DE]">
+                                Attention to detail
+                            </h3>
 
-                            <p className="mt-4 text-sm leading-7 text-[#A99F94]">
+                            <p className="mt-4 text-sm leading-7 text-[#F0D5DE]/65">
                                 From location to timing, the small decisions are what help
                                 transform a plan into something memorable.
                             </p>
@@ -445,46 +444,46 @@ export default function Experience() {
             {/* =========================================================
           TRAVEL
       ========================================================= */}
-
-            <section className="border-t border-[#F3EEE6]/[0.08]">
+            <section className="border-t border-[#C77D96]/15">
                 <div className="mx-auto max-w-[1400px] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40">
-                    <div className="relative overflow-hidden border border-[#F3EEE6]/10 bg-[#11100E]">
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(199,177,138,0.08),transparent_30%)]" />
+                    <div className="relative overflow-hidden border border-[#C77D96]/25 bg-[#24151D]">
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(199,125,150,0.12),transparent_35%)]" />
 
                         <div className="relative grid gap-14 p-8 md:p-12 lg:grid-cols-[1fr_0.7fr] lg:p-16">
                             <div>
-                                <span className="text-[9px] uppercase tracking-[0.42em] text-[#C7B18A]">
+                                <span className="text-[9px] uppercase tracking-[0.42em] text-[#C77D96]">
                                     Nationwide Availability
                                 </span>
 
-                                <h2 className="mt-6 max-w-2xl text-4xl leading-[1] tracking-[-0.03em] md:text-6xl">
+                                <h2 className="mt-6 max-w-2xl text-4xl leading-[1] tracking-[-0.03em] text-[#F0D5DE] md:text-6xl">
                                     Some moments are worth
                                     <br />
-                                    <span className="italic text-[#C7B18A]">
+                                    <span className="italic text-[#C77D96]">
                                         going farther for.
                                     </span>
                                 </h2>
 
-                                <p className="mt-8 max-w-xl text-sm leading-7 text-[#A99F94] md:text-base md:leading-8">
-                                    Available nationwide for select engagements by prior arrangement.
-                                    Scheduling, destination, and travel details are handled privately.
+                                <p className="mt-8 max-w-xl text-sm leading-7 text-[#F0D5DE]/65 md:text-base md:leading-8">
+                                    Available nationwide for select engagements by prior
+                                    arrangement. Scheduling, destination, and travel details
+                                    are handled privately.
                                 </p>
 
                                 <Link
                                     href="/contact"
-                                    className="private-inquiry-button mt-10 inline-block border border-[#C7B18A]/50 px-8 py-4 text-[10px] uppercase tracking-[0.28em]"
+                                    className="private-inquiry-button mt-10 inline-block border border-[#C77D96]/60 px-8 py-4 text-[10px] uppercase tracking-[0.28em] text-[#F0D5DE] transition-all duration-300 hover:border-[#C77D96] hover:bg-[#C77D96] hover:text-[#090809]"
                                 >
                                     <span>Discuss Travel</span>
                                 </Link>
                             </div>
 
                             <div className="flex items-end justify-start lg:justify-end">
-                                <div className="max-w-xs border-l border-[#C7B18A]/30 pl-6">
-                                    <span className="block text-[8px] uppercase tracking-[0.35em] text-[#A99F94]/60">
+                                <div className="max-w-xs border-l border-[#C77D96]/50 pl-6">
+                                    <span className="block text-[8px] uppercase tracking-[0.35em] text-[#F0D5DE]/45">
                                         Available by arrangement
                                     </span>
 
-                                    <span className="mt-4 block font-[family-name:var(--font-display)] text-2xl italic text-[#F3EEE6]/80">
+                                    <span className="mt-4 block font-[family-name:var(--font-display)] text-2xl italic text-[#F0D5DE]/90">
                                         United States · Coast to Coast
                                     </span>
                                 </div>
@@ -497,29 +496,28 @@ export default function Experience() {
             {/* =========================================================
           FINAL CTA
       ========================================================= */}
-
-            <section className="border-t border-[#F3EEE6]/[0.08]">
+            <section className="border-t border-[#C77D96]/15">
                 <div className="mx-auto max-w-[1100px] px-6 py-28 text-center md:px-10 md:py-40">
-                    <span className="text-[9px] uppercase tracking-[0.45em] text-[#C7B18A]">
+                    <span className="text-[9px] uppercase tracking-[0.45em] text-[#C77D96]">
                         Private Inquiry
                     </span>
 
-                    <h2 className="mx-auto mt-7 max-w-4xl text-5xl leading-[0.95] tracking-[-0.04em] md:text-7xl">
+                    <h2 className="mx-auto mt-7 max-w-4xl text-5xl leading-[0.95] tracking-[-0.04em] text-[#F0D5DE] md:text-7xl">
                         Start with a
                         <br />
-                        <span className="italic text-[#C7B18A]">
+                        <span className="italic text-[#C77D96]">
                             conversation.
                         </span>
                     </h2>
 
-                    <p className="mx-auto mt-8 max-w-xl text-sm leading-7 text-[#A99F94] md:text-base md:leading-8">
+                    <p className="mx-auto mt-8 max-w-xl text-sm leading-7 text-[#F0D5DE]/65 md:text-base md:leading-8">
                         Tell us what you have in mind. Availability, location and
                         additional details can be discussed privately.
                     </p>
 
                     <Link
                         href="/contact"
-                        className="private-inquiry-button mt-10 inline-block border border-[#C7B18A]/50 px-9 py-4 text-[10px] uppercase tracking-[0.3em]"
+                        className="private-inquiry-button mt-10 inline-block border border-[#C77D96]/60 px-9 py-4 text-[10px] uppercase tracking-[0.3em] text-[#F0D5DE] transition-all duration-300 hover:border-[#C77D96] hover:bg-[#C77D96] hover:text-[#090809]"
                     >
                         <span>Private Inquiry</span>
                     </Link>
