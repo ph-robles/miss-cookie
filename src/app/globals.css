@@ -801,3 +801,36 @@ img {
     display: none !important;
   }
 }
+
+ 
+/* Miss Cookie — botão Prepare Inquiry */
+.private-inquiry-button {
+  background: #C77D96 !important;
+  color: #090809 !important;
+  -webkit-text-fill-color: #090809 !important;
+  opacity: 1 !important;
+  border: 1px solid #F0D5DE !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-shadow: none !important;
+  transition:
+    background-color 250ms ease,
+    color 250ms ease,
+    border-color 250ms ease;
+}
+ 
+.private-inquiry-button:hover {
+  background: #F0D5DE !important;
+  color: #090809 !important;
+  -webkit-text-fill-color: #090809 !important;
+}
+ 
+.private-inquiry-button:disabled {
+  opacity: 1 !important;
+  cursor: not-allowed;
+  background: #24151D !important;
+  color: #F0D5DE !important;
+  -webkit-text-fill-color: #F0D5DE !important;
+}
+ 
