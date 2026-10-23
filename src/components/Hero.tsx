@@ -27,7 +27,7 @@ export default function Hero() {
                     alt="Miss Cookie in USA"
                     fill
                     priority
-                    className="object-cover object-center md:object-[center_45%] lg:object-[center_75%]"
+                    className="object-cover object-center md:object-[center_45%] lg:object-[center_45%]"
                 />
                 {/* Camadas de contraste para manter o texto legível */}
                 <div className="absolute inset-0 bg-[#090809]/35" />
