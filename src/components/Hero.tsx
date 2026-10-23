@@ -74,7 +74,7 @@ export default function Hero() {
                         className="max-w-4xl"
                     >
                         <p className="mb-5 text-[10px] font-medium uppercase tracking-[0.4em] text-[#C77D96]">
-                            Orlando · Florida
+                            USA . Beyond
                         </p>
 
                         <h1 className="text-7xl leading-[0.82] tracking-[-0.03em] text-[#F0D5DE] sm:text-8xl md:text-[9rem] lg:text-[11rem]">
