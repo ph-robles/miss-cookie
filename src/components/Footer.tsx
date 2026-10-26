@@ -9,6 +9,7 @@ const navigation = [
     { label: "Travel", href: "/travel" },
     { label: "Rates", href: "/rates" },
     { label: "Contact", href: "/contact" },
+    { label: "Etiquette", href: "/etiquette" },
 ];
 
 export default function Footer() {
