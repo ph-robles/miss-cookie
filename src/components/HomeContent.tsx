@@ -309,69 +309,96 @@ export default function HomeContent() {
                 </div>
             </section>
 
-            {/* =========================================================
-          GALLERY PREVIEW
-      ========================================================= */}
-            <section className="bg-[#24151D] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40">
-                <div className="mx-auto max-w-[1400px]">
-                    <div className="mb-14 flex flex-col justify-between gap-8 md:mb-20 md:flex-row md:items-end">
+
+            {/* GALLERY PREVIEW */}
+            <section className="relative overflow-hidden bg-[#090809] px-6 py-24 text-[#F0D5DE] md:px-10 md:py-32 lg:px-14">
+                <div className="mx-auto max-w-[1500px]">
+                    <div className="mb-12 flex flex-col gap-6 border-b border-[#F0D5DE]/10 pb-8 sm:flex-row sm:items-end sm:justify-between md:mb-16">
                         <div>
-                            <p className="mb-6 text-[10px] uppercase tracking-[0.4em] text-[#C77D96]">
-                                A Glimpse
+                            <p className="mb-5 text-[9px] uppercase tracking-[0.4em] text-[#C77D96]">
+                                Gallery Preview
                             </p>
 
-                            <h2 className="text-5xl leading-[0.92] text-[#F0D5DE] md:text-7xl">
+                            <h2 className="text-4xl leading-[0.95] tracking-[-0.04em] md:text-6xl lg:text-7xl">
                                 A few moments,
                                 <br />
-                                <span className="italic">captured.</span>
+                                <span className="italic text-[#C77D96]">
+                                    captured.
+                                </span>
                             </h2>
+
+                            <p className="mt-6 max-w-lg text-sm leading-7 text-[#F0D5DE]/60">
+                                A small selection from the public gallery.
+                                Discover the private collection reserved for members.
+                            </p>
                         </div>
 
                         <Link
                             href="/gallery"
-                            className="group inline-flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#C77D96] transition-colors hover:text-[#F0D5DE]"
+                            className="group inline-flex w-fit items-center gap-4 border border-[#C77D96]/50 px-6 py-4 text-[9px] uppercase tracking-[0.22em] text-[#C77D96] transition-colors duration-300 hover:bg-[#C77D96] hover:text-[#090809] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C77D96]"
                         >
-                            View full gallery
+                            Explore the collection
                             <ArrowUpRight
                                 size={15}
                                 strokeWidth={1.2}
                                 className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                                aria-hidden="true"
                             />
                         </Link>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-                        {galleryPreview.map((image, index) => (
-                            <motion.div
+                    <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-4">
+                        {galleryPreview.slice(0, 4).map((image, index) => (
+                            <Link
                                 key={image}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, amount: 0.1 }}
-                                transition={{
-                                    duration: 0.6,
-                                    delay: index * 0.08,
-                                }}
-                                className={`relative overflow-hidden ${index === 1 || index === 3
-                                        ? "aspect-[4/5] md:mt-12"
-                                        : "aspect-[4/5]"
-                                    }`}
+                                href="/gallery"
+                                aria-label={`View the gallery preview, photograph ${index + 1}`}
+                                className="group relative block aspect-[3/4] overflow-hidden bg-[#24151D] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C77D96]"
                             >
-                                <Link href="/gallery">
-                                    <Image
-                                        src={image}
-                                        alt="Miss Cookie"
-                                        fill
-                                        sizes="(max-width: 768px) 50vw, 25vw"
-                                        className="object-cover transition-transform duration-1000 hover:scale-105"
-                                    />
+                                <Image
+                                    src={image}
+                                    alt={`Miss Cookie — gallery preview ${index + 1}`}
 
-                                    <div className="absolute inset-0 bg-black/0 transition-colors duration-500 hover:bg-[#C77D96]/10" />
-                                </Link>
-                            </motion.div>
+                                    fill
+                                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 340px"
+                                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                                />
+
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#090809]/70 via-transparent to-[#090809]/10 opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
+
+                                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-3 sm:p-5">
+                                    <div>
+                                        <span className="block text-[8px] uppercase tracking-[0.3em] text-white/65">
+                                            Miss Cookie
+                                        </span>
+                                        <span className="mt-1 block font-[family-name:var(--font-display)] text-xl text-white sm:text-2xl">
+                                            {String(index + 1).padStart(2, "0")}
+                                        </span>
+                                    </div>
+
+                                    <span className="flex h-8 w-8 items-center justify-center border border-white/40 text-white transition-colors duration-300 group-hover:border-[#C77D96] group-hover:text-[#C77D96]">
+                                        <ArrowUpRight
+                                            size={14}
+                                            strokeWidth={1.2}
+                                            aria-hidden="true"
+                                        />
+                                    </span>
+                                </div>
+                            </Link>
                         ))}
+                    </div>
+
+                    <div className="mt-6 flex items-center justify-between border-t border-[#F0D5DE]/10 pt-5">
+                        <p className="text-[8px] uppercase tracking-[0.22em] text-[#F0D5DE]/40">
+                            Public preview
+                        </p>
+                        <p className="text-[8px] uppercase tracking-[0.22em] text-[#C77D96]">
+                            04 selected photographs
+                        </p>
                     </div>
                 </div>
             </section>
+
 
             {/* =========================================================
           PRIVATE ARRANGEMENTS

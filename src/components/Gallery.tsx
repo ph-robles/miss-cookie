@@ -2,36 +2,40 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import {
-    AnimatePresence,
-    motion,
-    useScroll,
-    useTransform,
-} from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
     ArrowDown,
-    ArrowLeft,
     ArrowRight,
     ArrowUpRight,
-    ChevronLeft,
-    ChevronRight,
-    Expand,
-    X,
+    LockKeyhole,
+    Sparkles,
 } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
 
-const images = Array.from({ length: 22 }, (_, index) => {
-    const number = String(index + 1).padStart(2, "0");
-
-    return {
-        src: `/images/gallery-${number}.jpg`,
-        alt: `Miss Cookie — editorial portrait ${number}`,
-        number,
-    };
-});
+const previewImages = [
+    {
+        src: "/images/gallery-01.jpg",
+        alt: "Miss Cookie — editorial preview 01",
+        number: "01",
+    },
+    {
+        src: "/images/gallery-02.jpg",
+        alt: "Miss Cookie — editorial preview 02",
+        number: "02",
+    },
+    {
+        src: "/images/gallery-03.jpg",
+        alt: "Miss Cookie — editorial preview 03",
+        number: "03",
+    },
+    {
+        src: "/images/gallery-04.jpg",
+        alt: "Miss Cookie — editorial preview 04",
+        number: "04",
+    },
+];
 
 const reveal = {
-    hidden: { opacity: 0, y: 28 },
+    hidden: { opacity: 0, y: 26 },
     visible: {
         opacity: 1,
         y: 0,
@@ -42,81 +46,29 @@ const reveal = {
     },
 };
 
-function imageLayout(index: number) {
-    const layouts = [
-        "col-span-12 md:col-span-7 aspect-[4/5] md:aspect-[0.91/1]",
-        "col-span-6 md:col-span-5 aspect-[3/4] md:aspect-[0.78/1] md:mt-24",
-        "col-span-6 md:col-span-4 aspect-[3/4] md:aspect-[0.83/1]",
-        "col-span-6 md:col-span-4 aspect-[3/4] md:aspect-[0.83/1] md:mt-16",
-        "col-span-6 md:col-span-4 aspect-[3/4] md:aspect-[0.83/1]",
-        "col-span-12 md:col-span-8 aspect-[4/3] md:aspect-[1.2/1] md:mt-16",
-        "col-span-6 md:col-span-4 aspect-[3/4] md:aspect-[0.8/1]",
-        "col-span-6 md:col-span-4 aspect-[3/4] md:aspect-[0.8/1] md:mt-20",
-    ];
-
-    return layouts[index % layouts.length];
-}
-
 export default function Gallery() {
-    const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-    const [loadedImages, setLoadedImages] = useState<number[]>([]);
-
     const { scrollYProgress } = useScroll();
-    const heroY = useTransform(scrollYProgress, [0, 0.35], ["0%", "15%"]);
-
-    const closeGallery = useCallback(() => {
-        setSelectedIndex(null);
-    }, []);
-
-    const previousImage = useCallback(() => {
-        setSelectedIndex((current) =>
-            current === null ? null : (current - 1 + images.length) % images.length
-        );
-    }, []);
-
-    const nextImage = useCallback(() => {
-        setSelectedIndex((current) =>
-            current === null ? null : (current + 1) % images.length
-        );
-    }, []);
-
-    useEffect(() => {
-        if (selectedIndex === null) return;
-
-        const previousOverflow = document.body.style.overflow;
-        document.body.style.overflow = "hidden";
-
-        function handleKeyDown(event: KeyboardEvent) {
-            if (event.key === "Escape") closeGallery();
-            if (event.key === "ArrowLeft") previousImage();
-            if (event.key === "ArrowRight") nextImage();
-        }
-
-        window.addEventListener("keydown", handleKeyDown);
-
-        return () => {
-            document.body.style.overflow = previousOverflow;
-            window.removeEventListener("keydown", handleKeyDown);
-        };
-    }, [selectedIndex, closeGallery, previousImage, nextImage]);
+    const heroY = useTransform(scrollYProgress, [0, 0.4], ["0%", "12%"]);
 
     return (
         <div className="overflow-hidden bg-[#090809] text-[#F0D5DE]">
-            {/* SCROLL PROGRESS */}
+            {/* Scroll progress */}
             <motion.div
                 className="fixed left-0 top-0 z-[100] h-px origin-left bg-[#C77D96]"
                 style={{ scaleX: scrollYProgress }}
+                aria-hidden="true"
             />
 
-            {/* HERO */}
-            <section className="relative flex min-h-[88svh] items-end overflow-hidden md:min-h-screen">
+            {/* Editorial hero */}
+            <section className="relative flex min-h-[82svh] items-end overflow-hidden md:min-h-[90svh]">
                 <motion.div
-                    className="absolute inset-[-6%]"
+                    className="absolute inset-[-5%]"
                     style={{ y: heroY }}
+                    aria-hidden="true"
                 >
                     <Image
                         src="/images/gallery-01.jpg"
-                        alt="Miss Cookie — private editorial collection"
+                        alt=""
                         fill
                         priority
                         sizes="100vw"
@@ -124,11 +76,11 @@ export default function Gallery() {
                     />
                 </motion.div>
 
-                <div className="absolute inset-0 bg-black/25" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#090809]/90 via-[#090809]/40 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#090809] via-transparent to-[#090809]/25" />
+                <div className="absolute inset-0 bg-black/40" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#090809]/90 via-[#090809]/45 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#090809] via-transparent to-[#090809]/20" />
 
-                <div className="relative z-10 mx-auto w-full max-w-[1600px] px-6 pb-16 pt-36 md:px-10 md:pb-24 lg:px-14">
+                <div className="relative z-10 mx-auto w-full max-w-[1500px] px-6 pb-16 pt-36 md:px-10 md:pb-24 lg:px-14">
                     <motion.div
                         initial="hidden"
                         animate="visible"
@@ -138,33 +90,34 @@ export default function Gallery() {
                         <div className="mb-7 flex items-center gap-4">
                             <span className="h-px w-10 bg-[#C77D96]" />
                             <p className="text-[9px] uppercase tracking-[0.42em] text-[#C77D96]">
-                                The Visual Collection
+                                The Members Collection
                             </p>
                         </div>
 
-                        <h1 className="text-[4.5rem] leading-[0.85] tracking-[-0.055em] sm:text-8xl md:text-[9rem] lg:text-[11rem]">
+                        <h1 className="text-[4.2rem] leading-[0.86] tracking-[-0.055em] sm:text-8xl md:text-[9rem] lg:text-[10rem]">
                             Beyond
                             <br />
-                            <span className="italic text-[#F0D5DE]">
+                            <span className="font-light italic text-[#F0D5DE]">
                                 the ordinary.
                             </span>
                         </h1>
 
-                        <p className="mt-8 max-w-md text-sm leading-7 text-[#F0D5DE]/75 md:text-[15px]">
-                            A personal collection shaped by atmosphere, elegance and
-                            the beauty of the details that make each moment distinctive.
+                        <p className="mt-8 max-w-lg text-sm leading-7 text-[#F0D5DE]/75 md:text-[15px]">
+                            A more personal collection, created for those who
+                            appreciate the beauty of details, atmosphere and
+                            moments beyond the public gallery.
                         </p>
 
                         <button
                             type="button"
                             onClick={() =>
                                 document
-                                    .getElementById("visual-collection")
+                                    .getElementById("membership")
                                     ?.scrollIntoView({ behavior: "smooth" })
                             }
                             className="group mt-10 inline-flex items-center gap-4 border border-[#F0D5DE]/25 px-6 py-4 text-[9px] uppercase tracking-[0.25em] transition-colors duration-300 hover:border-[#C77D96]/70 hover:text-[#C77D96] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C77D96]"
                         >
-                            Explore the collection
+                            Discover membership
                             <ArrowDown
                                 size={15}
                                 strokeWidth={1.2}
@@ -175,166 +128,186 @@ export default function Gallery() {
                     </motion.div>
 
                     <div className="absolute bottom-8 right-8 hidden items-center gap-3 md:flex lg:right-14">
-                        <span className="text-[8px] uppercase tracking-[0.3em] text-white/50">
-                            Private Collection
-                        </span>
-                        <span className="h-px w-8 bg-[#C77D96]/50" />
-                        <span className="text-[9px] tracking-[0.2em] text-[#C77D96]">
-                            01 — 22
+                        <LockKeyhole
+                            size={13}
+                            strokeWidth={1.2}
+                            className="text-[#C77D96]"
+                            aria-hidden="true"
+                        />
+                        <span className="text-[8px] uppercase tracking-[0.3em] text-white/65">
+                            Members access
                         </span>
                     </div>
                 </div>
             </section>
 
-            {/* INTRO */}
-            <section
-                id="visual-collection"
-                className="scroll-mt-20 px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-36"
-            >
+            {/* Public preview */}
+            <section className="px-6 py-24 md:px-10 md:py-32 lg:px-14">
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
+                    viewport={{ once: true, amount: 0.25 }}
                     variants={reveal}
-                    className="mx-auto grid max-w-[1500px] gap-8 border-b border-[#F0D5DE]/10 pb-10 md:grid-cols-[1fr_auto] md:items-end md:pb-12"
+                    className="mx-auto max-w-[1500px]"
                 >
-                    <div>
-                        <p className="mb-5 text-[9px] uppercase tracking-[0.4em] text-[#C77D96]">
-                            An intimate perspective
-                        </p>
-
-                        <h2 className="text-4xl leading-[0.95] tracking-[-0.035em] md:text-6xl lg:text-7xl">
-                            A study in
-                            <span className="italic text-[#C77D96]"> presence.</span>
-                        </h2>
-                    </div>
-
-                    <div className="flex items-center gap-4 md:pb-1">
-                        <span className="font-[family-name:var(--font-display)] text-4xl text-[#C77D96]">
-                            22
-                        </span>
+                    <div className="grid gap-8 border-b border-[#F0D5DE]/10 pb-10 md:grid-cols-[1fr_auto] md:items-end md:pb-12">
                         <div>
-                            <p className="text-[9px] uppercase tracking-[0.25em] text-[#F0D5DE]">
-                                Photographs
+                            <p className="mb-5 text-[9px] uppercase tracking-[0.4em] text-[#C77D96]">
+                                A glimpse into the collection
                             </p>
-                            <p className="mt-1 text-xs text-[#F0D5DE]/55">
-                                The complete collection
+                            <h2 className="text-4xl leading-[0.95] tracking-[-0.04em] md:text-6xl lg:text-7xl">
+                                A study in
+                                <span className="italic text-[#C77D96]">
+                                    {" "}presence.
+                                </span>
+                            </h2>
+                            <p className="mt-6 max-w-xl text-sm leading-7 text-[#F0D5DE]/60">
+                                Four selected photographs offer a glimpse of
+                                the visual style. The members collection is
+                                reserved for active subscribers.
                             </p>
                         </div>
+
+                        <div className="flex items-center gap-3 md:pb-1">
+                            <span className="font-[family-name:var(--font-display)] text-4xl text-[#C77D96]">
+                                04
+                            </span>
+                            <div>
+                                <p className="text-[9px] uppercase tracking-[0.25em]">
+                                    Public previews
+                                </p>
+                                <p className="mt-1 text-xs text-[#F0D5DE]/50">
+                                    Selected moments
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                </motion.div>
 
-                {/* EDITORIAL GALLERY */}
-                <div className="mx-auto mt-12 grid max-w-[1500px] grid-cols-12 items-start gap-x-3 gap-y-8 sm:gap-x-5 sm:gap-y-12 md:gap-x-6 md:gap-y-20">
-                    {images.map((image, index) => (
-                        <motion.button
-                            key={image.src}
-                            type="button"
-                            onClick={() => setSelectedIndex(index)}
-                            initial={{ opacity: 0, y: 24 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.08 }}
-                            transition={{
-                                duration: 0.65,
-                                delay: (index % 3) * 0.07,
-                                ease: [0.22, 1, 0.36, 1] as const,
-                            }}
-                            aria-label={`Open photograph ${index + 1} of ${images.length}`}
-                            className={`group relative block w-full overflow-hidden bg-[#24151D] text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C77D96] ${imageLayout(index)}`}
-                        >
-                            <Image
-                                src={image.src}
-                                alt={image.alt}
-                                fill
-                                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 40vw"
-                                className={`object-cover transition-[transform,opacity,filter] duration-700 ease-out group-hover:scale-[1.035] ${loadedImages.includes(index)
-                                        ? "opacity-100"
-                                        : "opacity-0"
-                                    }`}
-                                onLoad={() =>
-                                    setLoadedImages((current) =>
-                                        current.includes(index) ? current : [...current, index]
-                                    )
-                                }
-                            />
+                    <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-4">
+                        {previewImages.map((image, index) => (
+                            <motion.div
+                                key={image.src}
+                                initial={{ opacity: 0, y: 24 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.15 }}
+                                transition={{
+                                    duration: 0.65,
+                                    delay: index * 0.08,
+                                    ease: [0.22, 1, 0.36, 1] as const,
+                                }}
+                                className="group relative aspect-[3/4] overflow-hidden bg-[#24151D]"
+                            >
+                                <Image
+                                    src={image.src}
+                                    alt={image.alt}
+                                    fill
+                                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 320px"
+                                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.035]"
+                                />
 
-                            {/* Image placeholder */}
-                            {!loadedImages.includes(index) && (
-                                <div className="absolute inset-0 animate-pulse bg-[#24151D]" />
-                            )}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/10" />
 
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/5 opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
+                                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-3 sm:p-5">
+                                    <div>
+                                        <span className="block text-[8px] uppercase tracking-[0.3em] text-white/65">
+                                            Miss Cookie
+                                        </span>
+                                        <span className="mt-1 block font-[family-name:var(--font-display)] text-xl text-white sm:text-2xl">
+                                            {image.number}
+                                        </span>
+                                    </div>
 
-                            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-3 sm:p-5 md:p-6">
-                                <div>
-                                    <span className="block text-[8px] uppercase tracking-[0.3em] text-white/60">
-                                        Miss Cookie
-                                    </span>
-                                    <span className="mt-1 block font-[family-name:var(--font-display)] text-xl text-white sm:text-2xl">
-                                        {image.number}
+                                    <span className="flex h-8 w-8 items-center justify-center border border-white/40 text-white">
+                                        <ArrowUpRight
+                                            size={14}
+                                            strokeWidth={1.2}
+                                            aria-hidden="true"
+                                        />
                                     </span>
                                 </div>
+                            </motion.div>
+                        ))}
+                    </div>
 
-                                <span className="flex h-9 w-9 translate-y-2 items-center justify-center border border-[#F0D5DE]/40 text-[#F0D5DE] opacity-0 backdrop-blur-sm transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 max-sm:hidden">
-                                    <Expand size={14} strokeWidth={1.2} aria-hidden="true" />
-                                </span>
-
-                                <span className="flex h-8 w-8 items-center justify-center border border-[#F0D5DE]/40 text-[#F0D5DE] sm:hidden">
-                                    <ArrowUpRight size={14} strokeWidth={1.2} aria-hidden="true" />
-                                </span>
-                            </div>
-
-                            <span className="absolute left-3 top-3 text-[8px] tracking-[0.2em] text-white/70 sm:left-5 sm:top-5">
-                                MC / {image.number}
-                            </span>
-                        </motion.button>
-                    ))}
-                </div>
-
-                <div className="mx-auto mt-16 flex max-w-[1500px] items-center justify-between border-t border-[#F0D5DE]/10 pt-6 md:mt-24">
-                    <p className="text-[8px] uppercase tracking-[0.25em] text-[#F0D5DE]/40">
-                        End of collection
+                    <p className="mt-6 text-[9px] uppercase tracking-[0.22em] text-[#F0D5DE]/40">
+                        Public preview · Four selected photographs
                     </p>
-                    <p className="text-[8px] uppercase tracking-[0.25em] text-[#F0D5DE]/40">
-                        22 photographs
-                    </p>
-                </div>
+                </motion.div>
             </section>
 
-            {/* CLOSING STATEMENT */}
-            <section className="relative overflow-hidden border-y border-[#F0D5DE]/10 bg-[#24151D] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40">
-                <div className="absolute -right-32 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-[#C77D96]/[0.08] blur-3xl" />
+            {/* Membership presentation */}
+            <section
+                id="membership"
+                className="relative scroll-mt-20 overflow-hidden border-y border-[#F0D5DE]/10 bg-[#24151D] px-6 py-24 md:px-10 md:py-32 lg:px-14 lg:py-40"
+            >
+                <div
+                    className="pointer-events-none absolute -right-32 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-[#C77D96]/[0.09] blur-3xl"
+                    aria-hidden="true"
+                />
 
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
+                    viewport={{ once: true, amount: 0.25 }}
                     variants={reveal}
-                    className="relative mx-auto max-w-[1200px]"
+                    className="relative mx-auto grid max-w-[1200px] gap-12 md:grid-cols-[1.2fr_0.8fr] md:items-center"
                 >
-                    <p className="mb-6 text-[9px] uppercase tracking-[0.4em] text-[#C77D96]">
-                        Beyond the frame
-                    </p>
+                    <div>
+                        <div className="mb-6 flex items-center gap-3">
+                            <Sparkles
+                                size={15}
+                                strokeWidth={1.3}
+                                className="text-[#C77D96]"
+                                aria-hidden="true"
+                            />
+                            <p className="text-[9px] uppercase tracking-[0.4em] text-[#C77D96]">
+                                The private experience
+                            </p>
+                        </div>
 
-                    <h2 className="max-w-4xl text-5xl leading-[0.95] tracking-[-0.04em] md:text-7xl lg:text-8xl">
-                        Some things are
-                        <br />
-                        best experienced
-                        <br />
-                        <span className="italic text-[#C77D96]">in person.</span>
-                    </h2>
+                        <h2 className="text-5xl leading-[0.94] tracking-[-0.045em] md:text-7xl lg:text-8xl">
+                            A little
+                            <br />
+                            <span className="italic text-[#C77D96]">
+                                more personal.
+                            </span>
+                        </h2>
 
-                    <div className="mt-10 flex flex-col gap-7 sm:flex-row sm:items-center sm:justify-between">
-                        <p className="max-w-md text-sm leading-7 text-[#F0D5DE]/65">
-                            For private inquiries and further details, you are welcome
-                            to get in touch directly.
+                        <p className="mt-8 max-w-lg text-sm leading-7 text-[#F0D5DE]/65">
+                            The members gallery is designed as a private
+                            destination for subscribers. Membership details
+                            and access arrangements are available by inquiry.
+                        </p>
+                    </div>
+
+                    <div className="border border-[#C77D96]/25 bg-[#090809]/35 p-7 sm:p-9">
+                        <div className="flex h-12 w-12 items-center justify-center border border-[#C77D96]/40 text-[#C77D96]">
+                            <LockKeyhole
+                                size={20}
+                                strokeWidth={1.2}
+                                aria-hidden="true"
+                            />
+                        </div>
+
+                        <p className="mt-7 text-[9px] uppercase tracking-[0.35em] text-[#C77D96]">
+                            Members only
+                        </p>
+
+                        <h3 className="mt-3 text-3xl tracking-[-0.03em]">
+                            Private Gallery
+                        </h3>
+
+                        <p className="mt-4 text-sm leading-7 text-[#F0D5DE]/60">
+                            Interested in membership? Get in touch for
+                            information about subscription availability,
+                            pricing and access.
                         </p>
 
                         <Link
                             href="/contact"
-                            className="group inline-flex w-fit items-center gap-5 border border-[#C77D96]/50 px-7 py-4 text-[9px] uppercase tracking-[0.25em] text-[#C77D96] transition-colors duration-300 hover:bg-[#C77D96] hover:text-[#090809] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C77D96]"
+                            className="group mt-8 inline-flex w-full items-center justify-between gap-4 border border-[#C77D96]/55 px-5 py-4 text-[9px] uppercase tracking-[0.22em] text-[#C77D96] transition-colors duration-300 hover:bg-[#C77D96] hover:text-[#090809] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C77D96]"
                         >
-                            Private Inquiry
+                            Ask about membership
                             <ArrowRight
                                 size={15}
                                 strokeWidth={1.2}
@@ -342,146 +315,55 @@ export default function Gallery() {
                                 aria-hidden="true"
                             />
                         </Link>
+
+                        <p className="mt-4 text-[10px] leading-5 text-[#F0D5DE]/35">
+                            Membership access and subscription payments must
+                            be activated separately.
+                        </p>
                     </div>
                 </motion.div>
             </section>
 
-            {/* IMMERSIVE LIGHTBOX */}
-            <AnimatePresence>
-                {selectedIndex !== null && (
-                    <motion.div
-                        key="gallery-lightbox"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.25 }}
-                        role="dialog"
-                        aria-modal="true"
-                        aria-label="Photograph viewer"
-                        className="fixed inset-0 z-[110] flex items-center justify-center bg-[#090809]/[0.98] p-4 backdrop-blur-xl sm:p-8"
-                        onClick={closeGallery}
+            {/* Closing statement */}
+            <section className="px-6 py-20 text-center md:px-10 md:py-28">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                    variants={reveal}
+                    className="mx-auto max-w-3xl"
+                >
+                    <p className="text-[9px] uppercase tracking-[0.4em] text-[#C77D96]">
+                        Beyond the frame
+                    </p>
+
+                    <h2 className="mt-6 text-4xl leading-tight tracking-[-0.04em] md:text-6xl">
+                        Some moments are
+                        <br />
+                        <span className="italic text-[#C77D96]">
+                            meant to be discovered.
+                        </span>
+                    </h2>
+
+                    <p className="mx-auto mt-6 max-w-lg text-sm leading-7 text-[#F0D5DE]/55">
+                        For private inquiries and further information,
+                        you are welcome to get in touch directly.
+                    </p>
+
+                    <Link
+                        href="/contact"
+                        className="group mt-8 inline-flex items-center gap-4 border border-[#F0D5DE]/20 px-7 py-4 text-[9px] uppercase tracking-[0.25em] transition-colors duration-300 hover:border-[#C77D96]/60 hover:text-[#C77D96] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C77D96]"
                     >
-                        {/* Top controls */}
-                        <div
-                            className="absolute inset-x-0 top-0 z-20 flex items-center justify-between px-5 py-5 sm:px-8 sm:py-7"
-                            onClick={(event) => event.stopPropagation()}
-                        >
-                            <div>
-                                <p className="text-[8px] uppercase tracking-[0.35em] text-[#C77D96]">
-                                    Miss Cookie
-                                </p>
-                                <p className="mt-2 text-[9px] uppercase tracking-[0.2em] text-white/50">
-                                    Private Collection
-                                </p>
-                            </div>
-
-                            <div className="flex items-center gap-5">
-                                <span className="font-[family-name:var(--font-display)] text-lg text-white">
-                                    {String(selectedIndex + 1).padStart(2, "0")}
-                                    <span className="mx-2 text-white/25">/</span>
-                                    <span className="text-white/40">
-                                        {String(images.length).padStart(2, "0")}
-                                    </span>
-                                </span>
-
-                                <button
-                                    type="button"
-                                    onClick={closeGallery}
-                                    aria-label="Close gallery"
-                                    className="flex h-11 w-11 items-center justify-center border border-white/15 text-white transition-colors hover:border-[#C77D96]/60 hover:text-[#C77D96] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C77D96]"
-                                >
-                                    <X size={20} strokeWidth={1.2} aria-hidden="true" />
-                                </button>
-                            </div>
-                        </div>
-
-                        {/* Previous */}
-                        <button
-                            type="button"
-                            onClick={(event) => {
-                                event.stopPropagation();
-                                previousImage();
-                            }}
-                            aria-label="Previous photograph"
-                            className="absolute left-1 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center text-white/65 transition-colors hover:text-[#C77D96] sm:left-5 sm:h-14 sm:w-14"
-                        >
-                            <ChevronLeft size={30} strokeWidth={1} aria-hidden="true" />
-                        </button>
-
-                        {/* Active image */}
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={images[selectedIndex].src}
-                                initial={{ opacity: 0, scale: 0.985 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.985 }}
-                                transition={{ duration: 0.25 }}
-                                className="relative h-[72svh] w-full max-w-6xl sm:h-[78svh]"
-                                onClick={(event) => event.stopPropagation()}
-                            >
-                                <Image
-                                    src={images[selectedIndex].src}
-                                    alt={images[selectedIndex].alt}
-                                    fill
-                                    priority
-                                    sizes="100vw"
-                                    className="object-contain"
-                                />
-                            </motion.div>
-                        </AnimatePresence>
-
-                        {/* Next */}
-                        <button
-                            type="button"
-                            onClick={(event) => {
-                                event.stopPropagation();
-                                nextImage();
-                            }}
-                            aria-label="Next photograph"
-                            className="absolute right-1 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center text-white/65 transition-colors hover:text-[#C77D96] sm:right-5 sm:h-14 sm:w-14"
-                        >
-                            <ChevronRight size={30} strokeWidth={1} aria-hidden="true" />
-                        </button>
-
-                        {/* Bottom controls */}
-                        <div className="absolute inset-x-0 bottom-0 z-20 flex items-center justify-between px-5 py-6 sm:px-8 sm:py-8">
-                            <button
-                                type="button"
-                                onClick={previousImage}
-                                className="flex items-center gap-3 text-[8px] uppercase tracking-[0.25em] text-white/50 transition-colors hover:text-[#C77D96]"
-                            >
-                                <ArrowLeft size={14} strokeWidth={1.2} aria-hidden="true" />
-                                Previous
-                            </button>
-
-                            <div className="flex max-w-[45%] items-center gap-1.5 overflow-hidden">
-                                {images.map((image, index) => (
-                                    <button
-                                        key={image.src}
-                                        type="button"
-                                        onClick={() => setSelectedIndex(index)}
-                                        aria-label={`Go to photograph ${index + 1}`}
-                                        aria-current={index === selectedIndex ? "true" : undefined}
-                                        className={`h-[2px] shrink-0 transition-all duration-300 ${index === selectedIndex
-                                                ? "w-5 bg-[#C77D96]"
-                                                : "w-1.5 bg-white/25 hover:bg-white/60"
-                                            }`}
-                                    />
-                                ))}
-                            </div>
-
-                            <button
-                                type="button"
-                                onClick={nextImage}
-                                className="flex items-center gap-3 text-[8px] uppercase tracking-[0.25em] text-white/50 transition-colors hover:text-[#C77D96]"
-                            >
-                                Next
-                                <ArrowRight size={14} strokeWidth={1.2} aria-hidden="true" />
-                            </button>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                        Private inquiry
+                        <ArrowRight
+                            size={15}
+                            strokeWidth={1.2}
+                            className="transition-transform duration-300 group-hover:translate-x-1"
+                            aria-hidden="true"
+                        />
+                    </Link>
+                </motion.div>
+            </section>
         </div>
     );
 }
