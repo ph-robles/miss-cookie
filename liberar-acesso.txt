@@ -1,0 +1,22 @@
+ 
+-- BLOQUEAR acesso
+update public.gallery_access
+set active = false,
+    updated_at = now()
+where user_id = (
+  select id
+  from auth.users
+  where lower(email) = lower('EMAIL_DO_CLIENTE_AQUI')
+);
+ 
+ 
+-- LIBERAR acesso após confirmar o pagamento
+insert into public.gallery_access (user_id, active, updated_at)
+select id, true, now()
+from auth.users
+where lower(email) = lower('EMAIL_DO_CLIENTE_AQUI')
+on conflict (user_id)
+do update set
+  active = true,
+  updated_at = now();
+ 
