@@ -1,42 +1,71 @@
- 
 import { NextResponse } from "next/server";
 import { createSupabaseServerClient } from "../../../lib/supabase/server";
- 
+
 export const dynamic = "force-dynamic";
- 
+export const revalidate = 0;
+
+type GalleryImage = {
+  name: string;
+  url: string;
+};
+
 export async function GET() {
   try {
     const supabase = await createSupabaseServerClient();
- 
-    // 1. Confirmar a identidade do usuário no servidor
+
+    // Confirma a identidade diretamente com o servidor do Supabase.
     const {
       data: { user },
       error: userError,
     } = await supabase.auth.getUser();
- 
+
     if (userError || !user) {
+      console.error(
+        "Usuário não autenticado:",
+        userError?.message ?? "Sessão não encontrada."
+      );
+
       return NextResponse.json(
-        { error: "Faça login para continuar." },
-        { status: 401 }
+        {
+          error: "Faça login para continuar.",
+          images: [],
+        },
+        {
+          status: 401,
+          headers: {
+            "Cache-Control": "private, no-store, max-age=0",
+          },
+        }
       );
     }
- 
-    // 2. Verificar se a dona autorizou o acesso
+
+    // Verifica se o usuário recebeu autorização para acessar a galeria.
     const { data: access, error: accessError } = await supabase
       .from("gallery_access")
       .select("active")
       .eq("user_id", user.id)
       .maybeSingle();
- 
+
     if (accessError) {
-      console.error("Erro ao verificar acesso à galeria:", accessError.message);
- 
+      console.error(
+        "Erro ao verificar acesso à galeria:",
+        accessError.message
+      );
+
       return NextResponse.json(
-        { error: "Não foi possível verificar seu acesso." },
-        { status: 500 }
+        {
+          error: "Não foi possível verificar seu acesso.",
+          images: [],
+        },
+        {
+          status: 500,
+          headers: {
+            "Cache-Control": "private, no-store, max-age=0",
+          },
+        }
       );
     }
- 
+
     if (!access?.active) {
       return NextResponse.json(
         {
@@ -44,80 +73,131 @@ export async function GET() {
             "Sua galeria ainda não está liberada. Entre em contato com Miss Cookie.",
           images: [],
         },
-        { status: 403 }
+        {
+          status: 403,
+          headers: {
+            "Cache-Control": "private, no-store, max-age=0",
+          },
+        }
       );
     }
- 
-    // 3. Listar as fotos no bucket privado
+
+    // Lista os arquivos existentes na raiz do bucket privado.
     const { data: files, error: filesError } = await supabase.storage
       .from("private-gallery")
       .list("", {
         limit: 100,
-        sortBy: { column: "name", order: "asc" },
+        offset: 0,
+        sortBy: {
+          column: "name",
+          order: "asc",
+        },
       });
- 
+
     if (filesError) {
       console.error("Erro ao listar fotos:", filesError.message);
- 
+
       return NextResponse.json(
-        { error: "Não foi possível carregar as fotos." },
-        { status: 500 }
+        {
+          error: "Não foi possível carregar as fotos.",
+          images: [],
+        },
+        {
+          status: 500,
+          headers: {
+            "Cache-Control": "private, no-store, max-age=0",
+          },
+        }
       );
     }
- 
-    // Ignorar pastas e aceitar somente formatos de imagem permitidos
+
+    // Aceita somente arquivos de imagem.
     const allowedExtensions = /\.(jpe?g|png|webp|avif)$/i;
- 
-    const imageFiles = (files ?? []).filter(
-      (file) => file.id && allowedExtensions.test(file.name)
-    );
- 
+
+    const imageFiles = (files ?? []).filter((file) => {
+      return Boolean(file.id) && allowedExtensions.test(file.name);
+    });
+
     if (imageFiles.length === 0) {
-      return NextResponse.json({ images: [] });
+      return NextResponse.json(
+        {
+          images: [],
+        },
+        {
+          status: 200,
+          headers: {
+            "Cache-Control": "private, no-store, max-age=0",
+          },
+        }
+      );
     }
- 
-    // 4. Gerar links temporários de cinco minutos
+
     const paths = imageFiles.map((file) => file.name);
- 
+
+    // URLs válidas durante cinco minutos.
     const { data: signedFiles, error: signedError } =
       await supabase.storage
         .from("private-gallery")
         .createSignedUrls(paths, 300);
- 
+
     if (signedError || !signedFiles) {
       console.error(
         "Erro ao gerar links temporários:",
-        signedError?.message
+        signedError?.message ?? "Nenhum link foi retornado."
       );
- 
+
       return NextResponse.json(
-        { error: "Não foi possível liberar as fotos." },
-        { status: 500 }
+        {
+          error: "Não foi possível liberar as fotos.",
+          images: [],
+        },
+        {
+          status: 500,
+          headers: {
+            "Cache-Control": "private, no-store, max-age=0",
+          },
+        }
       );
     }
- 
-    const images = signedFiles
-      .filter((file) => file.signedUrl)
-      .map((file, index) => ({
-        name: imageFiles[index]?.name ?? file.path,
-        url: file.signedUrl,
-      }));
- 
+
+    const images: GalleryImage[] = signedFiles
+      .map((signedFile) => {
+        if (!signedFile.signedUrl) {
+          return null;
+        }
+
+        return {
+          name: signedFile.path,
+          url: signedFile.signedUrl,
+        };
+      })
+      .filter((image): image is GalleryImage => image !== null);
+
     return NextResponse.json(
-      { images },
       {
+        images,
+      },
+      {
+        status: 200,
         headers: {
-          "Cache-Control": "private, no-store",
+          "Cache-Control": "private, no-store, max-age=0",
         },
       }
     );
   } catch (error) {
     console.error("Erro inesperado na galeria:", error);
- 
+
     return NextResponse.json(
-      { error: "Ocorreu um erro inesperado." },
-      { status: 500 }
+      {
+        error: "Ocorreu um erro inesperado.",
+        images: [],
+      },
+      {
+        status: 500,
+        headers: {
+          "Cache-Control": "private, no-store, max-age=0",
+        },
+      }
     );
   }
 }
- 
