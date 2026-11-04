@@ -41,11 +41,17 @@ function getAuthenticationErrorMessage(error: unknown) {
         return "An account already exists for this email address. Please sign in.";
     }
 
-    if (normalizedMessage.includes("password should be")) {
+    if (
+        normalizedMessage.includes("password should be") ||
+        normalizedMessage.includes("password must be")
+    ) {
         return "Your password must contain at least 8 characters.";
     }
 
-    if (normalizedMessage.includes("rate limit")) {
+    if (
+        normalizedMessage.includes("rate limit") ||
+        normalizedMessage.includes("too many requests")
+    ) {
         return "Too many attempts. Please wait a few minutes and try again.";
     }
 
@@ -70,6 +76,7 @@ function LoginForm() {
     const [error, setError] = useState("");
 
     const requestedNext = searchParams.get("next");
+    const queryError = searchParams.get("error");
 
     const destination = useMemo(() => {
         if (
@@ -81,8 +88,6 @@ function LoginForm() {
 
         return "/account";
     }, [requestedNext]);
-
-    const queryError = searchParams.get("error");
 
     const confirmationErrorMessage = useMemo(() => {
         if (queryError === "confirmation_failed") {
@@ -178,6 +183,7 @@ function LoginForm() {
             {/* BACKGROUND LIGHTS */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
                 <div className="absolute -left-40 top-16 h-96 w-96 rounded-full bg-[#C77D96]/[0.055] blur-[130px]" />
+
                 <div className="absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-[#C77D96]/[0.05] blur-[140px]" />
             </div>
 
@@ -202,7 +208,7 @@ function LoginForm() {
 
                     <div className="relative">
                         {/* TITLE */}
-                        <div className="text-center">
+                        <header className="text-center">
                             <div className="mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-full border border-[#C77D96]/25 bg-[#C77D96]/10">
                                 <LockKeyhole
                                     size={19}
@@ -226,7 +232,7 @@ function LoginForm() {
                                     ? "Sign in to access your account and private collection."
                                     : "Create an account and confirm your email to request access to the private gallery."}
                             </p>
-                        </div>
+                        </header>
 
                         {/* MODE SELECTOR */}
                         <div className="mb-7 mt-8 grid grid-cols-2 gap-1 rounded-xl border border-[#C77D96]/20 bg-[#090809]/70 p-1.5">
@@ -237,8 +243,8 @@ function LoginForm() {
                                 disabled={loading}
                                 className={
                                     mode === "login"
-                                        ? "rounded-lg border border-[#C77D96] bg-[#C77D96] px-3 py-3 text-sm font-semibold text-[#090809] shadow-[0_8px_24px_rgba(199,125,150,0.22)] transition duration-300 disabled:cursor-not-allowed"
-                                        : "rounded-lg border border-transparent bg-transparent px-3 py-3 text-sm text-[#BDA7B0] transition duration-300 hover:bg-[#C77D96]/10 hover:text-[#F0D5DE] disabled:cursor-not-allowed"
+                                        ? "auth-tab-active rounded-lg px-3 py-3 text-sm font-semibold"
+                                        : "auth-tab-inactive rounded-lg px-3 py-3 text-sm"
                                 }
                             >
                                 Sign In
@@ -251,8 +257,8 @@ function LoginForm() {
                                 disabled={loading}
                                 className={
                                     mode === "signup"
-                                        ? "rounded-lg border border-[#C77D96] bg-[#C77D96] px-3 py-3 text-sm font-semibold text-[#090809] shadow-[0_8px_24px_rgba(199,125,150,0.22)] transition duration-300 disabled:cursor-not-allowed"
-                                        : "rounded-lg border border-transparent bg-transparent px-3 py-3 text-sm text-[#BDA7B0] transition duration-300 hover:bg-[#C77D96]/10 hover:text-[#F0D5DE] disabled:cursor-not-allowed"
+                                        ? "auth-tab-active rounded-lg px-3 py-3 text-sm font-semibold"
+                                        : "auth-tab-inactive rounded-lg px-3 py-3 text-sm"
                                 }
                             >
                                 Create Account
@@ -273,6 +279,7 @@ function LoginForm() {
 
                         {/* FORM */}
                         <form onSubmit={handleSubmit} className="space-y-5">
+                            {/* EMAIL */}
                             <div>
                                 <label
                                     htmlFor="email"
@@ -286,7 +293,7 @@ function LoginForm() {
                                         aria-hidden="true"
                                         size={17}
                                         strokeWidth={1.4}
-                                        className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#C77D96]"
+                                        className="pointer-events-none absolute left-4 top-1/2 z-10 -translate-y-1/2 text-[#C77D96]"
                                     />
 
                                     <input
@@ -300,12 +307,13 @@ function LoginForm() {
                                         disabled={loading}
                                         value={email}
                                         onChange={(event) => setEmail(event.target.value)}
-                                        className="w-full rounded-xl border border-[#C77D96]/25 bg-[#090809] py-3.5 pl-12 pr-4 text-sm text-[#F0D5DE] outline-none transition duration-300 placeholder:text-[#BDA7B0]/45 focus:border-[#C77D96] focus:ring-2 focus:ring-[#C77D96]/15 disabled:cursor-not-allowed disabled:opacity-60"
+                                        className="auth-input w-full rounded-xl border py-3.5 pl-12 pr-4 text-sm outline-none disabled:cursor-not-allowed"
                                         placeholder="you@example.com"
                                     />
                                 </div>
                             </div>
 
+                            {/* PASSWORD */}
                             <div>
                                 <div className="mb-2 flex items-center justify-between gap-4">
                                     <label
@@ -315,11 +323,9 @@ function LoginForm() {
                                         Password
                                     </label>
 
-                                    {mode === "login" && (
-                                        <span className="text-[10px] text-[#BDA7B0]">
-                                            Minimum 8 characters
-                                        </span>
-                                    )}
+                                    <span className="text-[10px] text-[#BDA7B0]">
+                                        Minimum 8 characters
+                                    </span>
                                 </div>
 
                                 <div className="relative">
@@ -327,7 +333,7 @@ function LoginForm() {
                                         aria-hidden="true"
                                         size={17}
                                         strokeWidth={1.4}
-                                        className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#C77D96]"
+                                        className="pointer-events-none absolute left-4 top-1/2 z-10 -translate-y-1/2 text-[#C77D96]"
                                     />
 
                                     <input
@@ -345,7 +351,7 @@ function LoginForm() {
                                         disabled={loading}
                                         value={password}
                                         onChange={(event) => setPassword(event.target.value)}
-                                        className="w-full rounded-xl border border-[#C77D96]/25 bg-[#090809] py-3.5 pl-12 pr-12 text-sm text-[#F0D5DE] outline-none transition duration-300 placeholder:text-[#BDA7B0]/45 focus:border-[#C77D96] focus:ring-2 focus:ring-[#C77D96]/15 disabled:cursor-not-allowed disabled:opacity-60"
+                                        className="auth-input w-full rounded-xl border py-3.5 pl-12 pr-12 text-sm outline-none disabled:cursor-not-allowed"
                                         placeholder="At least 8 characters"
                                     />
 
@@ -359,7 +365,7 @@ function LoginForm() {
                                             showPassword ? "Hide password" : "Show password"
                                         }
                                         aria-pressed={showPassword}
-                                        className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-lg bg-transparent text-[#BDA7B0] transition hover:bg-[#C77D96]/10 hover:text-[#F0D5DE] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C77D96] disabled:cursor-not-allowed disabled:opacity-50"
+                                        className="absolute right-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-lg border-0 bg-transparent text-[#BDA7B0] transition-colors duration-300 hover:bg-[#C77D96]/10 hover:text-[#F0D5DE] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C77D96] disabled:cursor-not-allowed disabled:opacity-50"
                                     >
                                         {showPassword ? (
                                             <EyeOff size={17} strokeWidth={1.5} />
@@ -382,7 +388,7 @@ function LoginForm() {
                                 </div>
                             )}
 
-                            {/* SUCCESS MESSAGE */}
+                            {/* SUCCESS */}
                             {message && (
                                 <div
                                     role="status"
@@ -406,7 +412,7 @@ function LoginForm() {
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="mt-7 flex w-full items-center justify-center gap-2 rounded-xl border border-[#C77D96] bg-[#C77D96] px-5 py-4 text-xs font-semibold uppercase tracking-[0.22em] text-[#090809] shadow-[0_12px_35px_rgba(199,125,150,0.22)] transition duration-300 hover:border-[#F0D5DE] hover:bg-[#F0D5DE] hover:shadow-[0_16px_45px_rgba(199,125,150,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F0D5DE] focus-visible:ring-offset-2 focus-visible:ring-offset-[#24151D] disabled:cursor-not-allowed disabled:border-[#C77D96]/60 disabled:bg-[#C77D96]/60 disabled:text-[#090809]/70 disabled:shadow-none"
+                                className="auth-submit-button mt-7 gap-2 rounded-xl px-5 py-4 text-xs font-semibold uppercase tracking-[0.22em]"
                             >
                                 {loading && (
                                     <LoaderCircle
@@ -458,6 +464,7 @@ function LoginForm() {
                         strokeWidth={1.4}
                         className="text-[#C77D96]"
                     />
+
                     Secure member access
                 </div>
             </div>

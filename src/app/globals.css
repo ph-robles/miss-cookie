@@ -1,32 +1,32 @@
 @import "tailwindcss";
 
 /* =========================================================
-   MISS COOKIE — BLACK & ROSE
-   Luxury editorial · Cinematic lighting · Responsive
+   MISS COOKIE | BLACK & ROSE
+   Luxury editorial | Cinematic lighting | Responsive
 ========================================================= */
 
 :root {
   color-scheme: dark;
 
   --background: #090809;
-  --background-soft: #24151D;
-  --foreground: #F0D5DE;
-  --muted: #BDA7B0;
+  --background-soft: #24151d;
+  --foreground: #f0d5de;
+  --muted: #bda7b0;
 
-  --champagne: #C77D96;
-  --caramel: #8D526A;
-  --cookie: #C77D96;
-  --cookie-dark: #713D54;
+  --champagne: #c77d96;
+  --caramel: #8d526a;
+  --cookie: #c77d96;
+  --cookie-dark: #713d54;
 
-  --rose-light: #F0D5DE;
-  --rose-deep: #A94F70;
+  --rose-light: #f0d5de;
+  --rose-deep: #a94f70;
   --rose-glow: rgba(199, 125, 150, 0.18);
   --rose-border: rgba(199, 125, 150, 0.42);
   --border-rose: rgba(199, 125, 150, 0.28);
   --rose-soft: rgba(199, 125, 150, 0.08);
 
   --border: rgba(240, 213, 222, 0.12);
-  --font-color-muted: #BDA7B0;
+  --font-color-muted: #bda7b0;
 }
 
 /* =========================================================
@@ -76,16 +76,25 @@ a {
   text-decoration: none;
 }
 
+/*
+  Não definir background ou border globalmente.
+  Cada botão controla seu próprio visual por Tailwind ou CSS específico.
+*/
 button {
   font: inherit;
-  background: none;
-  border: 0;
+  color: inherit;
   cursor: pointer;
 }
 
 button:disabled {
   cursor: not-allowed;
-  opacity: 0.55;
+}
+
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
 }
 
 img {
@@ -113,7 +122,9 @@ img {
 
 .nav-link {
   position: relative;
-  transition: color 300ms ease, opacity 300ms ease;
+  transition:
+    color 300ms ease,
+    opacity 300ms ease;
 }
 
 .nav-link::after {
@@ -124,10 +135,10 @@ img {
   width: 100%;
   height: 1px;
   background: var(--champagne);
+  opacity: 0.85;
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 350ms ease;
-  opacity: 0.85;
 }
 
 .nav-link:hover,
@@ -143,7 +154,9 @@ img {
 .mobile-nav-link {
   position: relative;
   letter-spacing: 0.01em;
-  transition: color 350ms ease, opacity 350ms ease;
+  transition:
+    color 350ms ease,
+    opacity 350ms ease;
 }
 
 .mobile-nav-link::after {
@@ -176,11 +189,23 @@ img {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  color: var(--rose-light);
-  border-color: var(--rose-border);
+
+  background: #c77d96 !important;
+  color: #090809 !important;
+  -webkit-text-fill-color: #090809 !important;
+
+  border: 1px solid #f0d5de !important;
+  opacity: 1 !important;
+
+  font-weight: 700 !important;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-shadow: none !important;
+
   transition:
-    color 350ms ease,
-    border-color 350ms ease,
+    background-color 250ms ease,
+    color 250ms ease,
+    border-color 250ms ease,
     box-shadow 350ms ease;
 }
 
@@ -189,8 +214,10 @@ img {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: var(--champagne);
+
+  background: var(--rose-light);
   transform: translateY(102%);
+
   transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -207,16 +234,29 @@ img {
   z-index: 2;
 }
 
-.private-inquiry-button:hover,
+.private-inquiry-button:hover:not(:disabled),
 .private-inquiry-button:focus-visible {
-  color: var(--background);
-  border-color: var(--champagne);
+  background: #f0d5de !important;
+  color: #090809 !important;
+  -webkit-text-fill-color: #090809 !important;
+  border-color: #f0d5de !important;
   box-shadow: 0 0 28px var(--rose-glow);
 }
 
-.private-inquiry-button:hover::before,
+.private-inquiry-button:hover:not(:disabled)::before,
 .private-inquiry-button:focus-visible::before {
   transform: translateY(0);
+}
+
+.private-inquiry-button:disabled {
+  background: #24151d !important;
+  color: #f0d5de !important;
+  -webkit-text-fill-color: #f0d5de !important;
+
+  border-color: rgba(240, 213, 222, 0.2) !important;
+
+  opacity: 1 !important;
+  cursor: not-allowed;
 }
 
 /* =========================================================
@@ -227,27 +267,33 @@ img {
   position: relative;
   display: inline-block;
   flex-shrink: 0;
+
   width: 38px;
   height: 38px;
   border-radius: 50%;
+
   background:
     radial-gradient(circle at 34% 27%,
       rgba(240, 213, 222, 0.28) 0 1px,
       transparent 2px),
     linear-gradient(145deg,
-      #E3A5B9 0%,
-      #C77D96 48%,
-      #713D54 100%);
+      #e3a5b9 0%,
+      #c77d96 48%,
+      #713d54 100%);
+
   box-shadow:
     inset 1px 1px 0 rgba(240, 213, 222, 0.22),
     inset -3px -4px 8px rgba(9, 8, 9, 0.28),
     0 0 18px rgba(199, 125, 150, 0.08);
+
   transform: rotate(-8deg);
   opacity: 0.9;
+
   transition:
     transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
     opacity 300ms ease,
     box-shadow 300ms ease;
+
   animation: cookieFloat 5s ease-in-out infinite;
 }
 
@@ -256,9 +302,11 @@ img {
   position: absolute;
   top: -1px;
   right: -1px;
+
   width: 11px;
   height: 11px;
   border-radius: 50%;
+
   background: var(--background);
 }
 
@@ -281,9 +329,11 @@ img {
 
 .cookie-chip {
   position: absolute;
+
   width: 4px;
   height: 4px;
   border-radius: 50%;
+
   background: var(--cookie-dark);
   box-shadow: inset 1px 1px 1px rgba(240, 213, 222, 0.12);
 }
@@ -346,7 +396,7 @@ img {
 }
 
 /* =========================================================
-   ROSE LIGHTING & REUSABLE SURFACES
+   ROSE LIGHTING AND REUSABLE SURFACES
 ========================================================= */
 
 .rose-glow {
@@ -354,6 +404,7 @@ img {
       rgba(199, 125, 150, 0.22) 0%,
       rgba(169, 79, 112, 0.09) 38%,
       transparent 72%);
+
   filter: blur(55px);
   pointer-events: none;
 }
@@ -367,8 +418,10 @@ img {
   content: "";
   position: absolute;
   inset: 0;
+
   border: 1px solid rgba(240, 213, 222, 0.12);
   box-shadow: inset 0 0 55px rgba(199, 125, 150, 0.06);
+
   pointer-events: none;
 }
 
@@ -394,7 +447,7 @@ img {
 }
 
 /* =========================================================
-   ABOUT — GENERAL
+   ABOUT | GENERAL
 ========================================================= */
 
 .about-page {
@@ -423,8 +476,10 @@ img {
   content: "";
   position: absolute;
   inset: 0;
+
   border: 1px solid rgba(240, 213, 222, 0.12);
   box-shadow: inset 0 0 45px rgba(199, 125, 150, 0.035);
+
   pointer-events: none;
 }
 
@@ -439,13 +494,15 @@ img {
 }
 
 /* =========================================================
-   ABOUT — COOKIE PHOTO REVEAL
+   ABOUT | COOKIE PHOTO REVEAL
 ========================================================= */
 
 .about-reveal {
   position: relative;
+
   min-height: 420px;
   overflow: hidden;
+
   border: 1px solid rgba(240, 213, 222, 0.12);
   background: var(--background-soft);
 }
@@ -453,11 +510,14 @@ img {
 .about-reveal-image {
   position: absolute;
   inset: 0;
+
   opacity: 0;
   transform: scale(1.08);
+
   transition:
     opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
     transform 1200ms cubic-bezier(0.22, 1, 0.36, 1);
+
   pointer-events: none;
 }
 
@@ -471,12 +531,15 @@ img {
   position: absolute;
   inset: 0;
   z-index: 5;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 26px;
+
   cursor: pointer;
+
   transition:
     opacity 600ms ease,
     transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -496,9 +559,11 @@ img {
   width: 72px;
   height: 72px;
   opacity: 1;
+
   animation:
     aboutCookieFloat 4s ease-in-out infinite,
     aboutCookiePulse 3s ease-in-out infinite;
+
   transition:
     transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
     filter 400ms ease;
@@ -535,25 +600,34 @@ img {
 
 .about-reveal-glow {
   position: absolute;
+
   width: 150px;
   height: 150px;
   border-radius: 50%;
+
   background: rgba(199, 125, 150, 0.12);
   filter: blur(35px);
+
   pointer-events: none;
 }
 
 .about-reveal-label {
   position: relative;
+
   display: flex;
   align-items: center;
   gap: 12px;
+
   color: rgba(240, 213, 222, 0.72);
+
   font-size: 9px;
   font-weight: 500;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  transition: color 300ms ease, transform 400ms ease;
+
+  transition:
+    color 300ms ease,
+    transform 400ms ease;
 }
 
 .about-reveal-trigger:hover .about-reveal-label {
@@ -563,9 +637,12 @@ img {
 
 .about-reveal-line {
   display: block;
+
   width: 28px;
   height: 1px;
+
   background: rgba(199, 125, 150, 0.65);
+
   transition: width 400ms ease;
 }
 
@@ -578,12 +655,16 @@ img {
   top: 22px;
   right: 22px;
   z-index: 8;
+
   display: flex;
   align-items: center;
   gap: 9px;
+
   color: rgba(240, 213, 222, 0.55);
+
   font-size: 8px;
   letter-spacing: 0.3em;
+
   transition: opacity 400ms ease;
 }
 
@@ -594,13 +675,19 @@ img {
 
 .about-reveal-close {
   padding: 8px 0;
+
   color: rgba(240, 213, 222, 0.75);
+
   font-size: 8px;
   font-weight: 500;
   letter-spacing: 0.3em;
   text-transform: uppercase;
+
   cursor: pointer;
-  transition: color 300ms ease, transform 300ms ease;
+
+  transition:
+    color 300ms ease,
+    transform 300ms ease;
 }
 
 .about-reveal-close:hover {
@@ -609,14 +696,16 @@ img {
 }
 
 /* =========================================================
-   CHAMPAGNE RAIN — HERO
+   CHAMPAGNE RAIN | HERO
 ========================================================= */
 
 .champagne-rain {
   position: absolute;
   inset: 0;
   z-index: 2;
+
   overflow: hidden;
+
   pointer-events: none;
   contain: paint;
   isolation: isolate;
@@ -625,50 +714,53 @@ img {
 .champagne-glow {
   position: absolute;
   inset: 0;
+
   background: radial-gradient(ellipse at 50% 15%,
       rgba(199, 125, 150, 0.16),
       transparent 65%);
+
   animation: champagne-glow 6s ease-in-out infinite alternate;
 }
 
 .champagne-drop {
   position: absolute;
   top: -15vh;
-  left: 0;
+  left: var(--drop-left, 50%);
+
   width: 2px;
   height: 28px;
   border-radius: 999px;
+
   opacity: 0;
+
   background: linear-gradient(to bottom,
       transparent 0%,
       rgba(240, 213, 222, 0.75) 30%,
       rgba(255, 238, 244, 1) 50%,
       rgba(199, 125, 150, 0.8) 70%,
       transparent 100%);
+
   box-shadow: 0 0 6px rgba(240, 213, 222, 0.35);
+
   animation: champagne-fall 9s linear infinite;
+  animation-delay: var(--drop-delay, 0s);
+
   will-change: transform, opacity;
 }
 
-/* Distribuição sem 60 regras manuais */
-.champagne-drop {
-  left: var(--drop-left, 50%);
-  animation-delay: var(--drop-delay, 0s);
-}
-
 .champagne-drop:nth-child(3n) {
-  height: 32px;
   width: 2px;
+  height: 32px;
 }
 
 .champagne-drop:nth-child(3n + 1) {
-  height: 22px;
   width: 1px;
+  height: 22px;
 }
 
 .champagne-drop:nth-child(3n + 2) {
-  height: 36px;
   width: 3px;
+  height: 36px;
   box-shadow: 0 0 8px rgba(240, 213, 222, 0.45);
 }
 
@@ -700,6 +792,191 @@ img {
   to {
     opacity: 1;
   }
+}
+
+/* =========================================================
+   MISS COOKIE AUTHENTICATION
+========================================================= */
+
+.auth-tab-active {
+  appearance: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #c77d96 !important;
+  background-color: #c77d96 !important;
+
+  color: #090809 !important;
+  -webkit-text-fill-color: #090809 !important;
+
+  border: 1px solid #c77d96 !important;
+  opacity: 1 !important;
+
+  box-shadow: 0 8px 24px rgba(199, 125, 150, 0.22) !important;
+
+  transition:
+    background-color 300ms ease,
+    border-color 300ms ease,
+    color 300ms ease,
+    box-shadow 300ms ease,
+    transform 300ms ease;
+}
+
+.auth-tab-active:hover:not(:disabled),
+.auth-tab-active:focus-visible {
+  background: #f0d5de !important;
+  background-color: #f0d5de !important;
+
+  color: #090809 !important;
+  -webkit-text-fill-color: #090809 !important;
+
+  border-color: #f0d5de !important;
+
+  box-shadow: 0 10px 30px rgba(199, 125, 150, 0.3) !important;
+}
+
+.auth-tab-inactive {
+  appearance: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent !important;
+  background-color: transparent !important;
+
+  color: #bda7b0 !important;
+  -webkit-text-fill-color: #bda7b0 !important;
+
+  border: 1px solid transparent !important;
+  opacity: 1 !important;
+
+  transition:
+    background-color 300ms ease,
+    border-color 300ms ease,
+    color 300ms ease;
+}
+
+.auth-tab-inactive:hover:not(:disabled),
+.auth-tab-inactive:focus-visible {
+  background: rgba(199, 125, 150, 0.1) !important;
+  background-color: rgba(199, 125, 150, 0.1) !important;
+
+  color: #f0d5de !important;
+  -webkit-text-fill-color: #f0d5de !important;
+
+  border-color: rgba(199, 125, 150, 0.2) !important;
+}
+
+.auth-submit-button {
+  appearance: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  background: #c77d96 !important;
+  background-color: #c77d96 !important;
+
+  color: #090809 !important;
+  -webkit-text-fill-color: #090809 !important;
+
+  border: 1px solid #c77d96 !important;
+  opacity: 1 !important;
+
+  box-shadow: 0 12px 35px rgba(199, 125, 150, 0.22) !important;
+
+  transition:
+    background-color 300ms ease,
+    border-color 300ms ease,
+    color 300ms ease,
+    box-shadow 300ms ease,
+    transform 300ms ease;
+}
+
+.auth-submit-button:hover:not(:disabled),
+.auth-submit-button:focus-visible {
+  background: #f0d5de !important;
+  background-color: #f0d5de !important;
+
+  color: #090809 !important;
+  -webkit-text-fill-color: #090809 !important;
+
+  border-color: #f0d5de !important;
+
+  box-shadow: 0 16px 45px rgba(199, 125, 150, 0.3) !important;
+
+  transform: translateY(-1px);
+}
+
+.auth-submit-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.auth-submit-button:disabled {
+  background: rgba(199, 125, 150, 0.55) !important;
+  background-color: rgba(199, 125, 150, 0.55) !important;
+
+  color: rgba(9, 8, 9, 0.75) !important;
+  -webkit-text-fill-color: rgba(9, 8, 9, 0.75) !important;
+
+  border-color: rgba(199, 125, 150, 0.55) !important;
+
+  box-shadow: none !important;
+  opacity: 1 !important;
+  cursor: not-allowed;
+}
+
+.auth-input {
+  appearance: none;
+
+  background: #090809 !important;
+  background-color: #090809 !important;
+
+  color: #f0d5de !important;
+  -webkit-text-fill-color: #f0d5de !important;
+
+  border-color: rgba(199, 125, 150, 0.25) !important;
+
+  transition:
+    border-color 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.auth-input::placeholder {
+  color: rgba(189, 167, 176, 0.48) !important;
+  -webkit-text-fill-color: rgba(189, 167, 176, 0.48) !important;
+}
+
+.auth-input:focus {
+  border-color: #c77d96 !important;
+
+  box-shadow: 0 0 0 3px rgba(199, 125, 150, 0.12) !important;
+
+  outline: none;
+}
+
+.auth-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-input:-webkit-autofill,
+.auth-input:-webkit-autofill:hover,
+.auth-input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #f0d5de !important;
+  caret-color: #f0d5de;
+
+  box-shadow: 0 0 0 1000px #090809 inset !important;
+  -webkit-box-shadow: 0 0 0 1000px #090809 inset !important;
+
+  border-color: rgba(199, 125, 150, 0.35) !important;
+
+  transition: background-color 9999s ease-out 0s;
 }
 
 /* =========================================================
@@ -797,40 +1074,7 @@ img {
 
   .champagne-drop,
   .champagne-glow {
-    animation: none !important;
     display: none !important;
+    animation: none !important;
   }
 }
-
- 
-/* Miss Cookie — botão Prepare Inquiry */
-.private-inquiry-button {
-  background: #C77D96 !important;
-  color: #090809 !important;
-  -webkit-text-fill-color: #090809 !important;
-  opacity: 1 !important;
-  border: 1px solid #F0D5DE !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  text-shadow: none !important;
-  transition:
-    background-color 250ms ease,
-    color 250ms ease,
-    border-color 250ms ease;
-}
- 
-.private-inquiry-button:hover {
-  background: #F0D5DE !important;
-  color: #090809 !important;
-  -webkit-text-fill-color: #090809 !important;
-}
- 
-.private-inquiry-button:disabled {
-  opacity: 1 !important;
-  cursor: not-allowed;
-  background: #24151D !important;
-  color: #F0D5DE !important;
-  -webkit-text-fill-color: #F0D5DE !important;
-}
- 
