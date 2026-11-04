@@ -4,6 +4,7 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import type { CSSProperties } from "react";
 
 const champagneDrops = Array.from({ length: 55 }, (_, index) => ({
@@ -91,10 +92,17 @@ export default function Hero() {
 
                             <div className="flex flex-wrap gap-3">
                                 <a
-                                    href="/experience"
-                                    className="inline-flex items-center justify-center bg-[#F0D5DE] px-6 py-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#090809] transition-colors duration-300 hover:bg-[#C77D96] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C77D96]"
+                                    href="/about"
+                                    className="private-inquiry-button group inline-flex items-center justify-center gap-3 px-7 py-4 text-[10px] font-bold uppercase tracking-[0.2em]"
                                 >
-                                    Discover
+                                    <span>Discover</span>
+
+                                    <ArrowUpRight
+                                        size={14}
+                                        strokeWidth={1.4}
+                                        className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                                        aria-hidden="true"
+                                    />
                                 </a>
 
                                 <a
