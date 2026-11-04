@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import SignOutButton from "../../components/SignOutButton";
 
 type GalleryImage = {
     name: string;

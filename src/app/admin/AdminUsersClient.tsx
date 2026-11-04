@@ -49,6 +49,14 @@ export default function AdminUsersClient() {
                 cache: "no-store",
             });
 
+            const contentType = response.headers.get("content-type");
+
+            if (!contentType?.includes("application/json")) {
+                throw new Error(
+                    "A API administrativa não retornou uma resposta válida."
+                );
+            }
+
             const result = (await response.json()) as UsersResponse;
 
             if (response.status === 401) {
