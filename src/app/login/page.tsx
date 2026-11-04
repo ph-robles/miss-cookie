@@ -323,9 +323,18 @@ function LoginForm() {
                                         Password
                                     </label>
 
-                                    <span className="text-[10px] text-[#BDA7B0]">
-                                        Minimum 8 characters
-                                    </span>
+                                    {mode === "login" ? (
+                                        <Link
+                                            href="/forgot-password"
+                                            className="text-[10px] text-[#C77D96] transition-colors duration-300 hover:text-[#F0D5DE]"
+                                        >
+                                            Forgot password?
+                                        </Link>
+                                    ) : (
+                                        <span className="text-[10px] text-[#BDA7B0]">
+                                            Minimum 8 characters
+                                        </span>
+                                    )}
                                 </div>
 
                                 <div className="relative">
