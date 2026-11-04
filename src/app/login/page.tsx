@@ -86,7 +86,7 @@ function LoginForm() {
             return requestedNext;
         }
 
-        return "/account";
+        return "/private-gallery";
     }, [requestedNext]);
 
     const confirmationErrorMessage = useMemo(() => {
