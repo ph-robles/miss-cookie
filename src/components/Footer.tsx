@@ -238,6 +238,13 @@ export default function Footer() {
                             Privacy
                         </Link>
 
+                        <Link
+                            href="/cookies"
+                            className="transition-colors duration-300 hover:text-[#F0D5DE]"
+                        >
+                            Cookies
+                        </Link>
+
                         <span>Discretion</span>
 
                         {user && (
