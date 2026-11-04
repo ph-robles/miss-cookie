@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
     ArrowDown,
@@ -51,6 +52,15 @@ const reveal = {
     },
 };
 
+
+export const metadata: Metadata = {
+    title: "Gallery",
+    description:
+        "Explore the public editorial gallery and learn about private members access from Miss Cookie.",
+    alternates: {
+        canonical: "/gallery",
+    },
+};
 export default function Gallery() {
     const { scrollYProgress } = useScroll();
 

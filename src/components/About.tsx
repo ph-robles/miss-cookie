@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import AboutReveal from "./AboutReveal";
 
 function CookieMark() {
@@ -47,6 +48,14 @@ const profile = [
   { label: "Eyes", value: "Hazel" },
 ];
 
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Discover the personality, presence and thoughtful approach behind Miss Cookie in Orlando, Florida.",
+  alternates: {
+    canonical: "/about",
+  },
+};
 export default function About() {
   return (
     <section

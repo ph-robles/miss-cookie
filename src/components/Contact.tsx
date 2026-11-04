@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import type { Metadata } from "next";
 import {
     CalendarDays,
     Check,
@@ -67,6 +68,14 @@ function Field({
     );
 }
 
+export const metadata: Metadata = {
+    title: "Contact",
+    description:
+        "Contact Miss Cookie privately regarding availability, travel and arrangements.",
+    alternates: {
+        canonical: "/contact",
+    },
+};
 export default function Contact() {
     const [submitted, setSubmitted] = useState(false);
 

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 
 const arrangements = [
     {
@@ -84,6 +85,16 @@ function SectionLabel({
         </div>
     );
 }
+
+
+export const metadata: Metadata = {
+    title: "Rates",
+    description:
+        "Review booking rates, arrangement information and inquiry requirements for Miss Cookie.",
+    alternates: {
+        canonical: "/rates",
+    },
+};
 
 export default function Rates() {
     return (

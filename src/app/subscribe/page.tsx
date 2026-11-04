@@ -1,5 +1,6 @@
 
 import Link from "next/link";
+import type { Metadata } from "next";
 import {
     ArrowLeft,
     ArrowRight,
@@ -7,6 +8,36 @@ import {
     LockKeyhole,
     Sparkles,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+    title: "Private Gallery Membership",
+    description:
+        "Discover Miss Cookie private gallery membership, including exclusive photographs and secure members-only access.",
+
+    alternates: {
+        canonical: "/subscribe",
+    },
+
+    openGraph: {
+        title: "Private Gallery Membership | Miss Cookie",
+        description:
+            "Explore exclusive private gallery access and membership information from Miss Cookie.",
+        url: "/subscribe",
+        type: "website",
+    },
+
+    twitter: {
+        card: "summary_large_image",
+        title: "Private Gallery Membership | Miss Cookie",
+        description:
+            "Explore exclusive private gallery access and membership information from Miss Cookie.",
+    },
+
+    robots: {
+        index: true,
+        follow: true,
+    },
+};
 
 const benefits = [
     "Access to the exclusive members gallery",

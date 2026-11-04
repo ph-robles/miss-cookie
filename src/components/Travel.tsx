@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
     ArrowDown,
@@ -76,6 +77,15 @@ const reveal = {
     },
 };
 
+
+export const metadata: Metadata = {
+    title: "Travel",
+    description:
+        "View travel availability and destination arrangements for Miss Cookie in Florida and beyond.",
+    alternates: {
+        canonical: "/travel",
+    },
+};
 export default function Travel() {
     const [showTravelNote, setShowTravelNote] = useState(false);
     const prefersReducedMotion = useReducedMotion();

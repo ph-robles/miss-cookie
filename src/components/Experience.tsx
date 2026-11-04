@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { useEffect, useState } from "react";
 
 const experiences = [
@@ -39,6 +40,14 @@ const experiences = [
     },
 ];
 
+export const metadata: Metadata = {
+    title: "The Experience",
+    description:
+        "Learn about the refined, discreet and thoughtfully arranged Miss Cookie experience in United States.",
+    alternates: {
+        canonical: "/experience",
+    },
+};
 export default function Experience() {
     const [activeExperience, setActiveExperience] = useState(0);
     const [scrolled, setScrolled] = useState(false);
@@ -219,8 +228,8 @@ export default function Experience() {
                                             >
                                                 <span
                                                     className={`pt-1 text-[9px] tracking-[0.3em] transition-colors duration-300 ${active
-                                                            ? "text-[#C77D96]"
-                                                            : "text-[#F0D5DE]/40"
+                                                        ? "text-[#C77D96]"
+                                                        : "text-[#F0D5DE]/40"
                                                         }`}
                                                 >
                                                     {experience.number}
@@ -228,8 +237,8 @@ export default function Experience() {
 
                                                 <span
                                                     className={`font-[family-name:var(--font-display)] text-3xl leading-none transition-all duration-500 ${active
-                                                            ? "text-[#F0D5DE]"
-                                                            : "text-[#F0D5DE]/45 group-hover:text-[#F0D5DE]/90"
+                                                        ? "text-[#F0D5DE]"
+                                                        : "text-[#F0D5DE]/45 group-hover:text-[#F0D5DE]/90"
                                                         }`}
                                                 >
                                                     {experience.title}
@@ -257,8 +266,8 @@ export default function Experience() {
                                             key={experience.number}
                                             aria-hidden={!active}
                                             className={`absolute inset-0 transition-all duration-700 ${active
-                                                    ? "pointer-events-auto translate-y-0 opacity-100"
-                                                    : "pointer-events-none translate-y-4 opacity-0"
+                                                ? "pointer-events-auto translate-y-0 opacity-100"
+                                                : "pointer-events-none translate-y-4 opacity-0"
                                                 }`}
                                         >
                                             <div className="relative h-[720px] overflow-hidden bg-[#24151D]">

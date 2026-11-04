@@ -538,7 +538,7 @@ export default function PrivacyPage() {
                                         </a>
 
                                         <p className="mt-3 text-xs text-[#BDA7B0]/70">
-                                            Miss Cookie · Orlando, Florida · United States
+                                            Miss Cookie · United States
                                         </p>
                                     </div>
                                 </div>
