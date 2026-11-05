@@ -153,7 +153,7 @@ export default function Header() {
 
                     {/* PRIVATE GALLERY BUTTON */}
                     <Link
-                        href="/subscribe"
+                        href="/login"
                         aria-label="Discover Private Gallery membership"
                         className="private-inquiry-button group ml-3 min-h-12 px-5 py-3 text-[9px] font-bold uppercase tracking-[0.18em]"
                     >
@@ -272,7 +272,7 @@ export default function Header() {
 
                         {/* MOBILE PRIVATE GALLERY BUTTON */}
                         <Link
-                            href="/subscribe"
+                            href="/login"
                             onClick={closeMenu}
                             className={`private-inquiry-button group mt-6 w-full max-w-xs px-7 py-4 text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-500 ${menuOpen
                                     ? "translate-y-0 opacity-100"
